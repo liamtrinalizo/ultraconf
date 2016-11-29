@@ -1,0 +1,5 @@
+#!bin/bash
+
+cp /var/mail/mr_robot mr_robot
+
+
