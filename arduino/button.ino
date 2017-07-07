@@ -1,12 +1,12 @@
-// projet main musc v3.2
+// projet main musc v4.0
 
 int incomingByte = 0;
-int buttonPushCounter = 0;   
-int buttonState = 0;         
-int lastButtonState = 1;     
+int buttonPushCounter = 0;
+int buttonState = 0;
+int lastButtonState = 1;
 boolean beginning = true;
 
-const int  buttonPin = 2;    
+const int  buttonPin = 2;
 
 void setup() {
   pinMode(buttonPin, INPUT);
@@ -14,27 +14,28 @@ void setup() {
 }
 
 void loop() {
-  
+
   if (beginning) {
     printPins();
     beginning = false;
     Serial.println("");
     printHelp();
   }
-  
+
   buttonState = digitalRead(buttonPin);
   if (buttonState != lastButtonState) {
     if (buttonState == HIGH) {
       buttonPushCounter++;
       Serial.println("-->");
       Serial.println(buttonPushCounter);
-
     } else {
       Serial.println("<--");
     }
+
     // Delay a little bit to avoid bouncing
     delay(10);
   }
+
   lastButtonState = buttonState;
   if (Serial.available() > 0) {
     incomingByte = Serial.read();
@@ -42,6 +43,7 @@ void loop() {
       buttonPushCounter = 0;
       Serial.println("Reset applied");
     }
+
     if (incomingByte == 104) {
       printHelp();
     }
@@ -54,7 +56,6 @@ void printHelp() {
   Serial.println("Press \"h\" to display the help.");
   Serial.println("To exit press \"CTRL + A\" thet.");
   Serial.println("Press \"h\" to display the heln \"D\".");
-  
 }
 
 void printPins() {
