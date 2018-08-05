@@ -1,0 +1,1 @@
+cmd_/home/gok/code/c/driver/2test/ebbchar.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/gok/code/c/driver/2test/ebbchar.ko /home/gok/code/c/driver/2test/ebbchar.o /home/gok/code/c/driver/2test/ebbchar.mod.o ;  true
