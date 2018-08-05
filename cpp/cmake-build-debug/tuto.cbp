@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="tuto"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tuto">
+				<Option output="/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/tuto" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.0/include/g++-v6"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.0/include/g++-v6/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.0/include/g++-v6/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.0/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 tuto"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="tuto/fast">
+				<Option output="/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/tuto" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.0/include/g++-v6"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.0/include/g++-v6/x86_64-pc-linux-gnu"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.0/include/g++-v6/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.0/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-pc-linux-gnu/6.4.0/include-fixed"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 tuto/fast"/>
+					<CompileFile command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j2 -f &quot;/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/gok/CLionProjects/untitled/idea/cpp/main.cpp">
+			<Option target="tuto"/>
+		</Unit>
+		<Unit filename="/home/gok/CLionProjects/untitled/idea/cpp/utils.cpp">
+			<Option target="tuto"/>
+		</Unit>
+		<Unit filename="/home/gok/CLionProjects/untitled/idea/cpp/utils.h">
+			<Option target="tuto"/>
+		</Unit>
+		<Unit filename="/home/gok/CLionProjects/untitled/idea/cpp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
