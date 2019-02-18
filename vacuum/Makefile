@@ -1,14 +1,11 @@
-CC = gcc
-CFLAGS = -W -Wall -lncurses
-LDFLAGS = -lncurses
+CC := gcc
+CFLAGS := -lncurses -lpthread -lwiringPi -lwiringPiDev
 
-EXEC = vacuum
+SRC := vacuum.c motor.c sensor.c
+OBJ := vac
 
-SOURCES = vacuum.c
-
-vacuum:
-	$(CC) $(CFLAGS) $(SOURCES) -o $@
+all:
+	$(CC) $(CFLAGS) $(SRC) -o $(OBJ)
 
 clean:
-	rm -f *.o
-	rm -f $(EXEC)
+	$(RM) *.o vac
