@@ -24,4 +24,5 @@ int main(int argc, const char * argv[]) {
 
 	printf("sizeof point2 %d\n", sizeof(point2));
 	return 0;
-} 
+}
+
