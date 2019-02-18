@@ -1,4 +1,5 @@
-#include "config.h"
+#include "sensor.h"
+#include "motor.h"
 
 #include <ncurses.h>
 #include <string.h> 
@@ -11,11 +12,12 @@ int main()
     char mesg[]="The Vacuum Master";
     int row,col;
     
-    initscr();                       /* start the curses mode */
-    getmaxyx(stdscr,row,col);        /* get the number of rows and columns */
-    mvprintw(row/2,(col-strlen(mesg))/2,"%s",mesg);
+//    initscr();                       /* start the curses mode */
+//    getmaxyx(stdscr,row,col);        /* get the number of rows and columns */
+//    mvprintw(row/2,(col-strlen(mesg))/2,"%s",mesg);
     
-    pinSetUp();
+    motorPinSetup();
+    getAllDistance();
     
     while(1)
     {

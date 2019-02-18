@@ -3,6 +3,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " let Vundle manage Vundle, required
+" git clone https://github.com/VundleVim/Vundle.vim.git
+" :PluginInstall
 Plugin 'VundleVim/Vundle.vim'
 
 " Airline

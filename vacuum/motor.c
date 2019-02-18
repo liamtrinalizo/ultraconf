@@ -2,6 +2,7 @@
 #include "motor.h"
 
 #include <wiringPi.h>
+#include <ncurses.h>
 
 void motorPinSetup()
 {
@@ -24,12 +25,12 @@ int setDirection(int direction)
         {
                 case 'a':
                         mvprintw(LINES - 2, 0, "You Entered: Forward ");
-                        setMotorDirection(1, 0, 1, 0)
-                                break;
+                        setMotorDirection(1, 0, 1, 0);
+                        break;
                 case 'w':
                         mvprintw(LINES - 2, 0, "You Entered: Left    ");
-                        setMotorDirection(1, 0, 0, 1)
-                                break;
+                        setMotorDirection(1, 0, 0, 1);
+                        break;
                 case 's':
                         mvprintw(LINES - 2, 0, "You Entered: Right   ");
                         setMotorDirection(0, 1, 1, 0);
