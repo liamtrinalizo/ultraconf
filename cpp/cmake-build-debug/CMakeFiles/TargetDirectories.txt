@@ -1,0 +1,3 @@
+/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/gok/CLionProjects/untitled/idea/cpp/cmake-build-debug/CMakeFiles/tuto.dir
