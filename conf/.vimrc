@@ -2,6 +2,10 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+" git clone https://github.com/VundleVim/Vundle.vim.git
+" :PluginInstall
+" :PluginUpdate
+
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
@@ -26,8 +30,8 @@ set hlsearch
 
 :colorscheme desert 
 :syntax on
-":vertical :botright :terminal
 :vertical resize -37
+":vertical :botright :terminal
 
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
