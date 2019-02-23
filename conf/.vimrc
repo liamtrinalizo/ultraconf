@@ -2,21 +2,10 @@
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-" Airline
 Plugin 'vim-airline/vim-airline'
-
-" Airline themes
 Plugin 'vim-airline/vim-airline-themes'
-
-" Themes
 "Plugin 'dracula/vim'
-
-" YouCompleteMe - autocomplete
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -31,10 +20,9 @@ set shiftwidth=4
 set smarttab
 set autoindent
 set mouse=a
-set cursorline
 set completeopt-=preview
+"set cursorline
 
-let g:ycm_global_ycm_extra_conf = "~/University/.ycm_extra_conf.py"
 
 :colorscheme delek "dracula
 :syntax on
