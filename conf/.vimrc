@@ -5,6 +5,7 @@ call vundle#begin()
 " git clone https://github.com/VundleVim/Vundle.vim.git
 " :PluginInstall
 " :PluginUpdate
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
