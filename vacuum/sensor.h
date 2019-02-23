@@ -7,11 +7,11 @@
 
 #define SONIC_SPEED 34300
 
-void *getOneDistance(void *arguments)
+void *getOneDistance(void *arguments);
 
 int getAllDistance();
 
-int pinSensorSetup();
+int sensorPinSetup();
 
 
 #endif
