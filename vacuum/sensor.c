@@ -38,7 +38,7 @@ int sensorPinSetup()
 
 void  *getOneDistance(void *arguments)
 {
-    struct arg_struct *args = arguments;
+    private volatile struct arg_struct *args = arguments;
     time_t startTime, stopTime, timeElapsed;
 
     while(1)
@@ -70,7 +70,7 @@ int getAllDistance()
     pthread_t threadId;
     struct arg_struct args;
 
-    for (int indexThread = 0; indexThread < 5; indexThread++)
+    for (int indexThread = 0; indexThread < 1; indexThread++)
     {
         printf("Creating thread %d\n", indexThread);
         args.echoId = indexThread;
