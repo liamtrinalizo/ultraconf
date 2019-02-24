@@ -1,11 +1,12 @@
 #include "sensor.h" 
 
 #include <wiringPi.h>
-#include <unistd.h>
-#include <time.h>
-#include <pthread.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <pthread.h>
 #include <ncurses.h>
+#include <sys/time.h>
 
 enum POSITION_ENUM {ECHO_FRONT,
     ECHO_FRONT_LEFT, 
@@ -19,48 +20,45 @@ int ECHO_PIN[5] = {PIN_ECHO_FRONT,
     PIN_ECHO_REAR_LEFT,
     PIN_ECHO_REAR_RIGHT};
 
-
 struct arg_struct {
     int echoId;
-    float distance;
+    double distance;
 };
-
 
 int sensorPinSetup()
 {
     pinMode(PIN_TRIG, OUTPUT);
 
     for (int indexSensor = 0; indexSensor < 5; indexSensor++)
-    {
         pinMode(ECHO_PIN[indexSensor], INPUT);
-    }
 }
 
-void  *getOneDistance(void *arguments)
+void getOneDistance()
 {
-    private volatile struct arg_struct *args = arguments;
-    time_t startTime, stopTime, timeElapsed;
+    struct arg_struct *args = malloc(sizeof(struct arg_struct));
+    struct timeval startTime, stopTime;
+    double timeElapsed;
+
+    args->echoId = 0;
 
     while(1)
     {
         digitalWrite(PIN_TRIG, 1);
-        sleep(TRIG_TIME);
+        sleep(0.00001);
         digitalWrite(PIN_TRIG, 0);
+        
+        while(digitalRead(ECHO_PIN[0]) == 0)
+            gettimeofday(&startTime, NULL);	
+        
+        while(digitalRead(ECHO_PIN[0]) == 1)
+            gettimeofday(&stopTime, NULL);
 
-        while(digitalRead(args->echoId) == 0)
-            startTime = time(NULL);	
+        timeElapsed = stopTime.tv_usec - startTime.tv_usec;
 
-        while(digitalRead(args->echoId) == 1)
-            stopTime = time(NULL);
-
-        timeElapsed = stopTime - startTime;
-
-        args->distance= (timeElapsed * SONIC_SPEED) / 2;
-        //mvprintw(LINES - 2, 0, "Thread %d distance %f", args->echoId, args->distance);
-        printf("Thread %d distance %f\n", args->echoId, args->distance);
+        args->distance = (timeElapsed * SONIC_SPEED) / (2E6); //diving by E6 because usec
+        printf("Thread %d distance %f cm\n", 0, args->distance);
         sleep(1);
     }
-    return 0;	
 }
 
 int getAllDistance()
@@ -74,7 +72,7 @@ int getAllDistance()
     {
         printf("Creating thread %d\n", indexThread);
         args.echoId = indexThread;
-        if((err = pthread_create(&threadId, NULL, &getOneDistance, (void *)&args)))
+        //if((err = pthread_create(&threadId, NULL, &getOneDistance, (void *)&args)))
             //mvprintw(LINES - 2, 0, "getAllDistance: pthread_create erro %d", err);
             printf("getAllDistance: pthread_create erro %d\n", err);
     }

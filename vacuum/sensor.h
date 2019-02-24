@@ -7,7 +7,7 @@
 
 #define SONIC_SPEED 34300
 
-void *getOneDistance(void *arguments);
+void getOneDistance();
 
 int getAllDistance();
 

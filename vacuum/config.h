@@ -6,13 +6,13 @@
 #define PIN_MOTOR_FOR_LEFT    2
 #define PIN_MOTOR_BAC_LEFT    3
 
-#define PIN_ECHO_FRONT 	      5
-#define PIN_ECHO_FRONT_LEFT   6
-#define PIN_ECHO_FRONT_RIGHT  13
-#define PIN_ECHO_REAR_LEFT    19
-#define PIN_ECHO_REAR_RIGHT   26
+#define PIN_ECHO_FRONT 	      21
+#define PIN_ECHO_FRONT_LEFT   22
+#define PIN_ECHO_FRONT_RIGHT  23
+#define PIN_ECHO_REAR_LEFT    24
+#define PIN_ECHO_REAR_RIGHT   25
 
-#define PIN_TRIG              23
+#define PIN_TRIG              4
 
 
 #endif

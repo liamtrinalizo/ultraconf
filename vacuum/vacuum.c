@@ -19,7 +19,7 @@ int main()
 
     motorPinSetup();
     sensorPinSetup();
-    getAllDistance();
+    getOneDistance();
 
     // while(1)
     // {
