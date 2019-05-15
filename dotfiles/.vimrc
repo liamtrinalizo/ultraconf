@@ -1,13 +1,13 @@
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+"set rtp+=~/.vim/bundle/Vundle.vim
+"call vundle#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'VundleVim/Vundle.vim'
+"Plugin 'vim-airline/vim-airline'
+"Plugin 'vim-airline/vim-airline-themes'
 "Plugin 'dracula/vim'
 
-call vundle#end()            " required
+"call vundle#end()            " required
 filetype plugin indent on    " required
 
 set nu
@@ -25,21 +25,20 @@ set nowrap
 "set cursorline
 
 
-:colorscheme desert 
-:syntax on
+colorscheme desert 
+syntax on
 ":vertical :botright :terminal
-:vertical resize -37
 
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 10
-augroup ProjectDrawer
-  autocmd!
-  autocmd VimEnter * :Vexplore
-  autocmd VimEnter * wincmd p
-augroup END
+"let g:netrw_banner = 0
+"let g:netrw_liststyle = 3
+"let g:netrw_browse_split = 4
+"let g:netrw_altv = 1
+"let g:netrw_winsize = 10
+"augroup ProjectDrawer
+"  autocmd!
+"  autocmd VimEnter * :Vexplore
+"  autocmd VimEnter * wincmd p
+"augroup END
 
 set t_Co=256 " 256 colors in terminal
 
