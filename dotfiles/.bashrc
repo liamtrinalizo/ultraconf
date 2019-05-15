@@ -27,7 +27,7 @@ alias li="xbacklight -set"
 
 #export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\] \[\033[33;1m\]\w\[\033[m\] (\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)) \$ "
 
-export PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[38;5;11m\] \w \$ \[\033[38;5;0m\]\[\033[48;5;1m\]$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\[$(tput sgr0)\]\[\033[38;5;15m\]'
+export PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[38;5;11m\] \w \$ \[\033[38;5;0m\]\[\033[48;5;1m\]$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]'
 #export PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[38;5;11m\] \w \[\033[38;5;0m\]\[\033[48;5;1m\]$(git branch 2>/dev/null | grep '^*' | colrm 1 2)\[$(tput sgr0)\]\[\033[38;5;15m\]'
 
 case "$TERM" in
