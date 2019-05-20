@@ -2,6 +2,8 @@ startup_message off
 
 shelltitle "$ |"
 
+backtick 1 0 5 /home/gok/script/battery.sh 
+
+
 #caption always "------------------------------------------------------"
-hardstatus alwayslastline "%{b kw}%H %{r}%1` %{w}| %{g}%c %{w}| %{y}%d.%m.%Y %{w}| %{g}%l %{w}| %{-b kw}%u %-Lw%{= rW}%50> %n%f %t %{-}%+Lw%<"
-#hardstatus alwayslastline
+hardstatus alwayslastline "%{b bw}%c %{w}%d.%m.%Y %{w}| %{w}%1` %{w}| %{w}%l %{w}| %{-b kw}%u %-Lw%{= rW}%50> %n%f %t %{-}%+Lw%<"
