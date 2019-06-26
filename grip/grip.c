@@ -1,58 +1,33 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-#define DELAY_MS 1000
+#include "display.h"
 
-#define B
+#define DELAY_MS 1000
 
 int main (void)
 {
-    // L led
-    //DDRB |=  _BV(DDB5);
-
     // 7-segments led
-    DDRD =  0xFF; 
-    DDRB |= _BV(DDB0 |
-                DDB1 |
-                DDB2 |
-                DDB3 |
-                DDB4); 
+    DDRD =  0xFF;
+    DDRB =  0xFF;
+    DDRC =  0x03;
 
-    // button
-    //DDRD &= ~_BV(DDD2);
+    displayUnit(0);
+    displayTens(0);
+    
+    int count = 0;
 
-    while (1) 
+    while (1)
     {
-        //if ((PIND >> 2) && 1)
-        //    PORTB &=  _BV(PORTB5);
-        //else
-        //    PORTB |= ~_BV(PORTB5);
+        if (PINC & 0x04)
+        {
+            count++;
 
-        PORTD |= ~_BV(PORTD3 |
-                      PORTD3 |
-                      PORTD4 |
-                      PORTD5 |
-                      PORTD6 |
-                      PORTD7);
-        PORTB |= ~_BV(PORTB0 |
-                      PORTB1 |
-                      PORTB2 |
-                      PORTB3 |
-                      PORTB4);
-        _delay_ms(DELAY_MS);
-
-        PORTD &=  _BV(PORTD3 |
-                      PORTD3 |
-                      PORTD4 |
-                      PORTD5 |
-                      PORTD6 |
-                      PORTD7);
-        PORTB &=  _BV(PORTB0 |
-                      PORTB1 |
-                      PORTB2 |
-                      PORTB3 |
-                      PORTB4);
-        _delay_ms(DELAY_MS);
+            displayReset();
+            displayUnit(count % 10);
+            displayTens(count / 10);
+            _delay_ms(DELAY_MS);
+        }
     }
 }
 
