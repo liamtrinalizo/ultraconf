@@ -1,45 +1,54 @@
 " set the runtime path to include Vundle and initialize
-"set rtp+=~/.vim/bundle/Vundle.vim
-"call vundle#begin()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-"Plugin 'VundleVim/Vundle.vim'
-"Plugin 'vim-airline/vim-airline'
-"Plugin 'vim-airline/vim-airline-themes'
-"Plugin 'dracula/vim'
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'fugitive.vim'
+Plugin 'SuperTab'
+Plugin 'Yggdroot/indentLine'
+Bundle 'takac/vim-hardtime'
 
-"call vundle#end()            " required
+call vundle#end()            " required
 filetype plugin indent on    " required
+colorscheme desert
+syntax on
+runtime ftplugin/man.vim
+autocmd FileType help wincmd L
 
-set nu
+set number
+set relativenumber
 set backspace=indent,eol,start
-set tabstop=8 
-set softtabstop=0 
+set tabstop=8
+set softtabstop=0
 set expandtab
 set shiftwidth=4
 set smarttab
 set autoindent
-set mouse=a
+set mouse=
 set completeopt-=preview
 set hlsearch
 set nowrap
-"set cursorline
+set showmatch
+set noshowmode
 
-
-colorscheme desert 
-syntax on
-":vertical :botright :terminal
-
-"let g:netrw_banner = 0
-"let g:netrw_liststyle = 3
-"let g:netrw_browse_split = 4
-"let g:netrw_altv = 1
-"let g:netrw_winsize = 10
-"augroup ProjectDrawer
-"  autocmd!
-"  autocmd VimEnter * :Vexplore
-"  autocmd VimEnter * wincmd p
-"augroup END
+set incsearch
+set viminfo='1000
+set encoding=utf8
 
 set t_Co=256 " 256 colors in terminal
 
-set encoding=utf8
+"AIRLINE
+let g:airline_powerline_fonts = 0
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '◀'
+let g:airline_line = ''
+let g:airline_theme = 'badwolf'
+
+"HARDTIME
+let g:hardtime_default_on = 0
+let g:hardtime_showmsg = 0
+
+"VOOGLE
+let g:search_engine = 'google'
