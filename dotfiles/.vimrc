@@ -8,6 +8,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'fugitive.vim'
 Plugin 'SuperTab'
 Plugin 'Yggdroot/indentLine'
+Plugin 'linluk/vim-websearch'
 Bundle 'takac/vim-hardtime'
 
 call vundle#end()            " required
@@ -40,6 +41,7 @@ set encoding=utf8
 set t_Co=256 " 256 colors in terminal
 
 "MAPPING
+let mapleader = " "   
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -56,5 +58,10 @@ let g:airline_theme = 'badwolf'
 let g:hardtime_default_on = 0
 let g:hardtime_showmsg = 0
 
-"VOOGLE
-let g:search_engine = 'google'
+"WEBSEARCH
+let g:web_search_engine = 'duckduck'
+let g:web_search_browser = 'lynx'
+  " search for word under cursor in normal mode
+nnoremap <leader>w :WebSearchCursor<CR>
+  " search for selection in visual mode
+vnoremap <leader>w :WebSearchVisual<CR>
