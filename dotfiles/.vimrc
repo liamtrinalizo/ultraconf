@@ -47,6 +47,12 @@ noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
+inoremap ( ()<Esc>i
+inoremap { {}<Esc>i
+inoremap [ []<Esc>i
+inoremap ' ''<Esc>i
+inoremap " ""<Esc>i
+
 "AIRLINE
 let g:airline_powerline_fonts = 0
 let g:airline_left_sep = '▶'
