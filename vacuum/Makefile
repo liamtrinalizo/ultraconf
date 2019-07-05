@@ -1,7 +1,14 @@
 CC := gcc
-CFLAGS := -lncurses -lpthread -lwiringPi -lwiringPiDev
+CFLAGS :=   -lncurses \
+	    -lpthread \
+#	    -lwiringPi \
+#	    -lwiringPiDev
 
-SRC := vacuum.c motor.c sensor.c
+SRC :=  vacuum.c  \
+	display.c \
+#	motor.c   \
+#	sensor.c  \
+
 OBJ := vac
 
 all:
