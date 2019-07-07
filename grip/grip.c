@@ -25,7 +25,7 @@ int main (void)
 
             displayReset();
             displayUnit(count % 10);
-            displayTens(count / 10);
+            displayTens((count / 10) % 10);
             _delay_ms(DELAY_MS);
         }
     }
