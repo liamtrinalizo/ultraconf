@@ -41,17 +41,12 @@ set encoding=utf8
 set t_Co=256 " 256 colors in terminal
 
 "MAPPING
-let mapleader = " "   
+let mapleader = " "
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
 
-inoremap ( ()<Esc>i
-inoremap { {}<Esc>i
-inoremap [ []<Esc>i
-inoremap ' ''<Esc>i
-inoremap " ""<Esc>i
 
 "AIRLINE
 let g:airline_powerline_fonts = 0
@@ -66,8 +61,8 @@ let g:hardtime_showmsg = 0
 
 "WEBSEARCH
 let g:web_search_engine = 'duckduck'
-let g:web_search_browser = 'lynx'
+let g:web_search_command = 'w3m'
   " search for word under cursor in normal mode
 nnoremap <leader>w :WebSearchCursor<CR>
   " search for selection in visual mode
-vnoremap <leader>w :WebSearchVisual<CR>
+vnoremap <leader>W :WebSearchVisual<CR>
