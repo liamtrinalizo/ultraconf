@@ -15,6 +15,7 @@ alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias  l="ls -1Na   --group-directories-first --color=auto"
 
 alias li="xbacklight -set"
+alias al="alsamixer"
 
 alias chrome="google-chrome-stable"
 alias search="/home/gok/scripts/search.sh"
