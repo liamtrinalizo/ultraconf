@@ -4,10 +4,10 @@
 
 # SCREEN
 if [ -z "$STY" ]; then
-    screen  -d -RR
+    #screen  -d -RR
 fi
 case "$TERM" in
-    screen*) PROMPT_COMMAND='echo -ne "\033k\033\0134"'
+#    screen*) PROMPT_COMMAND='echo -ne "\033k\033\0134"'
 esac
 
 HISTFILE=~/.histfile
@@ -24,6 +24,8 @@ alias al="alsamixer"
 
 alias chrome="google-chrome-stable"
 alias search="/home/gok/scripts/search.sh"
+
+alias battery="/home/gok/scripts/battery.sh"
 
 alias lock="xscreensaver-command -lock"
 
