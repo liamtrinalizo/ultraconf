@@ -10,6 +10,11 @@ case "$TERM" in
     screen*) PROMPT_COMMAND='echo -ne "\033k\033\0134"'
 esac
 
+HISTFILE=~/.histfile
+HISTSIZE=2000
+SAVEHIST=2000
+
+
 # ALIASES
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias  l="ls -1Na   --group-directories-first --color=auto"
