@@ -29,7 +29,7 @@ alias battery="/home/gok/scripts/battery.sh"
 
 alias lock="xscreensaver-command -lock"
 
-export EDITOR=${EDITOR:-/usr/bin/vim}
+export EDITOR=vim
 export QSYS_ROOTDIR="/home/gok/intelFPGA_lite/18.1/quartus/sopc_builder/bin"
 
-bindkey -v
+bindkey -e
