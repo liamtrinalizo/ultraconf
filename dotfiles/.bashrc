@@ -15,15 +15,18 @@ if [[ $- != *i* ]] ; then
 fi
 
 ## if $STY is not set...
-if [ -z "$STY" ]; then
-    screen  -d -RR
-fi
+#if [ -z "$STY" ]; then
+#    screen  -d -RR
+#fi
 
 # Put your fun stuff here.
 alias ll="ls -Nlhav --group-directories-first"
 alias  l="ls -1Na   --group-directories-first --color=auto"
 
 alias li="xbacklight -set"
+
+alias chrome="google-chrome-stable"
+alias lock="xscreensaver-command -lock"
 
 #export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\] \[\033[33;1m\]\w\[\033[m\] (\$(git branch 2>/dev/null | grep '^*' | colrm 1 2)) \$ "
 
@@ -34,3 +37,8 @@ case "$TERM" in
     screen*) PROMPT_COMMAND='echo -ne "\033k\033\0134"'
 esac
 
+export EDITOR=${EDITOR:-/usr/bin/vim}
+
+export QSYS_ROOTDIR="/home/gok/intelFPGA_lite/18.1/quartus/sopc_builder/bin"
+
+set -o vi
