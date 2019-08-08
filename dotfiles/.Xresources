@@ -1,50 +1,10 @@
-XTerm*background:         black
-XTerm*foreground:         white
-XTerm*cursorColor:        white
-XTerm*VT100.geometry:     105x57
-XTerm*VT100.Translations: #override \
-      Shift Ctrl<Key>V: insert-selection(CLIPBOARD) \n\
-      Shift Ctrl<Key>V: insert-selection(PRIMARY) \n\
-      Shift<Btn1Down>: select-start() \n\
-      Shift<Btn1Motion>: select-extend() \n\
-      Shift<Btn1Up>: select-end(CLIPBOARD)
+!URxvt*font:           -misc-fixed-medium-r-semicondensed-*-12-90-100-*-c-60-iso8859-1
 
-! XTerm*faceName:           Terminus:style=Regular:size=10
-! XTerm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
+!URxvt.font: xft:Noto Sans Mono CJK JP:pixelsize=10:antialias=true:hinting=false
+URxvt.font:             xft:DejaVu Sans Mono:size=8:antialias=false
+URxvt.*.letterSpace:    0
+Xft.antialias:          false
 
-XTerm*font:                 terminus-10
-!XTerm*font: 7x13
-XTerm*dynamicColors:      true
-XTerm*utf8:               2
-XTerm*eightBitInput:      true
-XTerm*saveLines:          512
-XTerm*scrollKey:          true
-XTerm*scrollTtyOutput:    false
-XTerm*scrollBar:          false
-XTerm*rightScrollBar:     false
-XTerm*jumpScroll:         true
-XTerm*multiScroll:        true
-XTerm*toolBar:            false
-xterm*faceName: Dejavu Sans Mono:size=8
-xterm*faceNameDoublesize: Noto Sans Mono CJK SC:size=9
-
-! UXTerm*faceName:           Terminus:style=Regular:size=10
-! UXTerm*font:              -*-dina-medium-r-*-*-16-*-*-*-*-*-*-*
-
-!UXTerm*background:         black
-!UXTerm*foreground:         white
-!UXTerm*cursorColor:        white
-!UXTerm*VT100.geometry:     90x30
-!
-!UXTerm*font:               Powerline
-!UXTerm*dynamicColors:      true
-!UXTerm*utf8:               2
-!UXTerm*eightBitInput:      true
-!UXTerm*saveLines:          512
-!UXTerm*scrollKey:          true
-!UXTerm*scrollTtyOutput:    false
-!UXTerm*scrollBar:          false
-!UXTerm*rightScrollBar:     false
-!UXTerm*jumpScroll:         false
-!UXTerm*multiScroll:        false
-!UXTerm*toolBar:            false
+URxvt.background:       black
+URxvt.foreground:       white
+URxvt.scrollBar:        false
