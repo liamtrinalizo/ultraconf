@@ -1,5 +1,3 @@
-export LANG=en_US.UTF-8
-
 zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
 zstyle ':completion:*' matcher-list ''
 zstyle ':completion:*' max-errors 5
@@ -46,65 +44,38 @@ esac
 
 # Perso ---------------------------------------
 
- alias df='df -h'
- alias du='du -h'
+export LANG=en_US.UTF-8
+export EDITOR=vim
+export QSYS_ROOTDIR="/home/gok/intelFPGA_lite/18.1/quartus/sopc_builder/bin"
 
- alias less='less -r'                          # raw control characters
- alias whence='type -a'                        # where, of a sort
- alias grep='grep --color -rn'                 # show differences in colour
- alias egrep='egrep --color=auto'              # show differences in colour
- alias fgrep='fgrep --color=auto'              # show differences in colour
+bindkey -e
 
- alias ls='ls -hF --color=tty'                 # classify files in colour
- alias ll='ls -la --group-directories-first'
+autoload -U compinit promptinit
+compinit
+promptinit; prompt gentoo
 
- alias work='cd /cygdrive/d/WORK/'
- alias jeanb='cd /cygdrive/d/WORK/100539_Jean_Bracq/'
- alias windows='cd /cygdrive/d/WORK/SVN/Windows/Addidata_Device_Drivers/Current'
- 
- alias tgitci='/cygdrive/c/Program\ Files/TortoiseGit/bin/TortoiseGitProc.exe /path:. /command:commit'
- alias tgitlog='/cygdrive/c/Program\ Files/TortoiseGit/bin/TortoiseGitProc.exe /path:. /command:log'
- alias tftpd='c/Program\ Files\ \(x86\)/TFTPserver/RunStandAloneMT.bat'
+# alias ---------------------------------------
 
- alias serge='ssh serge@172.16.7.21'
+alias df='df -h'
+alias du='du -h'
 
- alias msg='/cygdrive/c/Program\ Files\ \(x86\)/NetPhone\ Client/IMClient.exe'
- alias call=''
+alias less='less -r'
+alias grep='grep --color -rn'
+alias egrep='egrep --color=auto'
+alias fgrep='fgrep --color=auto'
 
-
- autoload -U compinit promptinit
- compinit
- promptinit; prompt gentoo
-
-# SCREEN
-if [ -z "$STY" ]; then
-    #screen  -d -RR
-fi
-case "$TERM" in
-#    screen*) PROMPT_COMMAND='echo -ne "\033k\033\0134"'
-esac
-
-
-# ALIASES
+alias ls='ls -hF --color=tty'
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias  l="ls -1Na   --group-directories-first --color=auto"
 
 alias li="xbacklight -set"
 alias al="alsamixer"
 
-alias grep="grep -n --color"
-
 alias chrome="google-chrome-stable"
 alias w3m="w3m -no-mouse"
 alias search="/home/gok/scripts/search.sh"
+alias yt="mpsyt"
 
 alias battery="/home/gok/scripts/battery.sh"
+alias scim="sc-im"
 
-alias lock="xscreensaver-command -lock"
-
-export EDITOR=vim
-export QSYS_ROOTDIR="/home/gok/intelFPGA_lite/18.1/quartus/sopc_builder/bin"
-
-bindkey -e
-
-export TERM=xterm-256color

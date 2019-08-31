@@ -9,6 +9,7 @@ Plugin 'fugitive.vim'
 Plugin 'SuperTab'
 Plugin 'Yggdroot/indentLine'
 Plugin 'linluk/vim-websearch'
+Plugin 'chrisbra/unicode.vim'
 Bundle 'takac/vim-hardtime'
 
 call vundle#end()            " required
@@ -50,8 +51,8 @@ noremap <Right> <Nop>
 
 "AIRLINE
 let g:airline_powerline_fonts = 0
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '◀'
+"let g:airline_left_sep = '▶'
+"let g:airline_right_sep = '◀'
 let g:airline_line = ''
 let g:airline_theme = 'badwolf'
 
