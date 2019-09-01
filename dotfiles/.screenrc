@@ -1,16 +1,12 @@
 startup_message off
+defutf8 on
 defscrollback 10000
-
 
 msgwait 10
 activity "%c BOOM -> %n%f %t^G"
 silencewait 5
 
+shelltitle "% |"
+backtick 1 0 5 /home/gok/scripts/battery.sh
 
-shelltitle "$ |"
-
-backtick 1 0 5 /home/gok/script/battery.sh 
-
-
-#caption string "%{kg}%-w%{wb}|%n %t|%{-}%+w"
 hardstatus alwayslastline "%{b bw}%c %{w}%d.%m.%Y %{w}| %{w}%1` %{w}| %{w}%l %{w}| %{-b kw}%u %-Lw%{= rW}%50> %n%f %t %{-}%+Lw%<"
