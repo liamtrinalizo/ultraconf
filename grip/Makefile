@@ -22,4 +22,4 @@ flash:
 	avrdude -F -V -c arduino -p ATmega328P -P $(SIMLINK) -b 57600 -U flash:w:grip.hex
 
 clean:
-	rm -f *.o *.hex 
+	rm -f *.o *.hex $(EXE)
