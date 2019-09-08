@@ -47,6 +47,7 @@ noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
 noremap <Right> <Nop>
+nnoremap <C-m> <C-a>
 
 
 "AIRLINE

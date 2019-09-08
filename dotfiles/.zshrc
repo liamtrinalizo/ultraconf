@@ -1,58 +1,23 @@
-zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-zstyle ':completion:*' matcher-list ''
-zstyle ':completion:*' max-errors 5
-zstyle ':completion::complete:*' use-cache 1
+export ZSH="/home/gok/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+plugins=(git)
+source $ZSH/oh-my-zsh.sh
 
-autoload -U compinit promptinit
-compinit
-promptinit; prompt walters
+export ALTERAPATH="/home/gok/intelFPGA_lite/18.1"
+export ALTERAOCLSDKROOT="${ALTERAPATH}/hld"
+export QUARTUS_ROOTDIR=${ALTERAPATH}/quartus
+export QUARTUS_ROOTDIR_OVERRIDE="$QUARTUS_ROOTDIR"
+export PATH=$PATH:${ALTERAPATH}/quartus/bin
+export PATH=$PATH:${ALTERAPATH}/nios2eds/bin
+export PATH=$PATH:${QSYS_ROOTDIR}
 
 HISTFILE=~/.histfile
 HISTSIZE=2000
 SAVEHIST=2000
 
-setopt autocd notify
-bindkey -e
-
-typeset -A key
-key[Home]=${terminfo[khome]}
-key[End]=${terminfo[kend]}
-key[Insert]=${terminfo[kich1]}
-key[Delete]=${terminfo[kdch1]}
-key[Up]=${terminfo[kcuu1]}
-key[Down]=${terminfo[kcud1]}
-key[Left]=${terminfo[kcub1]}
-key[Right]=${terminfo[kcuf1]}
-key[PageUp]=${terminfo[kpp]}
-key[PageDown]=${terminfo[knp]}
-[[ -n "${key[Home]}"     ]]  && bindkey  "${key[Home]}"     beginning-of-line
-[[ -n "${key[End]}"      ]]  && bindkey  "${key[End]}"      end-of-line
-[[ -n "${key[Insert]}"   ]]  && bindkey  "${key[Insert]}"   overwrite-mode
-[[ -n "${key[Delete]}"   ]]  && bindkey  "${key[Delete]}"   delete-char
-[[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       up-line-or-history
-[[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
-[[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
-[[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
-[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
-[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
-
-case $TERM in (*xterm*|rxvt|(dt|k|E)term)
-  precmd () { print -Pn "\e]0;%n@%m: %~\a" }
-  preexec () { print -Pn "\e]0;%n@%m: $1\a" }
-  ;;
-esac
-
-# Perso ---------------------------------------
-
 export LANG=en_US.UTF-8
 export EDITOR=vim
-export QSYS_ROOTDIR="/home/gok/intelFPGA_lite/18.1/quartus/sopc_builder/bin"
-
 bindkey -e
-
-autoload -U compinit promptinit
-compinit
-promptinit; prompt gentoo
 
 # alias ---------------------------------------
 
@@ -77,5 +42,7 @@ alias search="/home/gok/scripts/search.sh"
 alias yt="mpsyt"
 
 alias battery="/home/gok/scripts/battery.sh"
-alias scim="sc-im"
+alias sc="sc-im"
+alias fm="/home/gok/scripts/vifm.sh"
+alias mutt="neomutt"
 

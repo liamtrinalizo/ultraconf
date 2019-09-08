@@ -1,9 +1,9 @@
 !URxvt*font:           -misc-fixed-medium-r-semicondensed-*-12-90-100-*-c-60-iso8859-1
 
 !URxvt.font: xft:Noto Sans Mono CJK JP:pixelsize=10:antialias=true:hinting=false
-URxvt.font:             xft:DejaVu Sans Mono:size=9:antialias=true
+URxvt.font:             xft:DejaVu Sans Mono:size=9:antialias=false
 URxvt.*.letterSpace:    -2
-Xft.antialias:          true
+Xft.antialias:          false
 
 URxvt.background:       black
 URxvt.foreground:       white
