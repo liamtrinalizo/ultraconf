@@ -3,8 +3,8 @@ USE ieee.std_logic_1164.all;
 
 ENTITY light IS
     PORT (
-        x1,x2 : IN 	STD_LOGIC;
-         f    : OUT	STD_LOGIC
+        x1,x2,clk : IN 	STD_LOGIC;
+        f         : OUT	STD_LOGIC
     );
 END light;
 
@@ -13,4 +13,4 @@ ARCHITECTURE LogicFunction OF light IS
 BEGIN
     toutou <= (x1 AND NOT x2) OR (NOT x1 AND x2);
     f      <= toutou;
-END LogicFunction;		
+END LogicFunction;
