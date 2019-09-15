@@ -7,9 +7,9 @@ export ALTERAPATH="/home/gok/intelFPGA_lite/18.1"
 export ALTERAOCLSDKROOT="${ALTERAPATH}/hld"
 export QUARTUS_ROOTDIR=${ALTERAPATH}/quartus
 export QUARTUS_ROOTDIR_OVERRIDE="$QUARTUS_ROOTDIR"
-export PATH=$PATH:${ALTERAPATH}/quartus/bin
-export PATH=$PATH:${ALTERAPATH}/nios2eds/bin
-export PATH=$PATH:${QSYS_ROOTDIR}
+#export PATH=$PATH:${ALTERAPATH}/quartus/bin
+#export PATH=$PATH:${ALTERAPATH}/nios2eds/bin
+#export PATH=$PATH:${QSYS_ROOTDIR}
 
 HISTFILE=~/.histfile
 HISTSIZE=2000
@@ -17,7 +17,7 @@ SAVEHIST=2000
 
 export LANG=en_US.UTF-8
 export EDITOR=vim
-bindkey -e
+bindkey -v
 
 # alias ---------------------------------------
 
@@ -38,7 +38,9 @@ alias al="alsamixer"
 
 alias chrome="google-chrome-stable"
 alias w3m="w3m -no-mouse"
+alias www="w3m -no-mouse duckduckgo.com"
 alias search="/home/gok/scripts/search.sh"
+alias surf="surf duckduckgo.com"
 alias yt="mpsyt"
 
 alias battery="/home/gok/scripts/battery.sh"
