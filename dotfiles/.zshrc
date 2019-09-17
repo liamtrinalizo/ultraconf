@@ -46,58 +46,36 @@ esac
 
 # Perso ---------------------------------------
 
- alias df='df -h'
- alias du='du -h'
+alias df='df -h'
+alias du='du -h'
 
- alias less='less -r'                          # raw control characters
- alias whence='type -a'                        # where, of a sort
- alias grep='grep --color -rn'                 # show differences in colour
- alias egrep='egrep --color=auto'              # show differences in colour
- alias fgrep='fgrep --color=auto'              # show differences in colour
+alias less='less -r'                          # raw control characters
+alias whence='type -a'                        # where, of a sort
+alias grep='grep --color -rn'                 # show differences in colour
+alias egrep='egrep --color=auto'              # show differences in colour
+alias fgrep='fgrep --color=auto'              # show differences in colour
 
- alias ls='ls -hF --color=tty'                 # classify files in colour
- alias ll='ls -la --group-directories-first'
+alias ls='ls -hF --color=tty'                 # classify files in colour
+alias ll='ls -la --group-directories-first'
 
- alias work='cd /cygdrive/d/WORK/'
- alias jeanb='cd /cygdrive/d/WORK/100539_Jean_Bracq/'
- alias windows='cd /cygdrive/d/WORK/SVN/Windows/Addidata_Device_Drivers/Current'
- 
- alias tgitci='/cygdrive/c/Program\ Files/TortoiseGit/bin/TortoiseGitProc.exe /path:. /command:commit'
- alias tgitlog='/cygdrive/c/Program\ Files/TortoiseGit/bin/TortoiseGitProc.exe /path:. /command:log'
- alias tftpd='c/Program\ Files\ \(x86\)/TFTPserver/RunStandAloneMT.bat'
+alias work='cd /cygdrive/d/WORK/'
+alias jeanb='cd /cygdrive/d/WORK/100539_Jean_Bracq/'
+alias windows='cd /cygdrive/d/WORK/SVN/Windows/Addidata_Device_Drivers/Current'
 
- alias serge='ssh serge@172.16.7.21'
+alias tgitci='/cygdrive/c/Program\ Files/TortoiseGit/bin/TortoiseGitProc.exe /path:. /command:commit'
+alias tgitlog='/cygdrive/c/Program\ Files/TortoiseGit/bin/TortoiseGitProc.exe /path:. /command:log'
+alias tftpd='c/Program\ Files\ \(x86\)/TFTPserver/RunStandAloneMT.bat'
 
- alias msg='/cygdrive/c/Program\ Files\ \(x86\)/NetPhone\ Client/IMClient.exe'
- alias call=''
+alias serge='ssh serge@172.16.7.21'
 
+alias msg='/cygdrive/c/Program\ Files\ \(x86\)/NetPhone\ Client/IMClient.exe'
+alias call=''
 
- autoload -U compinit promptinit
- compinit
- promptinit; prompt gentoo
-
-# SCREEN
-if [ -z "$STY" ]; then
-    #screen  -d -RR
-fi
-case "$TERM" in
-#    screen*) PROMPT_COMMAND='echo -ne "\033k\033\0134"'
-esac
-
-
-# ALIASES
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias  l="ls -1Na   --group-directories-first --color=auto"
 
 alias li="xbacklight -set"
 alias al="alsamixer"
-
-alias chrome="google-chrome-stable"
-alias search="/home/gok/scripts/search.sh"
-
-alias battery="/home/gok/scripts/battery.sh"
-
-alias lock="xscreensaver-command -lock"
 
 export EDITOR=vim
 export QSYS_ROOTDIR="/home/gok/intelFPGA_lite/18.1/quartus/sopc_builder/bin"
