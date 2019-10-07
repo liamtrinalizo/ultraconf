@@ -15,9 +15,8 @@ bindkey -M vicmd v edit-command-line
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
+setopt appendhistory sharehistory incappendhistory  
 
-zle-line-init() { zle -K vicmd; }
-zle -N zle-line-init
 bindkey -v
 export EDITOR=vim
 setopt autocd notify
@@ -73,8 +72,8 @@ alias cim='git --no-pager commit -m'
 alias co='git --no-pager checkout'
 alias pull='git --no-pager pull'
 alias push='git --no-pager push'
+alias lg1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
-alias git='/cygdrive/c/Program\ Files/git/bin/git.exe'
 alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
 alias tftpd='/cygdrive/c/Program\ Files\ \(x86\)/TFTPserver/RunStandAloneMT.bat'
 alias tshark='/cygdrive/c/Program\ Files/Wireshark/tshark.exe'

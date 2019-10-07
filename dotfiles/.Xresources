@@ -19,4 +19,4 @@ URxvt*color15: #FFFFFF // white
 URxvt.background:           black
 URxvt.foreground:           white
 URxvt.scrollbar:            false
-URxvt.font: xft:Noto Sans Mono:size=12,xft:PowerlineSymbols:pixelsize=12,xft:Noto Sans Kannada:style=Regular:pixelsize=14,xft:Mona:style=Regular:pixelsize=14
+URxvt.font: xft:Noto Sans Mono:size=12,xft:Noto-gothic Sans :size-12,
