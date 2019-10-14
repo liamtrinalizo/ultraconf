@@ -1,0 +1,23 @@
+[core]
+	editor = vim
+	autocrlf = true
+    pager = "~/diff-so-fancy-1.2.6/diff-so-fancy | less --tabs=4 -RFX"
+[user]
+	email = Martinez-Le_Ninan.Jean@addi-data.com
+	name = Martinez-Le_Ninan.Jean
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+    l = log --format=oneline --abbrev-commit 
+[winUpdater]
+	recentlySeenVersion = 2.23.0.windows.1
+[color]
+	ui = true
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
