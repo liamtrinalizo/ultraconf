@@ -10,7 +10,7 @@ compinit
 promptinit; prompt adam2 
 
 autoload edit-command-line; zle -N edit-command-line
-bindkey -M vicmd v edit-command-line
+#bindkey -M vicmd v edit-command-line
 
 HISTFILE=~/.histfile
 HISTSIZE=10000
@@ -19,33 +19,9 @@ setopt appendhistory sharehistory incappendhistory
 
 export EDITOR=vim
 setopt autocd notify
-bindkey -M vicmd '/' history-search-backward
-bindkey -e
-
-typeset -A key
-key[Home]=${terminfo[khome]}
-key[End]=${terminfo[kend]}
-key[Insert]=${terminfo[kich1]}
-key[Delete]=${terminfo[kdch1]}
-key[Up]=${terminfo[kcuu1]}
-key[Down]=${terminfo[kcud1]}
-key[Left]=${terminfo[kcub1]}
-key[Right]=${terminfo[kcuf1]}
-key[PageUp]=${terminfo[kpp]}
-key[PageDown]=${terminfo[knp]}
-[[ -n "${key[Home]}"     ]]  && bindkey  "${key[Home]}"     beginning-of-line
-[[ -n "${key[End]}"      ]]  && bindkey  "${key[End]}"      end-of-line
-[[ -n "${key[Insert]}"   ]]  && bindkey  "${key[Insert]}"   overwrite-mode
-[[ -n "${key[Delete]}"   ]]  && bindkey  "${key[Delete]}"   delete-char
-[[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       up-line-or-history
-[[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
-[[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
-[[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
-[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
-[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
+bindkey -v
 
 xrdb /cygdrive/c/users/mj093/.Xresources > /dev/null 2>&1
-#PATH=$PATH:~/diff-so-fancy-1.2.6
 
 # Perso ---------------------------------------
 
@@ -73,10 +49,11 @@ alias cim='git --no-pager commit -m'
 alias co='git --no-pager checkout'
 alias pull='git --no-pager pull'
 alias push='git --no-pager push'
-alias log1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
-alias log2="git log --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+alias log1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)%C(dim white) %an%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' --all"
+alias log2="git log         --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
 alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
+alias gvim='/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'
 alias tftpd='/cygdrive/c/Program\ Files\ \(x86\)/TFTPserver/RunStandAloneMT.bat'
 alias tshark='/cygdrive/c/Program\ Files/Wireshark/tshark.exe'
 alias qmake='/cygdrive/c/Qt/5.11.1/msvc2017_64/bin/qmake.exe'
