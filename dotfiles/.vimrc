@@ -1,68 +1,15 @@
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'fugitive.vim'
-Plugin 'SuperTab'
-Plugin 'Yggdroot/indentLine'
-Plugin 'linluk/vim-websearch'
-Bundle 'takac/vim-hardtime'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-colorscheme desert
-syntax on
-runtime ftplugin/man.vim
-autocmd FileType help wincmd L
-
-set number
-set relativenumber
-set backspace=indent,eol,start
-set tabstop=8
-set softtabstop=0
-set expandtab
-set shiftwidth=4
-set smarttab
-set autoindent
+set nocompatible
+set nu relativenumber
+set nowrap
+set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 
 set mouse=
 set completeopt-=preview
-set hlsearch
-set nowrap
-set showmatch
-set noshowmode
-
-set incsearch
-set viminfo='1000
-set encoding=utf8
-
-set t_Co=256 " 256 colors in terminal
-
-"MAPPING
-let mapleader = " "
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-
-
-"AIRLINE
-let g:airline_powerline_fonts = 0
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '◀'
-let g:airline_line = ''
-let g:airline_theme = 'badwolf'
-
-"HARDTIME
-let g:hardtime_default_on = 0
-let g:hardtime_showmsg = 0
-
-"WEBSEARCH
-let g:web_search_engine = 'duckduck'
-let g:web_search_command = 'w3m'
-  " search for word under cursor in normal mode
-nnoremap <leader>w :WebSearchCursor<CR>
-  " search for selection in visual mode
-vnoremap <leader>W :WebSearchVisual<CR>
+set hlsearch incsearch
+set encoding=utf-8
+set wildmenu
+filetype plugin indent on
+set cino+=(0g0
+set path+=**
+set statusline=%n\ -\ %f\ -\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]%y%h%m%=%l/%L;\ %4c\ [%P]
+colorscheme delek 
+syntax on
