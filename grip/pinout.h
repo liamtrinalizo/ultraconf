@@ -11,23 +11,6 @@
 //         |                |
 //         +----------------+
 
-//
-// #define PINB  _SFR_IO8(0x03)
-// #define DDRB  _SFR_IO8(0x04)
-// #define PORTB _SFR_IO8(0x05)
-//
-// #define PINC  _SFR_IO8(0x06)
-// #define DDRC  _SFR_IO8(0x07)
-// #define PORTC _SFR_IO8(0x08)
-//
-// #define PIND  _SFR_IO8(0x09)
-// #define DDRD  _SFR_IO8(0x0A)
-// #define PORTD _SFR_IO8(0x0B)
-
-//
-// (*(volatile uint8_t *)0x25)
-//
-
 #define SEG1_A   9
 #define SEG1_B   11
 #define SEG1_C   8
