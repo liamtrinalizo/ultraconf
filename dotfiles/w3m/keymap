@@ -95,7 +95,7 @@ keymap C-p NULL
 #keymap ESC-TAB NULL
 keymap f NULL
 keymap C-o NULL
-keymap TAB NULL
+#keymap TAB NULL
 keymap C-j NULL
 keymap C-] NULL
 keymap I NULL
@@ -166,8 +166,8 @@ keymap o        GOTO
 keymap C-l      GOTO
 keymap O        TAB_GOTO
 keymap M-o      EXTERN
-keymap yy       EXTERN          copy_url.sh
-keymap yf       EXTERN_LINK     copy_url.sh
+keymap Y        EXTERN          copy_url.sh
+keymap yy       EXTERN_LINK     copy_url.sh
 keymap p 	GOTO		/usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
 keymap P        TAB_GOTO	/usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
 keymap F        TAB_LINK					#Follow link in a new foreground tab
@@ -211,10 +211,10 @@ keymap u        TAB_GOTO        /usr/libexec/w3m/cgi-bin/restore_tab.cgi
 #keymap F        LIST_MENU					#Show links--> follow link
 keymap [        LINK_BEGIN					#nf Move cursor to link n
 keymap ]        LINK_END					#Move cursor to last link/nf Move cursor to link [n]
-keymap TAB      NEXT_LEFT_UP
-keymap }        NEXT_RIGHT_DOWN
-keymap {        NEXT_LEFT_UP
-keymap }        NEXT_RIGHT_DOWN
+keymap TAB      NEXT_LINK
+#keymap w        NEXT_LINK
+#keymap b        PREV_LINK
+keymap ^[[Z     PREV_LINK
 
 #-history navigation...........................................................
 keymap L        NEXT						#Go forward in history
@@ -249,7 +249,7 @@ keymap :W       PRINT
 keymap C-o      LOAD
 
 #-info.........................................................................
-keymap C-i      INFO						#current page info
+#keymap C-i      INFO						#current page info
 keymap C-g      LINE_INFO					#line under cursor info
 keymap C-r      VIEW						#See source of current page. FF key
 
