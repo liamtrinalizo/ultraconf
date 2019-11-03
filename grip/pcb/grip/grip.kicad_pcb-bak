@@ -3,7 +3,7 @@
   (general
     (thickness 1.6)
     (drawings 0)
-    (tracks 0)
+    (tracks 4)
     (zones 0)
     (modules 4)
     (nets 38)
@@ -392,5 +392,10 @@
     (pad 1 thru_hole rect (at 0 0) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask)
       (net 23 deci_A))
   )
+
+  (segment (start 113.829999 85.560001) (end 113.03 86.36) (width 0.25) (layer F.Cu) (net 10))
+  (segment (start 114.155001 85.234999) (end 113.829999 85.560001) (width 0.25) (layer F.Cu) (net 10))
+  (segment (start 143.654999 85.234999) (end 114.155001 85.234999) (width 0.25) (layer F.Cu) (net 10))
+  (segment (start 144.78 86.36) (end 143.654999 85.234999) (width 0.25) (layer F.Cu) (net 10))
 
 )

@@ -11,7 +11,6 @@ prompt adam1
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 
-
 export LANG=en_US.UTF-8
 export EDITOR=vim
 export KEYTIMEOUT=1
@@ -39,7 +38,6 @@ alias df='df -h'
 alias du='du -h'
 
 alias less='less -r'
-#alias grep='grep --color -rn'
 alias grep='grep --color'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
