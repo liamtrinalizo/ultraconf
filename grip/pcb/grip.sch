@@ -89,27 +89,27 @@ Text GLabel 4400 5300 0    50   Input ~ 0
 unit_B
 Text GLabel 4400 5400 0    50   Input ~ 0
 unit_C
-Text GLabel 4400 5800 0    50   Input ~ 0
-unit_D
-Text GLabel 4400 5700 0    50   Input ~ 0
-unit_E
-Text GLabel 4400 5600 0    50   Input ~ 0
-unit_F
 Text GLabel 4400 5500 0    50   Input ~ 0
+unit_D
+Text GLabel 4400 5600 0    50   Input ~ 0
+unit_E
+Text GLabel 4400 5700 0    50   Input ~ 0
+unit_F
+Text GLabel 4400 5800 0    50   Input ~ 0
 unit_G
-Text GLabel 4400 6000 0    50   Input ~ 0
+Text GLabel 4400 6300 0    50   Input ~ 0
 deci_A
-Text GLabel 4400 5900 0    50   Input ~ 0
+Text GLabel 5400 5600 2    50   Input ~ 0
 deci_B
 Text GLabel 5400 5700 2    50   Input ~ 0
 deci_C
-Text GLabel 4400 6200 0    50   Input ~ 0
+Text GLabel 4400 5900 0    50   Input ~ 0
 deci_D
-Text GLabel 4400 6300 0    50   Input ~ 0
+Text GLabel 4400 6000 0    50   Input ~ 0
 deci_E
-Text GLabel 5400 5600 2    50   Input ~ 0
-deci_F
 Text GLabel 4400 6100 0    50   Input ~ 0
+deci_F
+Text GLabel 4400 6200 0    50   Input ~ 0
 deci_G
 Text GLabel 8800 5200 0    50   Input ~ 0
 unit_A
