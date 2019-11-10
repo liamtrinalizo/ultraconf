@@ -11,6 +11,8 @@ prompt adam1
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 export LANG=en_US.UTF-8
 export EDITOR=vim
 export KEYTIMEOUT=1
@@ -36,30 +38,22 @@ bindkey '^e' edit-command-line
 
 alias df='df -h'
 alias du='du -h'
-
 alias less='less -r'
 alias grep='grep --color'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-
 alias ls='ls -hF --color=tty'
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias  l="ls -1Na   --group-directories-first --color=auto"
-
 alias li="xbacklight -set"
 alias al="alsamixer"
-
 alias chrome="google-chrome-stable"
 alias w3m="w3m "
 alias www="w3m duckduckgo.com"
 alias search="/home/gok/scripts/search.sh"
 alias surf="surf duckduckgo.com"
 alias yt="mpsyt"
-
 alias battery="/home/gok/scripts/battery.sh"
 alias sc="sc-im"
-alias fm="/home/gok/scripts/vifm.sh"
 alias mutt="neomutt"
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
