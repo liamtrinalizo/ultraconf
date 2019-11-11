@@ -13,6 +13,7 @@ export LESSHIST="-"
 autoload -U compinit promptinit
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
+zstyle ':completion:*' menu select
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
@@ -21,13 +22,12 @@ bindkey -v
 compinit
 promptinit; prompt adam2 
 zmodload zsh/complist
-zstyle ':completion:*' menu select
 
 export EDITOR=vim
 export KEYTIMEOUT=1
 export LANG=en_US.UTF-8
 
-[ -f /cygdrive/c/users/mj093/.Xresources] && xrdb /cygdrive/c/users/mj093/.Xresources > /dev/null 2>&1
+[ -f /cygdrive/c/users/mj093/.Xresources ] && xrdb /cygdrive/c/users/mj093/.Xresources > /dev/null 2>&1
 
 # Perso ---------------------------------------
 #export ALTERAPATH="/home/gok/intelFPGA_lite/18.1"
@@ -39,16 +39,11 @@ export LANG=en_US.UTF-8
 #export PATH=$PATH:${QSYS_ROOTDIR}
 
 alias l="ls -1Na   --group-directories-first --color=auto"
-alias add='git --no-pager add'
 alias al="alsamixer"
 alias battery="/home/gok/scripts/battery.sh"
-alias br='git --no-pager branch'
 alias call=''
-alias ci='git --no-pager commit'
-alias cim='git --no-pager commit -m'
 alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
-alias co='git --no-pager checkout'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -58,18 +53,13 @@ alias gvim='/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'
 alias jeanb='cd /cygdrive/d/WORK/100539_Jean_Bracq/jeanbracq_qt_app'
 alias li="xbacklight -set"
 alias ll="ls -Nlhav --group-directories-first --color=auto"
-alias log1="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)%C(dim white) %an%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' --all"
-alias log2="git log         --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 alias ls='ls -hF --color=tty'
 alias mongo='/cygdrive/c/Users/MJ093/.3T/third-party/2019.2.1/mongo.exe'
 alias msg='/cygdrive/c/Program\ Files\ \(x86\)/NetPhone\ Client/IMClient.exe'
 alias mutt="neomutt"
-alias pull='git --no-pager pull'
-alias push='git --no-pager push'
 alias qmake='/cygdrive/c/Qt/5.11.1/msvc2017_64/bin/qmake.exe'
 alias sc="sc-im"
 alias serge='ssh serge@172.16.7.21'
-alias st='git --no-pager status'
 alias tftpd='/cygdrive/c/Program\ Files\ \(x86\)/TFTPserver/RunStandAloneMT.bat'
 alias tshark='/cygdrive/c/Program\ Files/Wireshark/tshark.exe'
 alias uptime='net stats srv | sed -n 4p | cut -d " " -f 3-4'
