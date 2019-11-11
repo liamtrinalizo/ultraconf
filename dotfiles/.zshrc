@@ -1,16 +1,12 @@
 export LANG=en_US.UTF-8
 
-#zstyle ':completion:*' completer _expand _complete _ignored _correct _approximate
-#zstyle ':completion:*' matcher-list ''
-#zstyle ':completion:*' max-errors 5
-#zstyle ':completion::complete:*' use-cache 1
-
 autoload -U compinit promptinit
 compinit
 promptinit; prompt adam2 
 
 autoload edit-command-line; zle -N edit-command-line
 #bindkey -M vicmd v edit-command-line
+
 
 HISTFILE=~/.histfile
 HISTSIZE=10000
