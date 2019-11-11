@@ -7,27 +7,24 @@ SAVEHIST=10000
 setopt appendhistory sharehistory incappendhistory  
 export LESSHIST="-"
 
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 autoload -U compinit promptinit
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
 zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_option+=(globdots)
+
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
-bindkey -v
-compinit
-promptinit; prompt adam2 
-zmodload zsh/complist
+export KEYTIMEOUT=1
+promptinit; prompt gentoo 
+
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^v' edit-command-line
 
 export EDITOR=vim
-export KEYTIMEOUT=1
 export LANG=en_US.UTF-8
-
-[ -f /cygdrive/c/users/mj093/.Xresources ] && xrdb /cygdrive/c/users/mj093/.Xresources > /dev/null 2>&1
 
 # Perso ---------------------------------------
 #export ALTERAPATH="/home/gok/intelFPGA_lite/18.1"
@@ -38,7 +35,7 @@ export LANG=en_US.UTF-8
 #export PATH=$PATH:${ALTERAPATH}/nios2eds/bin
 #export PATH=$PATH:${QSYS_ROOTDIR}
 
-alias l="ls -1Na   --group-directories-first --color=auto"
+alias l="ls -1Na --group-directories-first --color=auto"
 alias al="alsamixer"
 alias battery="/home/gok/scripts/battery.sh"
 alias call=''
@@ -68,3 +65,10 @@ alias windows='cd /cygdrive/d/WORK/SVN/Windows/Addidata_Device_Drivers/Current'
 alias work='cd /cygdrive/d/WORK/'
 alias www="w3m duckduckgo.com"
 alias yt="mpsyt"
+
+MODE_CURSOR_VICMD="block"
+MODE_CURSOR_VIINS="blinking bar"
+MODE_CURSOR_SEARCH="steady underline"
+[ -f /cygdrive/c/users/mj093/.Xresources ] && xrdb /cygdrive/c/users/mj093/.Xresources > /dev/null 2>&1
+[ -d ~/pkg/zsh ] && source /home/gok/pkg/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+[ -d ~/pkg/zsh ] && source /home/gok/pkg/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
