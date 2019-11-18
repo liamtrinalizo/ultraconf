@@ -1,8 +1,6 @@
 HISTFILE=~/.cache/zsh/histfile
 HISTFILE=~/.histfile
 HISTSIZE=10000
-HISTSIZE=10000
-SAVEHIST=10000
 SAVEHIST=10000
 setopt appendhistory sharehistory incappendhistory  
 export LESSHIST="-"
