@@ -1,7 +1,7 @@
 URxvt*color0:  #000000 // black
 URxvt*color1:  #FF0000 //#B40000 // red
 URxvt*color2:  #00AA00 // green
-URxvt*color3:  #AAAA00 // yellow
+URxvt*color3:  #FFFF00 // yellow
 URxvt*color4:  #5555AA // blue
 URxvt*color5:  #AA00AA // magenta
 URxvt*color6:  #00AAAA // cyan
