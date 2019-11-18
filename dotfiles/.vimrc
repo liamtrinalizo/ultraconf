@@ -3,6 +3,7 @@ set background=dark
 syntax on
 runtime ftplugin/man.vim
 
+set background=dark
 set backspace=indent,eol,start
 set cino+=(0g0
 set completeopt-=preview
@@ -19,6 +20,7 @@ set statusline=%n\ -\ %f\ -\ [%{strlen(&fenc)?&fenc:'none'},\ %{&ff}]%y%h%m%=%l/
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
 set viminfo='1000
 set wildmenu
+set keywordprg=:Man
 
 let mapleader = " "
 noremap <Up> <Nop>
