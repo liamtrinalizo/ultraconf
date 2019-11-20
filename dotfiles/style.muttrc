@@ -15,7 +15,8 @@ set forward_format = "Fwd: %s"	# format of subject when forwarding
 set forward_quote		# include message in forwards
 set reverse_name		# reply as whomever it was to
 set include			    # include message in replies
-set mail_check=60       # to avoid lags using IMAP with some email providers (yahoo for example)
+set mail_check = 60     # to avoid lags using IMAP with some email providers (yahoo for example)
+set mailcap_path = ~/.config/mutt/mailcap
 auto_view text/html		# automatically show html (mailcap uses w3m)
 auto_view application/pgp-encrypted
 alternative_order text/plain text/enriched text/html
@@ -51,7 +52,7 @@ bind index,pager R group-reply
 bind index \031 previous-undeleted	# Mouse wheel
 bind index \005 next-undeleted		# Mouse wheel
 bind pager \031 previous-line		# Mouse wheel
-bind pager \005 next-line		# Mouse wheel
+bind pager \005 next-line		    # Mouse wheel
 bind editor <Tab> complete-query
 
 macro index,pager a "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
