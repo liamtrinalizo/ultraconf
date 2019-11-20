@@ -1,8 +1,6 @@
 HISTFILE=~/.cache/zsh/histfile
 HISTFILE=~/.histfile
 HISTSIZE=10000
-HISTSIZE=10000
-SAVEHIST=10000
 SAVEHIST=10000
 setopt appendhistory sharehistory incappendhistory  
 export LESSHIST="-"
@@ -18,7 +16,7 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 export KEYTIMEOUT=1
-promptinit; prompt gentoo 
+promptinit; prompt adam1 
 
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^v' edit-command-line
@@ -39,8 +37,10 @@ alias l="ls -1Na --group-directories-first --color=auto"
 alias al="alsamixer"
 alias battery="/home/gok/scripts/battery.sh"
 alias call=''
+alias cal='cal -m'
 alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
+alias quartus_prg='/cygdrive/c/intelFPGA_lite/18.1/quartus/bin64/quartus_pgm.exe'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -70,5 +70,5 @@ MODE_CURSOR_VICMD="block"
 MODE_CURSOR_VIINS="blinking bar"
 MODE_CURSOR_SEARCH="steady underline"
 [ -f /cygdrive/c/users/mj093/.Xresources ] && xrdb /cygdrive/c/users/mj093/.Xresources > /dev/null 2>&1
-[ -d ~/pkg/zsh ] && source /home/gok/pkg/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
-[ -d ~/pkg/zsh ] && source /home/gok/pkg/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -d ~/pkg/zsh ] && source ~/pkg/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+[ -d ~/pkg/zsh ] && source ~/pkg/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
