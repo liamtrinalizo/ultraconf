@@ -68,5 +68,5 @@ MODE_CURSOR_VICMD="block"
 MODE_CURSOR_VIINS="blinking bar"
 MODE_CURSOR_SEARCH="steady underline"
 [ -f /cygdrive/c/users/mj093/.Xresources ] && xrdb /cygdrive/c/users/mj093/.Xresources > /dev/null 2>&1
-[ -d ~/pkg/zsh ] && source /home/gok/pkg/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
-[ -d ~/pkg/zsh ] && source /home/gok/pkg/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+[ -d ~/pkg/zsh ] && source ~/pkg/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+[ -d ~/pkg/zsh ] && source ~/pkg/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
