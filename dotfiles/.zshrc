@@ -55,7 +55,6 @@ alias mongo='/cygdrive/c/Users/MJ093/.3T/third-party/2019.2.1/mongo.exe'
 alias msg='/cygdrive/c/Program\ Files\ \(x86\)/NetPhone\ Client/IMClient.exe'
 alias mutt="neomutt"
 alias qmake='/cygdrive/c/Qt/5.11.1/msvc2017_64/bin/qmake.exe'
-alias sc="sc-im"
 alias serge='ssh serge@172.16.7.21'
 alias tftpd='/cygdrive/c/Program\ Files\ \(x86\)/TFTPserver/RunStandAloneMT.bat'
 alias tshark='/cygdrive/c/Program\ Files/Wireshark/tshark.exe'
