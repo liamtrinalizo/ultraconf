@@ -20,6 +20,5 @@ gitUpdate /home/gok/pkg/sc-im/
 gitUpdate /home/gok/pkg/suckless/dmenu/    
 gitUpdate /home/gok/pkg/suckless/dwm/      
 gitUpdate /home/gok/pkg/suckless/slock/    
-gitUpdate /home/gok/pkg/suckless/slstatus/ 
 gitUpdate /home/gok/pkg/suckless/st/       
 gitUpdate /home/gok/pkg/suckless/surf/     
