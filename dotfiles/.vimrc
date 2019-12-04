@@ -21,9 +21,3 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
 set viminfo='1000
 set wildmenu
 set keywordprg=:Man
-
-let mapleader = " "
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
