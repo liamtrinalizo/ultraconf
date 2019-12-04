@@ -57,7 +57,6 @@ alias mutt="neomutt"
 alias qmake='/cygdrive/c/Qt/5.11.1/msvc2017_64/bin/qmake.exe'
 alias sc="sc-im"
 alias serge='ssh serge@172.16.7.21'
-alias tftpd='/cygdrive/c/Program\ Files\ \(x86\)/TFTPserver/RunStandAloneMT.bat'
 alias tshark='/cygdrive/c/Program\ Files/Wireshark/tshark.exe'
 alias uptime='net stats srv | sed -n 4p | cut -d " " -f 3-4'
 alias w3m="w3m "
@@ -65,6 +64,7 @@ alias windows='cd /cygdrive/d/WORK/SVN/Windows/Addidata_Device_Drivers/Current'
 alias work='cd /cygdrive/d/WORK/'
 alias www="w3m duckduckgo.com"
 alias yt="mpsyt"
+alias nvim="~/pkg/neovim-qt/bin/nvim-qt.exe"
 
 MODE_CURSOR_VICMD="block"
 MODE_CURSOR_VIINS="blinking bar"
