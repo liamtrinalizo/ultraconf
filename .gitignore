@@ -1,0 +1,9 @@
+*-bak
+
+c/.idea/*
+vacuum/vac
+vacuum/cmake-build-debug/*
+
+vhdl/tuto1/output_files/*
+vhdl/tuto1/db/*
+vhdl/tuto1/incremental_db/*
