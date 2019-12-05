@@ -65,6 +65,7 @@ alias windows='cd /cygdrive/d/WORK/SVN/Windows/Addidata_Device_Drivers/Current'
 alias work='cd /cygdrive/d/WORK/'
 alias www="w3m duckduckgo.com"
 alias yt="mpsyt"
+alias vi="vi -X"
 
 MODE_CURSOR_VICMD="block"
 MODE_CURSOR_VIINS="blinking bar"
