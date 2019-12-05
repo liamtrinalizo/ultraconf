@@ -2,8 +2,8 @@ set realname = ""
 set from = ""
 set sendmail = ""
 alias me realname <address>
-set folder = "/home/gok/.local/share/mail/gmail"
-set message_cachedir = /mome/gok/.cache/mutt-wizard/gmail/bodies
+set folder = "~/.local/share/mail/gmail"
+set message_cachedir = ~/.cache/mutt-wizard/gmail/bodies
 set mbox_type = Maildir
 
 macro index o "<shell-escape>mbsync/offlineimap<enter>"
