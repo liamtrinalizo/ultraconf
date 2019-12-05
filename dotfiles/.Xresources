@@ -19,4 +19,4 @@ URxvt*color15: #FFFFFF // white
 URxvt.background:           black
 URxvt.foreground:           white
 URxvt.scrollbar:            false
-URxvt.font: xft:Noto Sans Mono:size=8,xft:Noto-gothic Sans :size-12,
+URxvt.font: xft:Noto Sans Mono:size=10,xft:Noto-gothic Sans :size-12,
