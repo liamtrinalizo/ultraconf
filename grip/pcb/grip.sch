@@ -166,4 +166,7 @@ F 3 "" H 5900 6100 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	5400 5800 5900 5800
+Wire Wire Line
+	5000 6600 4900 6600
+Connection ~ 4900 6600
 $EndSCHEMATC

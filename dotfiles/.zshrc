@@ -62,8 +62,8 @@ alias windows='cd /cygdrive/d/WORK/SVN/Windows/Addidata_Device_Drivers/Current'
 alias work='cd /cygdrive/d/WORK/'
 alias www='~/scripts/search.sh'
 alias yt="mpsyt"
+alias vi="vi -X"
 alias nvim="~/pkg/neovim-qt/bin/nvim-qt.exe"
-
 
 MODE_CURSOR_VICMD="block"
 MODE_CURSOR_VIINS="blinking bar"
