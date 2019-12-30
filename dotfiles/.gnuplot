@@ -1,9 +1,12 @@
-set terminal caca background rgb 'black'
+set terminal x11 background rgb 'black'
 
-set label textcolor rgb "green"
-set border 0 linecolor "green"  
-set border 1 linecolor "green"  
-set key left textcolor "green" font ", 8"
-set xtics font ", 8"
-set ytics font ", 8"
-#plot "money.txt" using 1:2  with linespoints #style lt rbg "red"
+set linetype 1  lc rgb 'red' pointtype 10
+set linetype 10 lc rgb 'green' dashtype 3
+set grid lt 10
+set key left textcolor "green"
+set border 31 linecolor "green"
+set xlabel "X" textcolor rgb 'red'
+set ylabel "Y" textcolor rgb 'red'
+
+set isosamples 50
+set hidden3d
