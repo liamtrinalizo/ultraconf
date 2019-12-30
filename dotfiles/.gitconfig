@@ -1,7 +1,6 @@
 [core]
 	editor = vim
     pager =
-    autocrlf = true
 [user]
 [diff]
 	tool = vimdiff
