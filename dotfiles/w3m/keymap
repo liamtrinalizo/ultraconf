@@ -159,7 +159,6 @@ keymap ! NULL
 keymap ZZ NULL
 keymap ZQ NULL
 
-#urls operations................................................................
 keymap ep       PEEK						#Show current page url.
 keymap ef       PEEK_LINK					#Show link under cursor.
 keymap o        GOTO
@@ -168,35 +167,30 @@ keymap O        TAB_GOTO
 keymap M-o      EXTERN
 keymap Y        EXTERN          copy_url.sh
 keymap yy       EXTERN_LINK     copy_url.sh
-keymap p 	GOTO		/usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
+keymap p 	    GOTO		/usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
 keymap P        TAB_GOTO	/usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
 keymap F        TAB_LINK					#Follow link in a new foreground tab
 keymap f        GOTO_LINK					#Follow link in current tab
-keymap C-j      GOTO_LINK					#Follow link (Enter = Ctrl+j)
 
-#scrolling....................................................................
 keymap k        DOWN
 keymap j        UP
 keymap l        RIGHT
 keymap h        LEFT
-keymap gg       BEGIN						#Go to the top.
-keymap G        END						#Go to line number 5 "5G"
+keymap gg       BEGIN
+keymap G        END
 keymap C-d      NEXT_PAGE
 keymap C-u      PREV_PAGE
-keymap  zz      CENTER_V					#center vertical-screen in cursor position
+keymap zz       CENTER_V
 
-#-cursor.......................................................................
 keymap RIGHT    MOVE_RIGHT1
 keymap LEFT     MOVE_LEFT1
 keymap DOWN     MOVE_DOWN1
 keymap UP       MOVE_UP1
-keymap 0        LINE_BEGIN					#Go to first column in current line
-keymap $        LINE_END					#Go to last column in current line
+keymap 0        LINE_BEGIN
+keymap $        LINE_END
 keymap w        NEXT_WORD
 keymap b        PREV_WORD
 
-#-tab..........................................................................
-#https://github.com/duckduckgo/zeroclickinfo-goodies/tree/master/lib/DDG/Goodie
 keymap d        COMMAND         "EXTERN 'echo %s >> ~/.w3m/RestoreTab.txt' ; CLOSE_TAB"
 keymap t        NEW_TAB						#Duplicate current tab
 keymap J        NEXT_TAB					#Change focus to left tab
@@ -206,69 +200,49 @@ keymap gJ       TAB_RIGHT					#Move tab to the right
 keymap :t       TAB_MENU					#Tab menu
 keymap u        TAB_GOTO        /usr/libexec/w3m/cgi-bin/restore_tab.cgi
 
-#-navigation...................................................................
-#keymap f        MOVE_LIST_MENU					#Show links--> move cursor
-#keymap F        LIST_MENU					#Show links--> follow link
+#keymap C-f      MOVE_LIST_MENU					#Show links--> move cursor
+keymap C-f      LIST_MENU					#Show links--> follow link
 keymap [        LINK_BEGIN					#nf Move cursor to link n
 keymap ]        LINK_END					#Move cursor to last link/nf Move cursor to link [n]
 keymap TAB      NEXT_LINK
-#keymap w        NEXT_LINK
-#keymap b        PREV_LINK
 keymap ^[[Z     PREV_LINK
 
-#-history navigation...........................................................
 keymap L        NEXT						#Go forward in history
 keymap H        PREV						#Go back in history
 keymap gh       SELECT_MENU					#History menu
 keymap :h       HISTORY						#Show history
-keymap gd       ADD_BOOKMARK					#Add current page to bookmarks
-keymap :b       VIEW_BOOKMARK					#Show bookmarks
+keymap gd       ADD_BOOKMARK			    #Add current page to bookmarks
+keymap :b       VIEW_BOOKMARK			    #Show bookmarks
 
-#-search.......................................................................
 keymap /        ISEARCH						#Enter find mode
-keymap ?        ISEARCH_BACK					#Enter find mode backwards (incremental)
+keymap ?        ISEARCH_BACK			    #Enter find mode backwards (incremental)
 keymap n        SEARCH_NEXT					#Find next
 keymap N        SEARCH_PREV					#Find previous
-
-#-Commands....................................................................
 keymap !        COMMAND
 keymap +        HELP						#View help
 keymap *        OPTIONS						#Option setting panel
-#keymap          EXEC_SHELL					#Execute shell command
-#keymap          PIPE_SHELL
+#keymap =        EXEC_SHELL					#Execute shell command
+keymap =        READ_SHELL					#Execute shell command
 keymap |        PIPE_BUF
 keymap M-r      REINIT
 keymap q        QUIT 						#Quit w3m with confirmation.
 keymap ZZ       EXIT						#Quit w3m without confirmation.
 keymap r        RELOAD						#Reload current page.
-
-#-save/load.....................................................................
+keymap C-v      PIPE_SHELL
+keymap C-x      COMMAND            "SET_OPTION fold_line=toggle ; RESHAPE"
 keymap :w       DOWNLOAD
-keymap C-s      DOWNLOAD
 keymap :W       PRINT
 keymap C-o      LOAD
 
-#-info.........................................................................
 #keymap C-i      INFO						#current page info
 keymap C-g      LINE_INFO					#line under cursor info
 keymap C-r      VIEW						#See source of current page. FF key
 
-#-miscellany....................................................................
-keymap C-y      DOWNLOAD_LIST					#Show download menu
+keymap C-y      DOWNLOAD_LIST			    #Show download menu
 keymap :E       EDIT_SCREEN					#Edit current rendered document with sensible-editor
 keymap :e       EDIT						#Edit current local file wtih sensible-editor
-keymap M-u	LIST						#Show list of all links, anchors and images
-keymap M-m	MOUSE_TOGGLE    				#Toggle activity of mouse
-keymap M-i      VIEW_IMAGE					#pendant change SC.View image in extern viewer
+keymap M-u	    LIST						#Show list of all links, anchors and images
+keymap M-m	    MOUSE_TOGGLE    		    #Toggle activity of mouse
+keymap :i       VIEW_IMAGE					#pendant change SC.View image in extern viewer
 keymap M-I      DISPLAY_IMAGE
 keymap M-c      MENU
-
-#tests..........................................................................
-keymap  C-x     COMMAND            "SET_OPTION fold_line=toggle ; RESHAPE"
-#keymap         DICT_WORD
-#keymap a       DICT_WORD_AT
-#keymap C-x     DISPLAY_IMAGE
-#keymap C-v     MARK_URL
-#keymap C-z     MAIN_MENU
-#keymap C-z     SUBMIT
-#keymap C-v     PIPE_SHELL
