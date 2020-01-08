@@ -68,7 +68,8 @@
 #
 
 # __________________gdb options_________________
-
+# PERSO
+set $SHOWCODE = 0
 # set to 1 to have ARM target debugging as default, use the "arm" command to switch inside gdb
 set $ARM = 0
 # set to 0 if you have problems with the colorized prompt - reported by Plouj with Ubuntu gdb 7.2
@@ -2026,75 +2027,91 @@ end
 set $displayobjectivec = 0
 
 define context 
-    color $COLOR_SEPARATOR
-    if $SHOWCPUREGISTERS == 1
-	    printf "----------------------------------------"
-	    printf "----------------------------------"
-	    if ($64BITS == 1)
-	        printf "---------------------------------------------"
-	    end
-	    color $COLOR_SEPARATOR
-	    color_bold
-	    printf "[regs]\n"
-	    color_reset
-	    reg
-	    color $CYAN
-    end
-    if $SHOWSTACK == 1
-    	color $COLOR_SEPARATOR
-		if $ARM == 1
-       printf "[0x%08X]", $sp
-		else
-        if ($64BITS == 1)
-		        printf "[0x%04X:0x%016lX]", $ss, $rsp
-        else
-            printf "[0x%04X:0x%08X]", $ss, $esp
-        end
-    end
+    if $SHOWCODE == 1
         color $COLOR_SEPARATOR
-		printf "-------------------------"
-    	printf "-----------------------------"
-	    if ($64BITS == 1)
-	        printf "-------------------------------------"
-	    end
-	    color $COLOR_SEPARATOR
-	    color_bold
-	    printf "[stack]\n"
-    	color_reset
-    	set $context_i = $CONTEXTSIZE_STACK
-    	while ($context_i > 0)
-       	    set $context_t = $sp + 0x10 * ($context_i - 1)
-       	    hexdump $context_t
-       	    set $context_i--
-    	end
-    end
-    # show the objective C message being passed to msgSend
-    if $SHOWOBJECTIVEC == 1
-        #FIXME: X64 and ARM
-        # What a piece of crap that's going on here :)
-        # detect if it's the correct opcode we are searching for
-        if $ARM == 0
-            set $__byte1 = *(unsigned char *)$pc
-    	    set $__byte = *(int *)$pc
-        	if ($__byte == 0x4244489)
-          		set $objectivec = $eax
-      	    	set $displayobjectivec = 1
-    	    end
-
-        	if ($__byte == 0x4245489)
-         		set $objectivec = $edx
-     	    	set $displayobjectivec = 1
-    	    end
-
-        	if ($__byte == 0x4244c89)
-         		set $objectivec = $ecx
-     	    	set $displayobjectivec = 1
-        	end
-        else
-            set $__byte1 = 0
+        if $SHOWCPUREGISTERS == 1
+            printf "----------------------------------------"
+            printf "----------------------------------"
+            if ($64BITS == 1)
+                printf "---------------------------------------------"
+            end
+            color $COLOR_SEPARATOR
+            color_bold
+            printf "[regs]\n"
+            color_reset
+            reg
+            color $CYAN
         end
-        # and now display it or not (we have no interest in having the info displayed after the call)
-        if $__byte1 == 0xE8
+        if $SHOWSTACK == 1
+            color $COLOR_SEPARATOR
+            if $ARM == 1
+           printf "[0x%08X]", $sp
+            else
+            if ($64BITS == 1)
+                    printf "[0x%04X:0x%016lX]", $ss, $rsp
+            else
+                printf "[0x%04X:0x%08X]", $ss, $esp
+            end
+        end
+            color $COLOR_SEPARATOR
+            printf "-------------------------"
+            printf "-----------------------------"
+            if ($64BITS == 1)
+                printf "-------------------------------------"
+            end
+            color $COLOR_SEPARATOR
+            color_bold
+            printf "[stack]\n"
+            color_reset
+            set $context_i = $CONTEXTSIZE_STACK
+            while ($context_i > 0)
+                set $context_t = $sp + 0x10 * ($context_i - 1)
+                hexdump $context_t
+                set $context_i--
+            end
+        end
+        # show the objective C message being passed to msgSend
+        if $SHOWOBJECTIVEC == 1
+            #FIXME: X64 and ARM
+            # What a piece of crap that's going on here :)
+            # detect if it's the correct opcode we are searching for
+            if $ARM == 0
+                set $__byte1 = *(unsigned char *)$pc
+                set $__byte = *(int *)$pc
+                if ($__byte == 0x4244489)
+                    set $objectivec = $eax
+                    set $displayobjectivec = 1
+                end
+
+                if ($__byte == 0x4245489)
+                    set $objectivec = $edx
+                    set $displayobjectivec = 1
+                end
+
+                if ($__byte == 0x4244c89)
+                    set $objectivec = $ecx
+                    set $displayobjectivec = 1
+                end
+            else
+                set $__byte1 = 0
+            end
+            # and now display it or not (we have no interest in having the info displayed after the call)
+            if $__byte1 == 0xE8
+                if $displayobjectivec == 1
+                    color $COLOR_SEPARATOR
+                    printf "--------------------------------------------------------------------"
+                    if ($64BITS == 1)
+                        printf "---------------------------------------------"
+                    end
+                    color $COLOR_SEPARATOR
+                    color_bold
+                    printf "[ObjectiveC]\n"
+                    color_reset
+                    color $BLACK
+                    x/s $objectivec
+                end   
+                set $displayobjectivec = 0     
+            end
             if $displayobjectivec == 1
                 color $COLOR_SEPARATOR
                 printf "--------------------------------------------------------------------"
@@ -2103,77 +2120,63 @@ define context
                 end
                 color $COLOR_SEPARATOR
                 color_bold
-	    		printf "[ObjectiveC]\n"
-	    		color_reset
-      	    	color $BLACK
-      		    x/s $objectivec
-         	end   
-         	set $displayobjectivec = 0     
+                printf "[ObjectiveC]\n"
+                color_reset
+                color $BLACK
+                x/s $objectivec 
+            end   
         end
-        if $displayobjectivec == 1
-            color $COLOR_SEPARATOR
-          	printf "--------------------------------------------------------------------"
-          	if ($64BITS == 1)
-	            printf "---------------------------------------------"
-    	    end
-    	    color $COLOR_SEPARATOR
-    	    color_bold
-		    printf "[ObjectiveC]\n"
-		    color_reset
-          	color $BLACK
-          	x/s $objectivec 
-        end   
-    end
-    color_reset
-# and this is the end of this little crap
+        color_reset
+    # and this is the end of this little crap
 
-    if $SHOWDATAWIN == 1
-        datawin
-    end
+        if $SHOWDATAWIN == 1
+            datawin
+        end
 
-    color $COLOR_SEPARATOR
-    printf "--------------------------------------------------------------------------"
-    if ($64BITS == 1)
-	    printf "---------------------------------------------"
-	end
-	color $COLOR_SEPARATOR
-	color_bold
-    printf "[code]\n"
-    color_reset
-    set $context_i = $CONTEXTSIZE_CODE
-    if ($context_i > 0)
-        if ($SETCOLOR1STLINE == 1)	
-	        color $GREEN
-            if ($ARM == 1)
-                #       | $cpsr.t (Thumb flag)
-                x/i (unsigned int)$pc | (($cpsr >> 5) & 1)
+        color $COLOR_SEPARATOR
+        printf "--------------------------------------------------------------------------"
+        if ($64BITS == 1)
+            printf "---------------------------------------------"
+        end
+        color $COLOR_SEPARATOR
+        color_bold
+        printf "[code]\n"
+        color_reset
+        set $context_i = $CONTEXTSIZE_CODE
+        if ($context_i > 0)
+            if ($SETCOLOR1STLINE == 1)	
+                color $GREEN
+                if ($ARM == 1)
+                    #       | $cpsr.t (Thumb flag)
+                    x/i (unsigned int)$pc | (($cpsr >> 5) & 1)
+                else
+                    x/i $pc
+                end
+                color_reset
             else
-    	        x/i $pc
+                if ($ARM == 1)
+                    #       | $cpsr.t (Thumb flag)
+                      x/i (unsigned int)$pc | (($cpsr >> 5) & 1)
+                else
+                    x/i $pc
+                end
             end
-	        color_reset
-	    else
-            if ($ARM == 1)
-                #       | $cpsr.t (Thumb flag)
-	              x/i (unsigned int)$pc | (($cpsr >> 5) & 1)
-            else
-                x/i $pc
-            end
-	    end
-        set $context_i--
+            set $context_i--
+        end
+        while ($context_i > 0)
+            x /i
+            set $context_i--
+        end
+        color $COLOR_SEPARATOR
+        printf "----------------------------------------"
+        printf "----------------------------------------"
+        if ($64BITS == 1)
+            printf "---------------------------------------------\n"
+        else
+            printf "\n"
+        end
+        color_reset
     end
-    while ($context_i > 0)
-        x /i
-        set $context_i--
-    end
-    color $COLOR_SEPARATOR
-    printf "----------------------------------------"
-    printf "----------------------------------------"
-    if ($64BITS == 1)
-        printf "---------------------------------------------\n"
-	else
-	    printf "\n"
-	end
-    color_reset
 end
 document context
 Syntax: context
