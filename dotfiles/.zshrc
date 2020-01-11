@@ -9,6 +9,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_option+=(globdots)
+eval "$(jira --completion-script-zsh)"
 
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
@@ -31,7 +32,6 @@ alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias ls='ls -hF --color=tty'
 alias mutt="neomutt"
 alias vi="vi -X"
-alias www='~/scripts/search.sh'
 alias yt="mpsyt"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 [ -d /cygdrive ] && alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
