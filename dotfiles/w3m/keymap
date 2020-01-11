@@ -1,79 +1,67 @@
-keymap ep       PEEK						#Show current page url.
-keymap ef       PEEK_LINK					#Show link under cursor.
-keymap o        GOTO
-keymap C-l      GOTO
-keymap O        TAB_GOTO
+keymap gg       BEGIN
+keymap :        COMMAND
+keymap d        COMMAND         "EXTERN 'echo %s >> ~/.w3m/RestoreTab.txt' ; CLOSE_TAB"
+keymap C-x      COMMAND         "SET_OPTION fold_line=toggle ; RESHAPE"
+keymap M-I      DISPLAY_IMAGE
+keymap k        DOWN
+keymap gw       DOWNLOAD
+keymap C-y      DOWNLOAD_LIST
+keymap ge       EDIT
+keymap gE       EDIT_SCREEN
+keymap G        END
+keymap ZZ       EXIT
 keymap M-o      EXTERN
 keymap Y        EXTERN          copy_url.sh
 keymap yy       EXTERN_LINK     copy_url.sh
-keymap p 	    GOTO		/usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
-keymap P        TAB_GOTO	/usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
-keymap F        TAB_LINK					#Follow link in a new foreground tab
-keymap C-j      GOTO_LINK					#Follow link in current tab
-keymap k        DOWN
-keymap j        UP
-keymap l        RIGHT
+keymap o        GOTO
+keymap C-j      GOTO_LINK
+keymap p 	    GOTO		    /usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
+keymap ?        HELP
+keymap gh       HISTORY
+keymap i        INFO
+keymap /        ISEARCH
 keymap h        LEFT
-keymap gg       BEGIN
-keymap G        END
-keymap C-d      NEXT_PAGE
-keymap C-u      PREV_PAGE
-keymap zz       CENTER_V
-keymap RIGHT    MOVE_RIGHT1
-keymap LEFT     MOVE_LEFT1
-keymap DOWN     MOVE_DOWN1
-keymap UP       MOVE_UP1
 keymap 0        LINE_BEGIN
 keymap $        LINE_END
-keymap w        NEXT_WORD
-keymap b        PREV_WORD
-keymap d        COMMAND         "EXTERN 'echo %s >> ~/.w3m/RestoreTab.txt' ; CLOSE_TAB"
-keymap t        NEW_TAB						#Duplicate current tab
-keymap J        NEXT_TAB					#Change focus to left tab
-keymap K        PREV_TAB					#Change focus to right tab
-keymap gK       TAB_LEFT					#Move tab to the left
-keymap gJ       TAB_RIGHT					#Move tab to the right
-keymap :t       TAB_MENU					#Tab menu
-keymap u        TAB_GOTO        /usr/libexec/w3m/cgi-bin/restore_tab.cgi
-#keymap C-f      MOVE_LIST_MENU					#Show links--> move cursor
-keymap C-f      LIST_MENU					#Show links--> follow link
-keymap [        LINK_BEGIN					#nf Move cursor to link n
-keymap ]        LINK_END					#Move cursor to last link/nf Move cursor to link [n]
-keymap TAB      NEXT_LINK
-keymap ^[[Z     PREV_LINK
-keymap L        NEXT						#Go forward in history
-keymap H        PREV						#Go back in history
-keymap gh       SELECT_MENU					#History menu
-keymap :h       HISTORY						#Show history
-keymap gd       ADD_BOOKMARK			    #Add current page to bookmarks
-keymap :b       VIEW_BOOKMARK			    #Show bookmarks
-keymap /        ISEARCH						#Enter find mode
-keymap ?        ISEARCH_BACK			    #Enter find mode backwards (incremental)
-keymap n        SEARCH_NEXT					#Find next
-keymap N        SEARCH_PREV					#Find previous
-keymap !        COMMAND
-keymap +        HELP						#View help
-keymap *        OPTIONS						#Option setting panel
-#keymap =        EXEC_SHELL					#Execute shell command
-keymap =        READ_SHELL					#Execute shell command
-keymap |        PIPE_BUF
-keymap M-r      REINIT
-keymap q        QUIT 						#Quit w3m with confirmation.
-keymap ZZ       EXIT						#Quit w3m without confirmation.
-keymap r        RELOAD						#Reload current page.
-keymap C-v      PIPE_SHELL
-keymap C-x      COMMAND            "SET_OPTION fold_line=toggle ; RESHAPE"
-keymap :w       DOWNLOAD
-keymap :W       PRINT
 keymap C-o      LOAD
-#keymap C-i      INFO						#current page info
-keymap C-g      LINE_INFO					#line under cursor info
-keymap C-r      VIEW						#See source of current page. FF key
-keymap C-y      DOWNLOAD_LIST			    #Show download menu
-keymap :E       EDIT_SCREEN					#Edit current rendered document with sensible-editor
-keymap :e       EDIT						#Edit current local file wtih sensible-editor
-keymap M-u	    LIST						#Show list of all links, anchors and images
-keymap M-m	    MOUSE_TOGGLE    		    #Toggle activity of mouse
-keymap :i       VIEW_IMAGE					#pendant change SC.View image in extern viewer
-keymap M-I      DISPLAY_IMAGE
 keymap M-c      MENU
+keymap M-m	    MOUSE_TOGGLE
+keymap DOWN     MOVE_DOWN1
+keymap LEFT     MOVE_LEFT1
+keymap C-n      MOVE_LIST_MENU
+keymap RIGHT    MOVE_RIGHT1
+keymap UP       MOVE_UP1
+keymap t        NEW_TAB
+keymap L        NEXT
+keymap TAB      NEXT_LINK
+keymap C-d      NEXT_PAGE
+keymap J        NEXT_TAB
+keymap w        NEXT_WORD
+keymap +        OPTIONS
+keymap ep       PEEK
+keymap ef       PEEK_LINK
+keymap |        PIPE_BUF
+keymap H        PREV
+keymap ^[[Z     PREV_LINK
+keymap C-u      PREV_PAGE
+keymap K        PREV_TAB
+keymap b        PREV_WORD
+keymap gW       PRINT
+keymap q        QUIT
+keymap !        READ_SHELL
+keymap M-r      REINIT
+keymap r        RELOAD
+keymap l        RIGHT
+keymap n        SEARCH_NEXT
+keymap N        SEARCH_PREV
+keymap gh       SELECT_MENU
+keymap O        TAB_GOTO
+keymap P        TAB_GOTO	    /usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
+keymap u        TAB_GOTO        /usr/libexec/w3m/cgi-bin/restore_tab.cgi
+keymap gK       TAB_LEFT
+keymap F        TAB_LINK
+keymap gt       TAB_MENU
+keymap gJ       TAB_RIGHT
+keymap j        UP
+keymap C-r      VIEW
+keymap gi       VIEW_IMAGE
