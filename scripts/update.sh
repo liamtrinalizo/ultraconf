@@ -12,7 +12,7 @@ gitUpdate()
 #################################
 
 echo -e "\e[32mUpdating portage\e[m"
-eix-sync -q
+eix-sync -qw
 emerge -aqvuDN --keep-going=y --with-bdeps=y @world
 emerge --depclean
 eclean-dist

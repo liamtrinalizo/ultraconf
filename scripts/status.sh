@@ -5,9 +5,9 @@ while getopts 'bmt' opt; do
         b)
             acpi | cut -d "," -f 2 | sed 's/ //' ;;
         m) 
-            FILECOUNT=$(ls -l ~/.local/share/mail/gmail/INBOX/new/ | wc -l)
+            FILECOUNT=$(ls -l ~/.local/share/mail/work/INBOX/new/ | wc -l)
             if [ "$FILECOUNT" -gt 1 ]; then
-                echo " " 
+                echo " M" 
             fi ;;
         t)
             #torrent
