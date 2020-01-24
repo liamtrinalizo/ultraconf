@@ -10,6 +10,7 @@ set completeopt-=preview
 set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 
 set hlsearch incsearch showmatch
+set history=1000
 set mouse=
 set nocompatible
 set nomodeline

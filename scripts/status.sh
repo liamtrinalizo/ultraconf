@@ -1,16 +1,17 @@
 #!/bin/sh
 
-while getopts 'bmt' opt; do
+while getopts 'bgmt' opt; do
     case "$opt" in
         b)
             acpi | cut -d "," -f 2 | sed 's/ //' ;;
+        g)
+            if [ -f /tmp/gpg_needs_key ]; then
+                echo -n " G"
+            fi ;;
         m) 
             FILECOUNT=$(ls -l ~/.local/share/mail/work/INBOX/new/ | wc -l)
             if [ "$FILECOUNT" -gt 1 ]; then
-                echo " M" 
+                echo -n " M" 
             fi ;;
-        t)
-            #torrent
-            echo "100%" ;;
     esac
 done
