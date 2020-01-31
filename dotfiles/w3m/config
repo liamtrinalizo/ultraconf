@@ -46,7 +46,7 @@ ext_halfdump		        0
 ext_image_viewer	        display
 extbrowser		            sh -c 'printf %s "$0" | xsel -b'
 extbrowser2		            surf
-extbrowser3		        
+extbrowser3		            display
 extbrowser4		        
 extbrowser5		        
 extbrowser6		        
