@@ -3,6 +3,10 @@ set background=dark
 syntax on
 runtime ftplugin/man.vim
 
+if filereadable(expand("~/.vim/addi.vim")) 
+	source ~/.vim/addi.vim 
+endif
+
 set background=dark
 set backspace=indent,eol,start
 set cino+=(0g0
@@ -22,3 +26,5 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
 set viminfo='1000
 set wildmenu
 set keywordprg=:Man
+
+

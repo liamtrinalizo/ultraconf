@@ -32,6 +32,8 @@ alias li="xbacklight -set"
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias ls="ls -hF --color=tty"
 alias mutt="neomutt"
+alias task="jira list -a mj093"
+alias taskid="jira list -a mj093 | dmenu -i -l 40 | cut -d ':' -f 1"
 alias yt="mpsyt"
 #alias jira="pass addi/domain | jira"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
