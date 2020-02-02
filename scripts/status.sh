@@ -3,7 +3,7 @@
 while getopts 'bgmt' opt; do
     case "$opt" in
         b)
-            acpitool | head -1 | cut -b 25-27 | sed -z 's/\n//' ;;
+            acpitool | head -1 | cut -d ',' -f 2 | sed -z 's/\n//' ;;
         g)
             if [ -f /tmp/gpg_needs_key ]; then
                 echo -n " G"
