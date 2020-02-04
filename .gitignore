@@ -1,4 +1,7 @@
 *-bak
+*.o
+*.out
+tags
 
 c/.idea/*
 vacuum/vac

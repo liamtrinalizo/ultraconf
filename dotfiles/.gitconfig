@@ -1,6 +1,6 @@
 [core]
 	editor = vim
-    pager = "~/pkg/diff-so-fancy/diff-so-fancy | less --tabs=4 -RFX" 
+    pager = "diff-so-fancy | less --tabs=4 -RFX" 
 [user]
 [diff]
 	tool = vimdiff

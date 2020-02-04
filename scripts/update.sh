@@ -12,13 +12,13 @@ gitUpdate()
 #################################
 
 echo -e "\e[32mUpdating portage\e[m"
-eix-sync -q
-emerge -aqvuDN --keep-going=y @world
+eix-sync -qw
+emerge -aqvuDN --keep-going=y --with-bdeps=y @world
+emerge -aqvuDN --keep-going=y --with-bdeps=y @world || exit 1
+emerge --depclean
+eclean-dist
 
-echo -e "\e[32mUpdating Git repos\e[m"
-gitUpdate /home/gok/pkg/sc-im/             
-gitUpdate /home/gok/pkg/suckless/dmenu/    
-gitUpdate /home/gok/pkg/suckless/dwm/      
-gitUpdate /home/gok/pkg/suckless/slock/    
-gitUpdate /home/gok/pkg/suckless/st/       
-gitUpdate /home/gok/pkg/suckless/surf/     
+#echo -e "\e[32mUpdating Git repos\e[m"
+#gitUpdate /home/gok/pkg/suckless/dwm/      
+#gitUpdate /home/gok/pkg/suckless/st/       
+#gitUpdate /home/gok/pkg/suckless/surf/     

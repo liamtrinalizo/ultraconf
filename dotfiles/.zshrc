@@ -9,6 +9,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_option+=(globdots)
+eval "$(jira --completion-script-zsh)"
 
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
@@ -23,16 +24,18 @@ export EDITOR=vim
 export LANG=en_US.UTF-8
 
 alias al="alsamixer"
-alias cal='cal -m'
-alias grep='grep --color'
+alias cal="cal -m"
+alias fzf="dmenu -i -l 40"
+alias grep="grep --color"
 alias l="ls -1Na --group-directories-first --color=auto"
 alias li="xbacklight -set"
 alias ll="ls -Nlhav --group-directories-first --color=auto"
-alias ls='ls -hF --color=tty'
+alias ls="ls -hF --color=tty"
 alias mutt="neomutt"
-alias vi="vi -X"
-alias www='~/scripts/search.sh'
+alias task="jira list -a mj093"
+alias taskid="jira list -a mj093 | dmenu -i -l 40 | cut -d ':' -f 1"
 alias yt="mpsyt"
+#alias jira="pass addi/domain | jira"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 [ -d /cygdrive ] && alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
 [ -d /cygdrive ] && alias gvim='/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'
