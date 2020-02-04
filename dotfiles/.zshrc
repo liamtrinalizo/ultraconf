@@ -52,4 +52,3 @@ MODE_CURSOR_SEARCH="steady underline"
 [ -f ~/.Xresources ] && xrdb ~/.Xresources > /dev/null 2>&1
 [ -f ~/.addi.gpg ] && gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.addi.gpg > /dev/null
 [ -d ~/pkg/zsh ] && source ~/pkg/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
-[ -d ~/pkg/zsh ] && source ~/pkg/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
