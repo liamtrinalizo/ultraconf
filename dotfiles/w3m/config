@@ -44,10 +44,10 @@ emacs_like_lineedit	        0
 ext_dirlist		            1
 ext_halfdump		        0
 ext_image_viewer	        display
-extbrowser		            sh -c 'printf %s "$0" | xsel -b'
+extbrowser		            sh -c 'printf %s "$0" | xclip -selection primary'
 extbrowser2		            surf
 extbrowser3		            display
-extbrowser4		        
+extbrowser4		            sh -c 'printf %s "$0" | xclip -selection primary'
 extbrowser5		        
 extbrowser6		        
 extbrowser7		        
