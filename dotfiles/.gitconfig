@@ -8,6 +8,7 @@
 	prompt = false
 [alias]
     st = status
+    di = diff --ignore-all-space
     ci = commit
     cim = commit -m
     co = checkout

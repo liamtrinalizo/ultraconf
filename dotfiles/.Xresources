@@ -15,8 +15,7 @@ URxvt*color13: #FF00FF // magenta
 URxvt*color14: #00FFFF // cyan
 URxvt*color15: #FFFFFF // white
 
-
 URxvt.background:           black
 URxvt.foreground:           white
 URxvt.scrollbar:            false
-URxvt.font: xft:Noto Sans Mono:size=10,xft:Noto-gothic Sans :size-12,
+URxvt.font: xft:Lucida Console :size=11,xft:Noto-gothic Sans :size-12,
