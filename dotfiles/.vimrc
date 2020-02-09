@@ -1,7 +1,5 @@
 filetype plugin indent on
-set background=dark
 syntax on
-
 runtime ftplugin/man.vim
 set keywordprg=:Man
 
@@ -24,6 +22,7 @@ set path+=**
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
 set viminfo='1000
 set wildmenu
+set keywordprg=:Man
 
 function Diff()
     vs `tempfile` | se ft=diff | r!git diff #
