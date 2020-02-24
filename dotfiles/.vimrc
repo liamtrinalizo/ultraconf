@@ -12,7 +12,7 @@ set completeopt-=preview
 set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 
 set hlsearch incsearch showmatch
-set history=1000
+set history=1000 viminfo='1000
 set mouse=
 set nocompatible
 set nomodeline
@@ -20,8 +20,7 @@ set nowrap
 set number relativenumber
 set path+=**
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
-set viminfo='1000
-set wildmenu
+set wildmenu showcmd
 set keywordprg=:Man
 
 function Diff()
