@@ -23,6 +23,11 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
 set wildmenu showcmd
 set keywordprg=:Man
 
+hi DiffAdd      gui=none    guifg=NONE          guibg=#bada9f
+hi DiffChange   gui=none    guifg=NONE          guibg=#e5d5ac
+hi DiffDelete   gui=bold    guifg=#ff8080       guibg=#ffb0b0
+hi DiffText     gui=none    guifg=NONE          guibg=#8cbee2
+
 function Diff()
     vs `tempfile` | se ft=diff | r!git diff #
 endfunction
