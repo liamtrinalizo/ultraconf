@@ -3,7 +3,11 @@
 while getopts 'bgmt' opt; do
     case "$opt" in
         b)
-            acpitool | head -1 | cut -d ',' -f 2 | sed -z 's/\n//' ;;
+            BAT=$(acpitool | head -1 | cut -d ',' -f 2 | sed -z 's/\(\n\|\...\|%\)//g')
+            echo $BAT
+            if [ $BAT -lt 30 ]; then
+                export BAT_LOW
+            fi ;;
         g)
             if [ -f /tmp/gpg_needs_key ]; then
                 echo -n " G"
