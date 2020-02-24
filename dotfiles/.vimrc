@@ -22,6 +22,7 @@ set path+=**
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
 set wildmenu showcmd
 set keywordprg=:Man
+set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
 
 hi DiffAdd      gui=none    guifg=NONE          guibg=#bada9f
 hi DiffChange   gui=none    guifg=NONE          guibg=#e5d5ac

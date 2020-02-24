@@ -4,6 +4,8 @@ SAVEHIST=10000
 setopt appendhistory sharehistory incappendhistory  
 export LESSHIST="-"
 
+PATH=$PATH:~/.cargo/bin
+
 autoload -U compinit promptinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist

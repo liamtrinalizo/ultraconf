@@ -12,8 +12,16 @@ gitUpdate()
 #################################
 
 echo -e "\e[32mUpdating portage\e[m"
+<<<<<<< Updated upstream
 eix-sync -q $1
 emerge -aqvuDN --keep-going=y --with-bdeps=y @world || exit 1
+||||||| constructed merge base
+eix-sync -q
+emerge -aqvuDN --keep-going=y --with-bdeps=y @world
+=======
+eix-sync -q
+emerge -aqvuDN --keep-going=y --with-bdeps=y @world || exit 1
+>>>>>>> Stashed changes
 emerge --depclean
 eclean-dist
 
