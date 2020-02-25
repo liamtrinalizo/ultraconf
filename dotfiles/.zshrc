@@ -22,6 +22,7 @@ bindkey '^v' edit-command-line
 
 export KEYTIMEOUT=1
 export EDITOR=vim
+export PASTEL_COLOR_MODE=24bit
 export LANG=en_US.UTF-8
 
 alias al="alsamixer"
