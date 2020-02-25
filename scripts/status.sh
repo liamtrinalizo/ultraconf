@@ -6,11 +6,13 @@ while getopts 'bgmt' opt; do
             BAT=$(acpitool | head -1 | cut -d ',' -f 2 | sed -z 's/\(\n\|\...\|%\)//g')
             echo $BAT
             if [ $BAT -lt 30 ]; then
-                export BAT_LOW
+                tmux set-environment bat_low 1
+            else
+                tmux set-environment bat_low 0
             fi ;;
         g)
             if [ -f /tmp/gpg_needs_key ]; then
-                echo -n " G"
+                echo -n "G"
             fi ;;
         m) 
             FILECOUNT=$(ls -l ~/.local/share/mail/work/INBOX/new/ | wc -l)
