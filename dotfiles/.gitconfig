@@ -14,8 +14,8 @@
     co = checkout
     di = diff --ignore-all-space
     sh = !git log --oneline | fzy -l 50 | cut -b 1-7 | xargs git show
-    l1 = log --graph -n 50 --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)%C(dim white) %an%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' --all
-    l2 = log         -n 50 --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim red)%an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    l1 = log --graph -n 50 --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset)%C(dim white) %an%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'
+    l2 = log         -n 50 --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim red)%an%C(reset)%C(bold yellow)%d%C(reset)'
     st = status
 [color]
 	ui = true
