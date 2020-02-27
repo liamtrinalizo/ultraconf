@@ -12,7 +12,7 @@ while getopts 'bgmt' opt; do
             fi ;;
         g)
             if [ -f /tmp/gpg_needs_key ]; then
-                echo -n "G"
+                echo -n " G"
             fi ;;
         m) 
             FILECOUNT=$(ls -l ~/.local/share/mail/work/INBOX/new/ | wc -l)
