@@ -14,8 +14,10 @@ URxvt*color12: #6464FF // blue
 URxvt*color13: #FF00FF // magenta
 URxvt*color14: #00FFFF // cyan
 URxvt*color15: #FFFFFF // white
+URxvt*background: black
+URxvt*foreground: white
+URxvt*scrollbar: false
+URxvt*font: xft:Lucida Console :size=11,xft:Noto-gothic Sans :size-12,
 
-URxvt.background:           black
-URxvt.foreground:           white
-URxvt.scrollbar:            false
-URxvt.font: xft:Lucida Console :size=11,xft:Noto-gothic Sans :size-12,
+ImageMagick*background: Black
+ImageMagick*foreground: White

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-while getopts 'bgmt' opt; do
+while getopts 'bgmr' opt; do
     case "$opt" in
         b)
             BAT=$(acpitool | head -1 | cut -d ',' -f 2 | sed -z 's/\(\n\|\...\|%\)//g')
@@ -19,5 +19,7 @@ while getopts 'bgmt' opt; do
             if [ "$FILECOUNT" -gt 1 ]; then
                 echo -n " M" 
             fi ;;
+        r)
+            remind ~/.reminders | head -1 | sed 's/No reminders.//' ;;
     esac
 done
