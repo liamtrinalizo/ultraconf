@@ -5,6 +5,7 @@ setopt appendhistory sharehistory incappendhistory
 export LESSHIST="-"
 
 PATH=$PATH:~/.cargo/bin
+eval "$(jira --completion-script-zsh)"
 
 autoload -U compinit promptinit
 zstyle ':completion:*' menu select
