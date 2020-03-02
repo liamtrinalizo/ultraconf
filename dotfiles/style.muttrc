@@ -131,8 +131,6 @@ color body brightblue default "(https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+"
 color body brightblue default "^# \.*" # Headings as bold blue
 color body brightcyan default "^## \.*" # Subheadings as bold cyan
 color body brightgreen default "^### \.*" # Subsubheadings as bold green
-color body red default "^(\t| )*(-|\\*) \.*" # Diff
-color body green default "^(\t| )*(+|\\*) \.*" # Diff
 color body brightcyan default "[;:][)(|-o][)(|]" # emoticons
 color body red default "(BAD signature)"
 color body cyan default "(Good signature)"
