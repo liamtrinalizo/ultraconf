@@ -37,10 +37,8 @@ alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias ls="ls -hF --color=tty"
 alias mutt="neomutt"
 alias startx="startx || exit"
-alias task="jira list -a mj093"
 alias taskid="jira list -a mj093 | fzy | cut -d ':' -f 1"
 alias yt="mpsyt"
-#alias jira="pass addi/domain | jira"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 [ -d /cygdrive ] && alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
 [ -d /cygdrive ] && alias gvim='/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'
@@ -57,6 +55,4 @@ alias yt="mpsyt"
 MODE_CURSOR_VICMD="block"
 MODE_CURSOR_VIINS="blinking bar"
 MODE_CURSOR_SEARCH="steady underline"
-[ -f ~/.Xresources ] && xrdb ~/.Xresources > /dev/null 2>&1
-[ -f ~/.addi.gpg ] && gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.addi.gpg > /dev/null
 [ -d ~/pkg/zsh ] && source ~/pkg/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
