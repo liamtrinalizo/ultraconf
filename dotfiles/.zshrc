@@ -2,29 +2,20 @@ HISTFILE=~/.cache/zsh/histfile
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory sharehistory incappendhistory  
-export LESSHIST="-"
 
-PATH=$PATH:~/.cargo/bin
-eval "$(jira --completion-script-zsh)"
-
-autoload -U compinit promptinit
+promptinit; prompt adam1 
+autoload -U compinit
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_option+=(globdots)
-
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-promptinit; prompt adam1 
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^v' edit-command-line
+[ -e /usr/bin/jira ] && eval "$(jira --completion-script-zsh)"
 
 export KEYTIMEOUT=1
 export EDITOR=vim
 export PASTEL_COLOR_MODE=24bit
 export LANG=en_US.UTF-8
+export PATH=$PATH:~/.cargo/bin
 
 alias al="alsamixer"
 alias cal="cal -m"
@@ -35,10 +26,8 @@ alias l="ls -1Na --group-directories-first --color=auto"
 alias li="xbacklight -set"
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias ls="ls -hF --color=tty"
-alias mutt="neomutt"
 alias startx="startx || exit"
 alias taskid="jira list -a mj093 | fzy | cut -d ':' -f 1"
-alias yt="mpsyt"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 [ -d /cygdrive ] && alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
 [ -d /cygdrive ] && alias gvim='/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'
