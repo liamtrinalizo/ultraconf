@@ -9,6 +9,13 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_option+=(globdots)
+
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+autoload edit-command-line; zle -N edit-command-line
+
 [ -e /usr/bin/jira ] && eval "$(jira --completion-script-zsh)"
 
 export KEYTIMEOUT=1
