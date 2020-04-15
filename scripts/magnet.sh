@@ -1,6 +1,6 @@
 #!/bin/bash
 
-output=~/Downloads
+output=~/downloads
 clipboard=$(xclip -o -selection clipboard | grep ^magnet)
 
 aria2c -d "$output" --input-file <( echo "$clipboard" ) \

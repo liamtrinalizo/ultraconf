@@ -1,1 +1,0 @@
-cmd_/home/gok/code/c/driver/test1/hello.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/gok/code/c/driver/test1/hello.ko /home/gok/code/c/driver/test1/hello.o /home/gok/code/c/driver/test1/hello.mod.o ;  true
