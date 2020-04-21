@@ -10,10 +10,12 @@ zmodload zsh/complist
 compinit
 _comp_option+=(globdots)
 
+bindkey -v
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
+bindkey '^R' history-incremental-search-backward
 autoload edit-command-line; zle -N edit-command-line
 
 export KEYTIMEOUT=1
@@ -47,7 +49,15 @@ alias xclip2="xclip -selection clipboard"
 [ -d /cygdrive ] && alias windows='cd /cygdrive/d/WORK/SVN/Windows/Addidata_Device_Drivers/Current'
 [ -d /cygdrive ] && alias work='cd /cygdrive/d/WORK/'
 
+n()
+{
+    [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ] && echo "nnn is already running" && return
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    nnn "$@"
+    [ -f "$NNN_TMPFILE" ] && . "$NNN_TMPFILE"; rm -f "$NNN_TMPFILE" > /dev/null
+}
+
 MODE_CURSOR_VICMD="block"
 MODE_CURSOR_VIINS="blinking bar"
 MODE_CURSOR_SEARCH="steady underline"
-[ -d ~/pkg/zsh ] && source ~/pkg/zsh/zsh-vim-mode/zsh-vim-mode.plugin.zsh
