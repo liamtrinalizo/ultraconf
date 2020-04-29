@@ -49,6 +49,7 @@ alias xclip2="xclip -selection clipboard"
 [ -d /cygdrive ] && alias uptime='net stats srv | sed -n 4p | cut -d " " -f 3-4'
 [ -d /cygdrive ] && alias windows='cd /cygdrive/d/WORK/SVN/Windows/Addidata_Device_Drivers/Current'
 [ -d /cygdrive ] && alias work='cd /cygdrive/d/WORK/'
+[ -d /cygdrive ] && alias dcc='/cygdrive/c/Program\ Files\ \(x86\)/Embarcadero/Studio/20.0/bin/dcc64.exe'
 
 n()
 {
