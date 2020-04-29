@@ -1,4 +1,5 @@
 text/plain; $EDITOR %s ;
-text/html; openfile %s ;
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
-image/*; muttimage %s ; copiousoutput
+image/*; display;
+text/calendar; ~/scripts/vcal -all -; copiousoutput;
+application/pdf; zathura -;

@@ -11,18 +11,18 @@ attach() {
 while getopts 'hw' OPTION; do
     case "$OPTION" in
         h)
-            $TMUX new-session -d -s home
+            $TMUX new-session -s home
             $TMUX rename-window -t '=home:1' portage
             $TMUX send-keys  -t '=home:portage' 'sudo ~/scripts/update.sh -w'
-            $TMUX new-window -dt '=home' -n mutt
+            $TMUX new-window -t '=home' -n mutt
             $TMUX send-keys  -t '=home:mutt' 'neomutt' Enter
-            $TMUX new-window -dt '=home' -n music
+            $TMUX new-window -t '=home' -n music
             $TMUX split-window -h -t '=home:music'
             $TMUX send-keys -t '=home:music.0' 'alsamixer' Enter
-            $TMUX send-keys -t '=home:music.1' '~/pkg/mps-youtube/mpsyt' Enter 
-            attach 'home';;
+            $TMUX send-keys -t '=home:music.1' '~/pkg/mps-youtube/mpsyt' Enter ;;
+            #attach 'home';;
         w)
-            $TMUX new-session -d -s work
-            attach 'work';;
+            $TMUX new-session -s work ;;
+            #attach 'work';;
     esac
 done
