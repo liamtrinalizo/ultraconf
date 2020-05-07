@@ -6,5 +6,5 @@ endfunction
 function Header()
     norm ggO
     0r ~/.vim/snippets/header_addi
-    call append(1, " *  " . expand("%:t"))
+    call append(1, " *  @file " . expand("%:t"))
 endfunction

@@ -39,15 +39,17 @@ alias xclip2="xclip -selection clipboard"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 [ -d /cygdrive ] && alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
 [ -d /cygdrive ] && alias gvim='/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'
-[ -d /cygdrive ] && alias jeanb='cd /cygdrive/d/WORK/100539_Jean_Bracq/jeanbracq_qt_app'
+[ -d /cygdrive ] && alias jeanb='cd /cygdrive/d/WORK/jeanbracq/jeanbracq_qt_app'
 [ -d /cygdrive ] && alias mongo='/cygdrive/c/Users/MJ093/.3T/third-party/2019.2.1/mongo.exe'
 [ -d /cygdrive ] && alias msg='/cygdrive/c/Program\ Files\ \(x86\)/NetPhone\ Client/IMClient.exe'
 [ -d /cygdrive ] && alias qmake='/cygdrive/c/Qt/5.11.1/msvc2017_64/bin/qmake.exe'
+[ -d /cygdrive ] && alias jom='/cygdrive/c/Qt/5.12.5/Tools/QtCreator/bin/jom.exe'
 [ -d /cygdrive ] && alias quartus_prg='/cygdrive/c/intelFPGA_lite/18.1/quartus/bin64/quartus_pgm.exe'
 [ -d /cygdrive ] && alias tshark='/cygdrive/c/Program\ Files/Wireshark/tshark.exe'
 [ -d /cygdrive ] && alias uptime='net stats srv | sed -n 4p | cut -d " " -f 3-4'
 [ -d /cygdrive ] && alias windows='cd /cygdrive/d/WORK/SVN/Windows/Addidata_Device_Drivers/Current'
 [ -d /cygdrive ] && alias work='cd /cygdrive/d/WORK/'
+[ -d /cygdrive ] && alias dcc='/cygdrive/c/Program\ Files\ \(x86\)/Embarcadero/Studio/20.0/bin/dcc64.exe'
 
 n()
 {
