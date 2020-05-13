@@ -8,3 +8,6 @@ rm -f ~/.gnuplot_history
 rm -f ~/.python_history
 rm -f ~/.gdb_history
 rm -r ~/.viminfo
+rm -r ~/.octave_hist
+rm -r ~/.sqlite_history
+rm -r ~/.psql_history
