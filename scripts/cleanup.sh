@@ -8,4 +8,6 @@ rm -f ~/.wpa_cli_history \
       ~/.python_history \
       ~/.gdb_history \
       ~/.viminfo \
-      ~/Document
+      ~/.octave_hist
+      ~/.sqlite_history \
+      ~/.psql_history
