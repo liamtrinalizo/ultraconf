@@ -4,7 +4,6 @@ runtime ftplugin/man.vim
 set keywordprg=:Man
 
 set background=dark
-set backspace=indent,eol,start
 set cino+=(0g0
 set completeopt-=preview
 set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
@@ -13,7 +12,6 @@ set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 
 set history=1000 viminfo='1000
 set hlsearch incsearch showmatch
-set keywordprg=:Man
 set keywordprg=:Man
 set mouse=
 set nocompatible nomodeline nowrap
