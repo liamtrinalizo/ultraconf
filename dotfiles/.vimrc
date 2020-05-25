@@ -28,10 +28,11 @@ let g:netrw_sort_sequence = '[\/]$'
 map g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 map g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
 
-hi DiffAdd    ctermfg=0  ctermbg=LightGreen
-hi DiffChange ctermfg=0  ctermbg=LightBlue
-hi DiffDelete ctermfg=0  ctermbg=LightRed
-hi DiffText   ctermfg=15 ctermbg=DarkBlue
+hi DiffAdd    ctermfg=0     ctermbg=DarkGreen
+hi DiffChange ctermfg=0     ctermbg=DarkBlue
+hi DiffDelete ctermfg=0     ctermbg=DarkRed
+hi DiffText   ctermfg=white ctermbg=DarkBlue
+hi Special    ctermfg=DarkRed cterm=Bold
 
 function Diff()
     vs `tempfile` | se ft=diff | r!git diff #
