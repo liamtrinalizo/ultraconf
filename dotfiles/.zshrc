@@ -11,30 +11,35 @@ compinit
 _comp_option+=(globdots)
 
 bindkey -e
+bindkey '^R' history-incremental-pattern-search-backward
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
-bindkey '^R' history-incremental-search-backward
-autoload edit-command-line; zle -N edit-command-line
 
 export KEYTIMEOUT=1
 export EDITOR=vim
-export PASTEL_COLOR_MODE=24bit
 export LANG=en_US.UTF-8
-export PATH=$PATH:~/.cargo/bin
+
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+bindkey '^[[A'  up-line-or-beginning-search    # Arrow up
+bindkey '^[OA'  up-line-or-beginning-search
+bindkey '^[[B'  down-line-or-beginning-search  # Arrow down
+bindkey '^[OB'  down-line-or-beginning-search
 
 alias al="alsamixer"
 alias cal="cal -m"
 alias disp="display -resize 600"
-alias fzf="dmenu -i -l 40"
 alias grep="grep --color"
 alias l="ls -1Na --group-directories-first --color=auto"
 alias li="xbacklight -set"
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias ls="ls -hF --color=tty"
 alias startx="startx || exit"
-alias taskid="jira list -a mj093 | fzy | cut -d ':' -f 1"
 alias xclip2="xclip -selection clipboard"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 [ -d /cygdrive ] && alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
@@ -59,7 +64,3 @@ n()
     nnn "$@"
     [ -f "$NNN_TMPFILE" ] && . "$NNN_TMPFILE"; rm -f "$NNN_TMPFILE" > /dev/null
 }
-
-MODE_CURSOR_VICMD="block"
-MODE_CURSOR_VIINS="blinking bar"
-MODE_CURSOR_SEARCH="steady underline"
