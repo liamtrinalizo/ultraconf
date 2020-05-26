@@ -8,3 +8,4 @@ rm -f ~/.gnuplot_history
 rm -f ~/.python_history
 rm -f ~/.gdb_history
 rm -r ~/.viminfo
+rm -r ~/.isql_history*
