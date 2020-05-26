@@ -4,7 +4,6 @@ runtime ftplugin/man.vim
 set keywordprg=:Man
 
 set background=dark
-set backspace=indent,eol,start
 set cino+=(0g0
 set completeopt-=preview
 set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
@@ -13,7 +12,6 @@ set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 
 set history=1000 viminfo='1000
 set hlsearch incsearch showmatch
-set keywordprg=:Man
 set keywordprg=:Man
 set mouse=
 set nocompatible nomodeline nowrap
@@ -30,10 +28,11 @@ let g:netrw_sort_sequence = '[\/]$'
 map g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 map g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
 
-hi DiffAdd    ctermfg=0  ctermbg=LightGreen
-hi DiffChange ctermfg=0  ctermbg=LightBlue
-hi DiffDelete ctermfg=0  ctermbg=LightRed
-hi DiffText   ctermfg=15 ctermbg=DarkBlue
+hi DiffAdd    ctermfg=0     ctermbg=DarkGreen
+hi DiffChange ctermfg=white ctermbg=DarkBlue
+hi DiffDelete ctermfg=0     ctermbg=DarkRed
+hi DiffText   ctermfg=white ctermbg=DarkBlue
+hi Special    ctermfg=DarkRed cterm=Bold
 
 function Diff()
     vs `tempfile` | se ft=diff | r!git diff #

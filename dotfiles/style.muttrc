@@ -26,6 +26,7 @@ alternative_order text/plain text/enriched text/html
 bind index,pager i noop
 bind index,pager g noop
 bind index \Cf noop
+bind index N noop
 
 # General rebindings
 bind attach <return> view-mailcap
@@ -42,6 +43,7 @@ bind index U undelete-message
 bind index L limit
 bind index h noop
 bind index l display-message
+bind index V toggle-new
 #bind browser h goto-parent
 macro browser h '<change-dir><kill-line>..<enter>' "Go to parent folder"
 bind index,pager H view-raw-message
