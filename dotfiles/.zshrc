@@ -33,7 +33,7 @@ bindkey '^[OB'  down-line-or-beginning-search
 
 alias al="alsamixer"
 alias cal="cal -m"
-alias disp="display -resize 600"
+alias disp="display -resize 500"
 alias grep="grep --color"
 alias l="ls -1Na --group-directories-first --color=auto"
 alias li="xbacklight -set"
