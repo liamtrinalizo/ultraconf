@@ -3,6 +3,10 @@
 *.out
 tags
 
+scripts/msxe.sh
+scripts/vcal
+scripts/pathConv.sh
+
 c/.idea/*
 vacuum/vac
 vacuum/cmake-build-debug/*
