@@ -17,9 +17,11 @@ set mouse=
 set nocompatible nomodeline nowrap
 set number relativenumber
 set path+=**
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 set spelllang=en
 set t_Co=256
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
+set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
 set wildmenu showcmd
 
 let g:netrw_banner = 0
