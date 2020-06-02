@@ -39,7 +39,7 @@ alias l="ls -1Na --group-directories-first --color=auto"
 alias li="xbacklight -set"
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias ls="ls -hF --color=tty"
-alias startx="startx || exit"
+alias xinit="xinit || exit"
 alias xclip2="xclip -selection clipboard"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 [ -d /cygdrive ] && alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
