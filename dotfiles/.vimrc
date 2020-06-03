@@ -16,11 +16,11 @@ set mouse=
 set nocompatible nomodeline nowrap
 set number relativenumber
 set path+=**
-set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
+"set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 set spelllang=en
 set t_Co=256
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
-set history=1000 viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+set history=1000 viminfo+='1000,n~/.cache/vim/viminfo
 set wildmenu showcmd
 
 let g:netrw_banner = 0
@@ -35,14 +35,8 @@ hi DiffDelete ctermfg=0     ctermbg=DarkRed
 hi DiffText   ctermfg=white ctermbg=DarkBlue
 hi Special    ctermfg=DarkRed cterm=Bold
 
-function Diff()
-    vs `tempfile` | se ft=diff | r!git diff #
-endfunction
-
 autocmd BufNewFile,BufRead *.yml,neomutt-*,COMMIT_EDITMSG set spell
 
 if filereadable(expand("~/.vim/addi.vim")) 
     source ~/.vim/addi.vim 
 endif
-
-map g<C-\> :cs find c <C-R>=expand("<cword>")<CR><CR>
