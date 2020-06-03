@@ -1,6 +1,7 @@
 #!/bin/sh
 
 rm -fr \
+       ~/.*.log
        ~/.bash_history \
        ~/.gdb_history \
        ~/.gnuplot_history \

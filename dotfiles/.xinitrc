@@ -1,6 +1,6 @@
-/home/gok/scripts/xmodmap.sh
-/home/gok/scripts/screen.sh -s 2
+#/home/gok/scripts/xmodmap.sh
+~/scripts/screen.sh -s 3
 xautolock -time 10 -locker slock &
-xrdb ~/.config/X11/Xresources
-st -e sh -c '[ -z $TMUX ] && tmux new-session -s home' &
+xrdb ~/.config/X/.Xresources
+#st -e sh -c '[ -z $TMUX ] && tmux new-session -s home' &
 exec dwm

@@ -6,6 +6,7 @@ export TERMINAL="st"
 export READER="zathura"
 export FILE="nnn"
 
+#export GPG_TTY=$(tty)
 # ~/ Clean-up:
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"

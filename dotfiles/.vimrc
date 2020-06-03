@@ -10,7 +10,6 @@ set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
 set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 
-set history=1000 viminfo='1000
 set hlsearch incsearch showmatch
 set keywordprg=:Man
 set mouse=
@@ -21,7 +20,7 @@ set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 set spelllang=en
 set t_Co=256
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
-set viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+set history=1000 viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
 set wildmenu showcmd
 
 let g:netrw_banner = 0
