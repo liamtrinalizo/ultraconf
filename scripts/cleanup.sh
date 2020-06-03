@@ -12,6 +12,6 @@ rm -fr \
        ~/.sqlite_history \
        ~/.viminfo \
        ~/.wget-hsts \
-       ~/.wpa_cli_history
        ~/.wpa_cli_history \
-       ~/Document \
+       ~/.wpa_cli_history \
+       ~/Document 
