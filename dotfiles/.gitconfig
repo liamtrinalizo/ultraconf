@@ -25,3 +25,5 @@
     prompt = false
 [mergetool]
 	prompt = false
+[help]
+	autocorrect = 1

@@ -34,10 +34,6 @@ hi DiffDelete ctermfg=0     ctermbg=DarkRed
 hi DiffText   ctermfg=white ctermbg=DarkBlue
 hi Special    ctermfg=DarkRed cterm=Bold
 
-function Diff()
-    vs `tempfile` | se ft=diff | r!git diff #
-endfunction
-
 autocmd BufNewFile,BufRead *.yml,neomutt-*,COMMIT_EDITMSG set spell
 
 if filereadable(expand("~/.vim/addi.vim")) 
