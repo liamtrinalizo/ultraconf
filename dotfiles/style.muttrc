@@ -81,7 +81,7 @@ bind index,pager \Cn sidebar-next-new
 bind index,pager B sidebar-toggle-visible
 
 # Default index colors:
-color index_number blue default
+color index_number cyan default
 color index yellow default '.*'
 color index_author red default '.*'
 color index_subject cyan default '.*'
@@ -113,7 +113,7 @@ color search brightmagenta default
 color status brightyellow black
 color hdrdefault brightgreen default
 color quoted green default
-color quoted1 blue default
+color quoted1 cyan default
 color quoted2 cyan default
 color quoted3 yellow default
 color quoted4 red default
@@ -124,7 +124,7 @@ color underline black default
 color normal default default
 
 # Regex highlighting:
-color header blue default ".*"
+color header cyan default ".*"
 color header brightmagenta default "^(From)"
 color header brightcyan default "^(Subject)"
 color header brightwhite default "^(CC|BCC)"
