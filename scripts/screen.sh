@@ -1,6 +1,6 @@
 #!/bin/bash
 
-brg="--brightness 1.5"
+brg="--brightness 1"
 
 while getopts 's:' OPTION; do
     case "$OPTION" in
