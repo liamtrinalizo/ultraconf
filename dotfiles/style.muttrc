@@ -20,6 +20,10 @@ set delete = yes
 set mail_check_stats
 set mailcap_path = ~/.config/mutt/mailcap
 set pager_stop = yes
+set save_history = 100
+set history = 1000
+set history_file = ~/.config/mutt/history
+set history_remove_dups = yes
 auto_view text/html
 auto_view application/pgp-encrypted
 alternative_order text/plain text/enriched text/html
