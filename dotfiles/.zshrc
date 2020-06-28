@@ -40,6 +40,8 @@ alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias ls="ls -hF --color=tty"
 alias xinit="xinit || exit"
 alias xclip2="xclip -selection clipboard"
+alias rem1="rem -m -b1 -q -g"
+alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | less"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 [ -d /cygdrive ] && alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
 [ -d /cygdrive ] && alias gvim='/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'

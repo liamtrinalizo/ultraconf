@@ -12,3 +12,5 @@ lpstat -a
 # Set USB printer as default
 lpadmin -d Canon_MX490_series
 
+# Print file on default printer
+lp <file>

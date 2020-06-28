@@ -13,5 +13,5 @@ rm -fr \
        ~/.viminfo \
        ~/.wget-hsts \
        ~/.wpa_cli_history \
-       ~/.wpa_cli_history \
+       ~/.xsel.log \
        ~/Document 
