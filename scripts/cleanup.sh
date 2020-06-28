@@ -1,17 +1,12 @@
 #!/bin/sh
 
-rm -fr \
-       ~/.*.log
-       ~/.bash_history \
-       ~/.gdb_history \
-       ~/.gnuplot_history \
+rm -f \
+       ~/.*.log \
+       ~/.*_history \
        ~/.lesshst \
-       ~/.octave_hist
-       ~/.psql_history \
-       ~/.python_history \
-       ~/.sqlite_history \
-       ~/.viminfo \
-       ~/.wget-hsts \
-       ~/.wpa_cli_history \
-       ~/.xsel.log \
-       ~/Document 
+       ~/.octave_hist \
+       ~/.wget-hsts 
+
+rmdir \
+       ~/Documents \
+       ~/Downloads

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+brg="--brightness 1"
+
 while getopts 's:' OPTION; do
     case "$OPTION" in
         s)
@@ -11,9 +13,10 @@ while getopts 's:' OPTION; do
                 echo "Double screen mode"
                 xrandr --output DP1 --right-of LVDS1
             elif [ $OPTARG == "3" ]; then
-                echo "Double screen mode"
-                xrandr --output DP1   --left-of HDMI1 \
-                       --output HDMI1 --left-of HDMI2
+                echo "Triple screen mode"
+                xrandr --output DP1   $brg --left-of HDMI1 \
+                       --output HDMI1 $brg --left-of HDMI2 \
+                       --output HDMI2 $brg
             fi
             ;;
         ?)

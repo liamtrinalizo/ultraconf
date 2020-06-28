@@ -1,4 +1,4 @@
-filetype plugin indent on
+filetype plugin on
 syntax on
 runtime ftplugin/man.vim
 set keywordprg=:Man
@@ -25,6 +25,8 @@ set wildmenu showcmd
 
 let g:netrw_banner = 0
 let g:netrw_sort_sequence = '[\/]$'
+let g:OmniCpp_DisplayMode = 1
+let g:OmniCpp_ShowPrototypeInAbbr = 1
 
 map g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 map g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
@@ -34,9 +36,11 @@ hi DiffChange ctermfg=white ctermbg=DarkBlue
 hi DiffDelete ctermfg=0     ctermbg=DarkRed
 hi DiffText   ctermfg=white ctermbg=DarkBlue
 hi Special    ctermfg=DarkRed cterm=Bold
-
-autocmd BufNewFile,BufRead *.yml,neomutt-*,COMMIT_EDITMSG set spell
+hi PmenuSel   ctermfg=white
 
 if filereadable(expand("~/.vim/addi.vim")) 
     source ~/.vim/addi.vim 
+    autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
+
+autocmd BufNewFile,BufRead *.yml,neomutt-*,COMMIT_EDITMSG setlocal spell
