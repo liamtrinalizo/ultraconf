@@ -2,11 +2,10 @@
 
 rm -f \
        ~/.*.log \
-       ~/.*history \
+       ~/.*_history \
        ~/.lesshst \
        ~/.octave_hist \
-       ~/.viminfo \
-       ~/.wget-hsts
+       ~/.wget-hsts 
 
 rmdir \
        ~/Documents \
