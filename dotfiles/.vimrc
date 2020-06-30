@@ -36,7 +36,7 @@ hi DiffChange ctermfg=white ctermbg=DarkBlue
 hi DiffDelete ctermfg=0     ctermbg=DarkRed
 hi DiffText   ctermfg=white ctermbg=DarkBlue
 hi Special    ctermfg=DarkRed cterm=Bold
-hi PmenuSel   ctermfg=white
+hi PmenuSel   ctermfg=black ctermbg=white
 
 if filereadable(expand("~/.vim/addi.vim")) 
     source ~/.vim/addi.vim 

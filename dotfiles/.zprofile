@@ -23,6 +23,7 @@ export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 export PYTHONPATH="$XDG_CONFIG_HOME/python"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export XAPPLRESDIR="$XDG_CONFIG_HOME/gnuplot/config"
-export XAUTHORITY="$XDG_CONFIG_HOME/X/.Xauthority"
+export XAUTHORITY="$XDG_CONFIG_HOME/X11/.Xauthority"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export BC_ENV_ARGS="$XDG_CONFIG_HOME/bc/bcrc"
