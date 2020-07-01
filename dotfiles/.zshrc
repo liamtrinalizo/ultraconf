@@ -3,7 +3,7 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory sharehistory incappendhistory  
 
-autoload -U compinit promptinit
+autoload -U compinit promptinit edit-command-line
 promptinit; prompt adam1 
 zstyle ':completion:*' menu select
 zmodload zsh/complist
@@ -16,6 +16,9 @@ bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
+zle -N edit-command-line
+bindkey '^xe' edit-command-line
+bindkey '^x^e' edit-command-line
 
 export KEYTIMEOUT=1
 export EDITOR=vim
@@ -38,11 +41,13 @@ alias l="ls -1Na --group-directories-first --color=auto"
 alias li="xbacklight -set"
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias ls="ls -hF --color=tty"
-alias xinit="xinit || exit"
 alias xclip2="xclip -selection clipboard"
 alias rem1="rem -m -b1 -q -g"
 alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | less"
 alias mbsync='mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
+alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 [ -d /cygdrive ] && alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
 [ -d /cygdrive ] && alias gvim='/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'

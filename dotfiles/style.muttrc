@@ -46,7 +46,7 @@ bind index D delete-message
 bind index U undelete-message
 bind index L limit
 bind index h noop
-macro index l '<display-message><sync-mailbox>'
+bind index l display-message
 bind index V toggle-new
 macro browser h '<change-dir><kill-line>..<enter>'
 bind index,pager H view-raw-message

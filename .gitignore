@@ -3,9 +3,7 @@
 *.out
 tags
 
-scripts/msxe.sh
-scripts/vcal
-scripts/pathConv.sh
+scripts/addi
 
 c/.idea/*
 vacuum/vac

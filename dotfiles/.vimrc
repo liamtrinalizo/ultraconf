@@ -16,11 +16,12 @@ set mouse=
 set nocompatible nomodeline nowrap
 set number relativenumber
 set path+=**
-"set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 set spelllang=en
 set t_Co=256
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
-set history=1000 viminfo+='1000,n~/.cache/vim/viminfo
+set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
+set history=1000 viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
 set wildmenu showcmd
 
 let g:netrw_banner = 0
@@ -36,10 +37,10 @@ hi DiffChange ctermfg=white ctermbg=DarkBlue
 hi DiffDelete ctermfg=0     ctermbg=DarkRed
 hi DiffText   ctermfg=white ctermbg=DarkBlue
 hi Special    ctermfg=DarkRed cterm=Bold
-hi PmenuSel   ctermfg=white
+hi PmenuSel   ctermfg=black ctermbg=white
 
-if filereadable(expand("~/.vim/addi.vim")) 
-    source ~/.vim/addi.vim 
+if filereadable(expand("$XDG_DATA_HOME/vim/addi.vim")) 
+    source $XDG_DATA_HOME/vim/addi.vim 
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
 
