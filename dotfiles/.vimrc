@@ -1,4 +1,4 @@
-filetype plugin on
+filetype plugin indent on
 syntax on
 runtime ftplugin/man.vim
 set keywordprg=:Man
