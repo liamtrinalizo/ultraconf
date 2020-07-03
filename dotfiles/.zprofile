@@ -1,5 +1,3 @@
-export PATH=$PATH:~/.cargo/bin
-
 # Default programs:
 export EDITOR="vim"
 export TERMINAL="st"
@@ -21,6 +19,7 @@ export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
 export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 export LESSHISTFILE="$XDG_CACHE_HOME/less"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc"
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/notmuchrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
