@@ -19,7 +19,7 @@ set path+=**
 set spelllang=en
 set t_Co=256
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
-set runtimepath=$XDG_CONFIG_HOME/vim,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
+set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 set history=1000 viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
 set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
 set wildmenu showcmd
@@ -44,4 +44,4 @@ if filereadable(expand("$XDG_DATA_HOME/vim/addi.vim"))
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
 
-autocmd BufNewFile,BufRead *.yml,neomutt-*,COMMIT_EDITMSG setlocal spell
+autocmd BufNewFile,BufRead jira,*.yml,neomutt-*,COMMIT_EDITMSG setlocal spell
