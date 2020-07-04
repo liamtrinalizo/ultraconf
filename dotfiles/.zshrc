@@ -3,12 +3,19 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory sharehistory incappendhistory  
 
+
 autoload -U compinit promptinit edit-command-line
-promptinit; prompt adam1 
 zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_option+=(globdots)
+
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+setopt PROMPT_SUBST
+PROMPT='%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
 
 bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
@@ -48,6 +55,7 @@ alias mbsync='mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
 alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
+alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
 [ -d /cygdrive ] && alias cl='/cygdrive/c/Program\ Files\ \(x86\)/Microsoft\ Visual\ Studio/2017/Community/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x64/cl.exe'
 [ -d /cygdrive ] && alias cmd='/cygdrive/c/Windows/system32/cmd.exe'
 [ -d /cygdrive ] && alias gvim='/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim81/gvim.exe'
