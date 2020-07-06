@@ -45,3 +45,4 @@ if filereadable(expand("$XDG_DATA_HOME/vim/addi.vim"))
 endif
 
 autocmd BufNewFile,BufRead jira,*.yml,neomutt-*,COMMIT_EDITMSG setlocal spell
+autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp !ctags -R .
