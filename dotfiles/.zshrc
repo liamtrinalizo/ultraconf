@@ -15,7 +15,7 @@ parse_git_branch() {
 }
 
 setopt PROMPT_SUBST
-PROMPT='%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
+PROMPT='%m:%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
 
 bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
