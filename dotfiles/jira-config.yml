@@ -1,0 +1,61 @@
+endpoint: http://jira
+user: MJ093
+editor: vi
+browser: brave-browser
+
+password-source: pass
+password-name: addi/domain
+
+custom-commands:
+  - name: mine
+    help: display issues assigned to me
+    args:
+      - name: PROJECT
+        required: false
+    script: |-
+      if [ -n {{args.PROJECT}} ]; then
+          # if `project: ...` configured just list the issues for current project
+          {{jira}} list --template mine --query "resolution = unresolved and assignee=currentuser() and project = {{args.PROJECT}} ORDER BY status asc, created" | \
+                   sed -e 's/To Do/1status/' -e 's/In Progress/2status/' -e 's/In Review/3status/' | \
+                   sort -b -t'|' -k 4 | \
+                   sed -e "s/1status/$(printf "\033[31mTo Do\033[0m")/" -e "s/2status/$(printf "\033[36mIn Progress\033[0m")/" -e "s/3status/$(printf "\033[32mIn Review\033[0m")/" -e "s/Martinez-Le_Ninan.Jean/Jean/g" | \
+                   column -t -s '|'
+      else
+          # otherwise list issues for all project
+          {{jira}} list --template mine --query "resolution = unresolved and assignee=currentuser() ORDER BY status asc, created" | \
+                   sed -e 's/To Do/1status/' -e 's/In Progress/2status/' -e 's/In Review/3status/' | \
+                   sort -b -t'|' -k 4 | \
+                   sed -e "s/1status/$(printf "\033[31mTo Do\033[0m")/" -e "s/2status/$(printf "\033[36mIn Progress\033[0m")/" -e "s/3status/$(printf "\033[32mIn Review\033[0m")/" -e "s/Martinez-Le_Ninan.Jean/Jean/g" | \
+                   column -t -s '|'
+      fi
+
+  - name: cal
+    help: display this week calendar of worklogs
+    script: |-
+      ~/scripts/addi/jiraWorklogs.sh | remind -c+@1mb1 -w$(($(tput cols) * 7 / 5 + 5)) - | cut -sd '|' -f 2-6 | \
+          sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
+
+
+  - name: addwork
+    help: add worklog at date $1 time $2 with issue $3 with current dir jira log
+    args:
+      - name: DATE
+        required: true
+      - name: TIME
+        required: true
+      - name: DURATION
+        required: true
+      - name: ISSUE
+        required: true
+    script: |-
+      {{jira}} worklog add -S $(date -d "-{{args.DATE}} day" +%Y-%m-%dT{{args.TIME}}:00:00.000+0100) -T {{args.DURATION}}h -m "$(< jira)" --noedit {{args.ISSUE}}
+
+
+  - name: activ
+    help: Print gitlab activity linked to account at relativ day $1
+    args:
+      - name: DATE
+        required: true
+    script: |-
+      curl -sH "Private-Token: $(pass addi/gitlab-token)" -X GET gitlab-srv01/api/v4/users/3/events\?action\=pushed\&after\=$(date -d "-$(({{args.DATE}} + 1)) day"  +%Y-%m-%d)\&before\=$(date -d "-$(({{args.DATE}} - 1)) day" +%Y-%m-%d) | jq -r '.[].push_data.commit_title'
+
