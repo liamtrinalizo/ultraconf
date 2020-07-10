@@ -48,3 +48,6 @@ endif
 
 autocmd BufNewFile,BufRead jira,neomutt-*,COMMIT_EDITMSG setlocal spell
 autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R .
+
+command! Browse setl buftype=nofile | 0put =v:oldfiles
+command! NewBrowse new +setl\ buftype=nofile | 0put =v:oldfiles

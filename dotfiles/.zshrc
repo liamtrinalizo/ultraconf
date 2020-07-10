@@ -55,6 +55,8 @@ alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
 
+color() { convert -size 100x100 canvas:#$1 png:- | display }
+
 [ -d /cygdrive ] && source ~/.config/zsh/zshrc-windows
 
 n()
