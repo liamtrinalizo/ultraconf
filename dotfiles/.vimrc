@@ -1,8 +1,9 @@
-filetype plugin on
+filetype plugin indent on
 syntax on
 runtime ftplugin/man.vim
 set keywordprg=:Man
 
+set autowrite
 set background=dark
 set cino+=(0g0
 set completeopt-=preview
@@ -38,10 +39,15 @@ hi DiffDelete ctermfg=0     ctermbg=DarkRed
 hi DiffText   ctermfg=white ctermbg=DarkBlue
 hi Special    ctermfg=DarkRed cterm=Bold
 hi PmenuSel   ctermfg=black ctermbg=white
+hi QuickFixLine ctermbg=DarkRed
 
 if filereadable(expand("$XDG_DATA_HOME/vim/addi.vim")) 
     source $XDG_DATA_HOME/vim/addi.vim 
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
 
-autocmd BufNewFile,BufRead jira,*.yml,neomutt-*,COMMIT_EDITMSG setlocal spell
+autocmd BufNewFile,BufRead jira,neomutt-*,COMMIT_EDITMSG setlocal spell
+autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R .
+
+command! Browse setl buftype=nofile | 0put =v:oldfiles
+command! NewBrowse new +setl\ buftype=nofile | 0put =v:oldfiles
