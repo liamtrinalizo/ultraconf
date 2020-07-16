@@ -3,7 +3,7 @@ syntax on
 runtime ftplugin/man.vim
 set keywordprg=:Man
 
-set autowrite
+set autowrite autoread
 set background=dark
 set cino+=(0g0
 set completeopt-=preview
@@ -47,7 +47,12 @@ if filereadable(expand("$XDG_DATA_HOME/vim/addi.vim"))
 endif
 
 autocmd BufNewFile,BufRead jira,neomutt-*,COMMIT_EDITMSG setlocal spell
-autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R .
+autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R --c++-kinds=+p --fields=+iaS --extras=+q
+if filereadable("./cscope.out")
+    cscope add cscope.out
+endif
 
-command! Browse setl buftype=nofile | 0put =v:oldfiles
+let OmniCpp_NamespaceSearch = 1
+
 command! NewBrowse new +setl\ buftype=nofile | 0put =v:oldfiles
+command! Make wa | silent make | redraw! | cw
