@@ -15,9 +15,14 @@ custom-commands:
     script: |-
       [ -n {{args.PROJECT}} ] && QUERYPROJECT="and project = {{args.PROJECT}}"
       {{jira}} list --template mine --query "resolution = unresolved and assignee=currentuser() $QUERYPROJECT ORDER BY status asc, created" | \
-               sed -e 's/To Do/1status/' -e 's/In Progress/2status/' -e 's/In Review/3status/' | \
+               sed -e 's/To Do/1status/'\
+                   -e 's/In Progress/2status/'\
+                   -e 's/In Review/3status/' | \
                sort -b -t'|' -k 4 | \
-               sed -e "s/1status/$(printf "\033[31mTo Do\033[0m")/" -e "s/2status/$(printf "\033[36mIn Progress\033[0m")/" -e "s/3status/$(printf "\033[32mIn Review\033[0m")/" -e "s/Martinez-Le_Ninan.Jean/Jean/g" | \
+               sed -e "s/1status/$(printf "\033[31mTo Do\033[0m")/" \
+                   -e "s/2status/$(printf "\033[36mIn Progress\033[0m")/" \
+                   -e "s/3status/$(printf "\033[32mIn Review\033[0m")/" \
+                   -e "s/Martinez-Le_Ninan.Jean/Jean/g" | \
                column -t -s '|'
 
   - name: in-review
