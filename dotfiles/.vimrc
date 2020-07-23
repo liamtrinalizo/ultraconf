@@ -54,5 +54,5 @@ endif
 
 let OmniCpp_NamespaceSearch = 1
 
-command! Browse vnew +setl\ buftype=nofile | 0put =v:oldfiles | %s/ /\\ /g
+command! Browse vnew +setl\ buftype=nofile | 0put =v:oldfiles | %s/ /\\ /g | noh
 command! Make wa | silent make | redraw! | cw

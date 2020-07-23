@@ -13,7 +13,7 @@ custom-commands:
       - name: PROJECT
         required: false
     script: |-
-      [ -n {{args.PROJECT}} ] && QUERYPROJECT="and project = {{args.PROJECT}}"
+      QUERYPROJECT="{{if args.PROJECT}}and project = {{args.PROJECT}}{{end}}"
       {{jira}} list --template mine --query "resolution = unresolved and assignee=currentuser() $QUERYPROJECT ORDER BY status asc, created" | \
                sed -e 's/To Do/1status/'\
                    -e 's/In Progress/2status/'\
@@ -39,8 +39,7 @@ custom-commands:
       - name: USER
         required: false
     script: |-
-      USER="MJ093"
-      [ -n {{args.User}} ] && USER="{{args.USER}}"
+      USER={{if args.USER}}{{args.USER}}{{else}}MJ093{{end}}
       ~/scripts/addi/jiraWorklogs.sh $USER | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 5)) - $(date -d 'last monday -7 days' +'%d %b %Y')  | cut -d '|' -f 1-6 | cut -d '+' -f 1-6 | sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
 
   - name: addwork
