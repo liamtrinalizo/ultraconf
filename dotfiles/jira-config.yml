@@ -40,7 +40,7 @@ custom-commands:
         required: false
     script: |-
       USER={{if args.USER}}{{args.USER}}{{else}}MJ093{{end}}
-      ~/scripts/addi/jiraWorklogs.sh $USER | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 5)) - $(date -d 'last monday -7 days' +'%d %b %Y')  | cut -d '|' -f 1-6 | cut -d '+' -f 1-6 | sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
+      ~/scripts/jiraWorklogs.sh $USER | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 5)) - $(date -d 'last monday -7 days' +'%d %b %Y')  | cut -d '|' -f 1-6 | cut -d '+' -f 1-6 | sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
 
   - name: addwork
     help: add worklog at date $1 time $2 with issue $3 with current dir jira log
