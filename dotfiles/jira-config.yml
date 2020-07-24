@@ -15,14 +15,18 @@ custom-commands:
     script: |-
       QUERYPROJECT="{{if args.PROJECT}}and project = {{args.PROJECT}}{{end}}"
       {{jira}} list --template mine --query "resolution = unresolved and assignee=currentuser() $QUERYPROJECT ORDER BY status asc, created" | \
-               sed -e 's/To Do/1status/'\
-                   -e 's/In Progress/2status/'\
-                   -e 's/In Review/3status/' | \
-               sort -b -t'|' -k 4 | \
-               sed -e "s/1status/$(printf "\033[31mTo Do\033[0m")/" \
-                   -e "s/2status/$(printf "\033[36mIn Progress\033[0m")/" \
-                   -e "s/3status/$(printf "\033[32mIn Review\033[0m")/" \
-                   -e "s/Martinez-Le_Ninan.Jean/Jean/g" | \
+               sed -e 's/To Do/status1/'\
+                   -e 's/In Progress/status2/'\
+                   -e 's/In Review/status3/' | \
+               sort -b -t'|' -k 5 | \
+               sed -e "s/status1/$(printf "\033[31mTo Do\033[0m")/" \
+                   -e "s/status2/$(printf "\033[36mIn Progress\033[0m")/" \
+                   -e "s/status3/$(printf "\033[32mIn Review\033[0m")/" \
+                   -e "s/Bug/$(printf "\033[31m✗\033[0m")/" \
+                   -e "s/Improvement/$(printf "\033[32m▲\033[0m")/" \
+                   -e "s/Sub-task/$(printf "\033[36m◘\033[0m")/" \
+                   -e "s/Task/$(printf "\033[36m◙\033[0m")/" \
+                   -e "s/Stoesser.Achim#1/SA037/g" | \
                column -t -s '|'
 
   - name: in-review
