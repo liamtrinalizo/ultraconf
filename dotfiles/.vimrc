@@ -21,14 +21,16 @@ set spelllang=en
 set t_Co=256
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
 set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
-set history=1000 viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+set history=1000 viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo undofile
 set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
 set wildmenu showcmd
 
 let g:netrw_banner = 0
 let g:netrw_sort_sequence = '[\/]$'
+let g:netrw_liststyle = 3
 let g:OmniCpp_DisplayMode = 1
 let g:OmniCpp_ShowPrototypeInAbbr = 1
+let g:OmniCpp_NamespaceSearch = 1
 
 map g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 map g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
@@ -52,7 +54,6 @@ if filereadable("./cscope.out")
     cscope add cscope.out
 endif
 
-let OmniCpp_NamespaceSearch = 1
 
 command! Browse vnew +setl\ buftype=nofile | 0put =v:oldfiles | %s/ /\\ /g | noh
 command! Make wa | silent make | redraw! | cw

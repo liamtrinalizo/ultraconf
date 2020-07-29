@@ -6,7 +6,7 @@ accept_media		        text/html, text/*;q=0.5, image/*, application/*
 active_color		        cyan
 active_style		        0
 alt_entity		            0
-anchor_color		        blue
+anchor_color		        green
 argv_is_url		            1
 auto_detect		            2
 auto_image		            1

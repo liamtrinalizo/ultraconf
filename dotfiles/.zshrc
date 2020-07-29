@@ -1,7 +1,7 @@
 HISTFILE=~/.cache/zsh/histfile
 HISTSIZE=10000
 SAVEHIST=10000
-setopt appendhistory sharehistory incappendhistory  
+setopt appendhistory sharehistory incappendhistory HIST_SAVE_NO_DUPS
 
 autoload -U compinit promptinit edit-command-line
 zstyle ':completion:*' menu select
