@@ -57,14 +57,3 @@ alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
 
 color() { convert -size 100x100 canvas:#$1 png:- | display }
-
-[ -d /cygdrive ] && source ~/.config/zsh/zshrc-windows
-
-n()
-{
-    [ -n $NNNLVL ] && [ "${NNNLVL:-0}" -ge 1 ] && echo "nnn is already running" && return
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
-
-    nnn "$@"
-    [ -f "$NNN_TMPFILE" ] && . "$NNN_TMPFILE"; rm -f "$NNN_TMPFILE" > /dev/null
-}
