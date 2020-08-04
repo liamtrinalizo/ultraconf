@@ -1,0 +1,120 @@
+#compdef jira
+autoload -U compinit && compinit
+autoload -U bashcompinit && bashcompinit
+
+typeset -A opt_args
+
+_arguments -C \
+  '1:cmd:->cmds' \
+  '2:subcmd:->subcmds' \
+  '*:: :->args' \
+&& ret=0
+
+case "$state" in
+  (cmds)
+     local commands; commands=(
+	  'help:Show help.'
+	  'version:Prints version'
+	  'acknowledge:Transition issue to acknowledge state'
+	  'assign:Assign user to issue'
+	  'attach:master cmd to manager attachment'
+	  'backlog:Transition issue to Backlog state'
+	  'block:Mark issues as blocker'
+	  'browse:Open issue in browser'
+	  'close:Transition issue to close state'
+	  'comment:Add comment to issue'
+	  'component add:Add component'
+	  'components:Show components for a project'
+	  'create:Create issue'
+	  'createmeta:View create metadata'
+	  'done:Transition issue to Done state'
+	  'dup:Mark issues as duplicate'
+	  'edit:Edit issue details'
+	  'editmeta:View edit metadata'
+	  'epic:Master cmd to manager epicness'
+	  'export-templates:Export templates for customizations'
+	  'fields:Prints all fields, both System and Custom'
+	  'in-progress:Transition issue to Progress state'
+	  'issuelink:Link two issues'
+	  'issuelinktypes:Show the issue link types'
+	  'issuetypes:Show issue types for a project'
+	  'labels:Master cmd to manager labels'
+	  'list:Prints list of issues for given search criteria'
+	  'login:Attempt to login into jira server'
+	  'logout:Deactivate session with Jira server'
+	  'rank:Mark issues as blocker'
+	  'reopen:Transition issue to reopen state'
+	  'request:Open issue in requestr'
+	  'resolve:Transition issue to resolve state'
+	  'start:Transition issue to start state'
+	  'stop:Transition issue to stop state'
+	  'subtask:Subtask issue'
+	  'take:Assign issue to yourself'
+	  'todo:Transition issue to To Do state'
+	  'transition:Transition issue to given state'
+	  'transitions:List valid issue transitions'
+	  'transmeta:List valid issue transitions'
+	  'unassign:Unassign an issue'
+	  'unexport-templates:Remove unmodified exported templates'
+	  'view:Prints issue details'
+	  'vote:Vote up/down an issue'
+	  'watch:Add/Remove watcher to issue'
+	  'worklog:Master cmd to manage worklogs'
+	  'session:Attempt to login into jira server'
+	  'mine:display issues assigned to me'
+	  'in-review:transition issue to In Review'
+	  'cal:display this week calendar of worklogs'
+	  'addwork:add worklog at date $1 time $2 with issue $3 with current dir jira log'
+	  'activ:Print gitlab activity linked to account at relativ day $1'
+	  'show:Print issue details like "view"'
+     )
+
+      _describe -t commands 'command' commands && ret=0
+  ;;
+  (subcmds)
+	case $line[1] in
+      (attach)
+        local subcmds; subcmds=(
+		  'create:Attach file to issue'
+		  'get:Fetch attachment'
+		  'list:Prints attachment details for issue'
+		  'remove:Delete attachment'
+        )
+        _describe -t subcmds 'subcmd' subcmds && ret=0
+      ;;
+      (epic)
+        local subcmds; subcmds=(
+		  'add:Add issues to Epic'
+		  'create:Create Epic'
+		  'list:Prints list of issues for an epic with optional search criteria'
+		  'remove:Remove issues from Epic'
+        )
+        _describe -t subcmds 'subcmd' subcmds && ret=0
+      ;;
+      (label)
+        local subcmds; subcmds=(
+		  'add:Add labels to an issue'
+		  'remove:Remove labels from an issue'
+		  'set:Set labels on an issue'
+        )
+        _describe -t subcmds 'subcmd' subcmds && ret=0
+      ;;
+      (worklog)
+        local subcmds; subcmds=(
+		  'add:Add a worklog to an issue'
+		  'list:Prints the worklog data for given issue'
+        )
+        _describe -t subcmds 'subcmd' subcmds && ret=0
+      ;;
+	esac
+  ;;
+  (args)
+      local issues;
+      while read LINE; 
+		  do issues+=($LINE)
+      done < /tmp/jiraTasks
+      _describe -t issues 'issue' issues && ret=0
+  ;;
+esac
+
+return 1
