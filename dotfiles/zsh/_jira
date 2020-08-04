@@ -106,6 +106,12 @@ case "$state" in
         )
         _describe -t subcmds 'subcmd' subcmds && ret=0
       ;;
+      (*)
+          local issues;
+          while read LINE; 
+              do issues+=($LINE)
+          done < /tmp/jiraTasks
+          _describe -t issues 'issue' issues && ret=0
 	esac
   ;;
   (args)
