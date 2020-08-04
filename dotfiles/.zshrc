@@ -1,3 +1,4 @@
+fpath=($fpath $XDG_CONFIG_HOME/zsh)
 HISTFILE=~/.cache/zsh/histfile
 HISTSIZE=10000
 SAVEHIST=10000
