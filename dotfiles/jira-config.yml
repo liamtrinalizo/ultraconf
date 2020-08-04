@@ -18,7 +18,7 @@ custom-commands:
                sed -e 's/To Do/status1/'\
                    -e 's/In Progress/status2/'\
                    -e 's/In Review/status3/' | \
-               sort -b -t'|' -k 5 | \
+                   sort -b -t'|' -k5 -k1 | \
                sed -e "s/status1/$(printf "\033[31mTo Do\033[0m")/" \
                    -e "s/status2/$(printf "\033[36mIn Progress\033[0m")/" \
                    -e "s/status3/$(printf "\033[32mIn Review\033[0m")/" \
@@ -44,7 +44,7 @@ custom-commands:
         required: false
     script: |-
       USER={{if args.USER}}{{args.USER}}{{else}}MJ093{{end}}
-      ~/scripts/jiraWorklogs.sh $USER | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 5)) - $(date -d 'last monday -7 days' +'%d %b %Y')  | cut -d '|' -f 1-6 | cut -d '+' -f 1-6 | sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
+      ~/scripts/jiraWorklogs.sh $USER | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 5)) - $(date -d 'last week' +'%d %b %Y')  | cut -d '|' -f 1-6 | cut -d '+' -f 1-6 | sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
 
   - name: addwork
     help: add worklog at date $1 time $2 with issue $3 with current dir jira log
@@ -71,3 +71,11 @@ custom-commands:
         required: true
     script: |-
       curl -sH "Private-Token: $(pass addi/gitlab-token)" -X GET gitlab-srv01/api/v4/users/3/events\?action\=pushed\&after\=$(date -d "-$(({{args.DATE}} + 1)) day"  +%Y-%m-%d)\&before\=$(date -d "-$(({{args.DATE}} - 1)) day" +%Y-%m-%d) | jq -r '.[].push_data.commit_title'
+
+  - name: show
+    help: Print issue details like "view"
+    args:
+      - name: ISSUE
+        required: true
+    script: |-
+      {{jira}} view {{args.ISSUE}}

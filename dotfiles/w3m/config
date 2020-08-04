@@ -30,7 +30,7 @@ dirlist_cmd		            file:///$LIB/dirlist.cgi
 disable_secret_security_check	0
 display_borders		        1
 display_charset		        UTF-8
-display_image		        0
+display_image		        1
 display_ins_del		        1
 display_lineinfo	        1
 display_link		        0
@@ -71,7 +71,7 @@ http_proxy
 https_proxy		        
 ignore_null_img_alt	        1
 ignorecase_search	        1
-image_color		            green
+image_color		            pink
 image_map_list		        1
 image_scale		            50
 imgdisplay		            w3mimgdisplay
@@ -85,7 +85,7 @@ mailto_options		        1
 mark		                0
 mark_all_pages		        0
 mark_color		            cyan
-max_load_image		        4
+max_load_image		        100
 meta_refresh		        0
 mime_types		            ~/.mime.types, /etc/mime.types
 multicol		            0

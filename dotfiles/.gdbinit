@@ -105,7 +105,7 @@ set $64BITS = 0
 
 set confirm off
 set verbose off
-set history filename ~/.gdb_history
+set history filename ~/.local/share/gdb/history
 set history save
 
 set output-radix 0x10
@@ -132,7 +132,7 @@ set $BLACK = 0
 set $RED = 1
 set $GREEN = 2
 set $YELLOW = 3
-set $BLUE = 4
+set $BLUE = 6
 set $MAGENTA = 5
 set $CYAN = 6
 set $WHITE = 7
@@ -166,7 +166,7 @@ define color
 	 			else
 	 				# BLUE
 	 				if $arg0 == 4
-	 					echo \033[34m
+	 					echo \033[36m
 	 				else
 	 					# MAGENTA
 	 					if $arg0 == 5

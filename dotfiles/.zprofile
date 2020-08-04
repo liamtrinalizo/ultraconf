@@ -3,7 +3,7 @@ export EDITOR="vim"
 export TERMINAL="st"
 export READER="zathura"
 export FILE="nnn"
-export GPG_TTY="$(tty)"
+#export GPG_TTY="$(tty)"
 
 export HISTSIZE=10000
 export HISTFILESIZE=10000

@@ -16,6 +16,9 @@ parse_git_branch() {
 setopt PROMPT_SUBST
 PROMPT='%m:%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
 
+export PATH=$PATH:/home/jean/.local/bin
+export PYTHONPATH=$PYTHONPATH:/usr/lib64/python3.7/site-packages:~/.local/lib/python3.7/site-packages
+
 bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey -M menuselect 'h' vi-backward-char
@@ -55,5 +58,7 @@ alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
+alias gdb="gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init"
+
 
 color() { convert -size 100x100 canvas:#$1 png:- | display }
