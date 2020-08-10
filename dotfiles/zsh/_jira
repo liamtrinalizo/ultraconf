@@ -3,11 +3,14 @@ autoload -U compinit && compinit
 
 typeset -A opt_args
 
-MYISSUES=()
-while read -r LINE; do
-    MYISSUES+=($LINE)
-    echo $LINE >> /tmp/test
-done < <(jira list -q 'assignee = currentUser() AND resolution = Unresolved' | tr 'A-Z' 'a-z')
+completeUserIssues() {
+    MYISSUES=()
+    while read -r LINE; do
+        MYISSUES+=($LINE)
+        echo $LINE >> /tmp/test
+    done < <(jira list -q 'assignee = currentUser() AND resolution = Unresolved' | tr 'A-Z' 'a-z')
+    _describe -t MYISSUES 'issue' MYISSUES && ret=0
+}
 
 _arguments -C \
   '1:cmd:->cmds' \
@@ -112,12 +115,11 @@ case "$state" in
         _describe -t subcmds 'subcmd' subcmds && ret=0
       ;;
       (*)
-          _describe -t MYISSUES 'issue' MYISSUES && ret=0
+          completeUserIssues
     esac
   ;;
   (args)
-      local issues;
-      _describe -t MYISSUES 'issue' MYISSUES && ret=0
+      completeUserIssues
   ;;
 esac
 
