@@ -1,6 +1,7 @@
-text/plain; $EDITOR %s ;
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
-image/*; sxiv %s;
-video/*; mpv %s;
-text/calendar; ~/scripts/addi/vcal -all -; copiousoutput;
 application/pdf; zathura -;
+image/*; sxiv %s;
+text/*; vi %s;
+text/calendar; ~/scripts/addi/vcal -all -; copiousoutput;
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/plain; $EDITOR %s ;
+video/*; mpv %s;

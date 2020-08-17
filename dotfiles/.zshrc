@@ -10,6 +10,7 @@ zmodload zsh/complist
 compinit
 _comp_option+=(globdots)
 
+
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
@@ -17,6 +18,7 @@ parse_git_branch() {
 setopt PROMPT_SUBST
 PROMPT='%m:%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
 
+export GPG_TTY=$(tty)
 export PATH=$PATH:/home/jean/.local/bin
 export PYTHONPATH=$PYTHONPATH:/usr/lib64/python3.7/site-packages:~/.local/lib/python3.7/site-packages
 

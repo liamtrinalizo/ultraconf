@@ -24,6 +24,7 @@ set save_history = 100
 set history = 1000
 set history_file = ~/.config/mutt/history
 set history_remove_dups = yes
+set change_folder_next = no
 auto_view text/html
 auto_view application/pgp-encrypted
 alternative_order text/plain text/enriched text/html
@@ -31,8 +32,10 @@ bind index,pager i noop
 bind index,pager g noop
 bind index \Cf noop
 bind index N noop
+bind index c noop
 
 # General rebindings
+macro index c "<change-folder>\Cw\Cw\Cw"
 bind attach <return> view-mailcap
 bind attach l view-mailcap
 bind editor <space> noop

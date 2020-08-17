@@ -49,7 +49,8 @@ if filereadable(expand("$XDG_DATA_HOME/vim/addi.vim"))
 endif
 
 autocmd BufNewFile,BufRead jira,neomutt-*,COMMIT_EDITMSG setlocal spell
-autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R --c++-kinds=+p --fields=+iaS --extras=+q
+autocmd BufNewFile,BufRead,BufEnter *.h,*.hpp,*.c,*.cc,*.cpp set omnifunc=omni#cpp#complete#Main
+autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
 if filereadable("./cscope.out")
     cscope add cscope.out
 endif
