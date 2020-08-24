@@ -12,6 +12,10 @@ completeUserIssues() {
     _describe -t MYISSUES 'issue' MYISSUES && ret=0
 }
 
+# TODO project list completion
+# TODO finished issues completion for reopen
+# TODO script for watch list
+
 _arguments -C \
   '1:cmd:->cmds' \
   '2:subcmd:->subcmds' \

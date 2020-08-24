@@ -24,13 +24,8 @@ function parseDuration {
 }
 export -f parseDuration
 
-#echo "$(echo $DATA | jq -Mr '.[].timeSpent')"
-#DURATION=$(echo "$(echo $DATA | jq -Mr '.[].timeSpent')" | parseDuration)
-#echo "$(paste "$DURATION" "$DURATION")"
-
 for I in $(seq 0 $(($(echo $DATA | jq 'length')-1))); do
     echo -n $(echo $DATA | jq -r ".[$I]| \"REM \(.started | strptime(\"%Y-%m-%dT%H:%M:%S.000%z\")| strftime(\"%d %b AT %H:%M\")) \""); echo -n " "
     echo -n $(echo $DATA | jq -r ".[$I]| .timeSpent" | parseDuration); echo -n " "
     echo    $(echo $DATA | jq -r ".[$I]| \"SPECIAL COLOR 128 128 255 \(.comment)\"")
 done
-
