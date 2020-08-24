@@ -10,7 +10,6 @@ set completeopt-=preview
 set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
 set encoding=utf8
-set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 
 set hlsearch incsearch showmatch
 set keywordprg=:Man
 set mouse=
@@ -19,7 +18,7 @@ set number relativenumber
 set path+=**
 set spelllang=en
 set t_Co=256
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab autoindent
+set tabstop=4 softtabstop=0 shiftwidth=4 smarttab autoindent
 set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 set history=1000 viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo undofile
 set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
