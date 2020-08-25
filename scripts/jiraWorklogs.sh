@@ -5,7 +5,7 @@ DATA=$(jira list -q "worklogAuthor = $1 and worklogDate >= \"$(date -d 'last mon
        xargs -n1 jira worklog list -t debug | \
        jq -M -s "[[.[].worklogs[] | \
                select(.author.name == \"$1\")| \
-               select(.started  | strptime(\"%Y-%m-%dT%H:%M:%S.000%z\") | mktime | select(. > $(date -d 'last monday -7 days' +%s)))] | sort_by(.started) | .[] | {comment, started, timeSpent}]" | \
+               select(.started  | strptime(\"%Y-%m-%dT%H:%M:%S.000%z\") | mktime | select(. > $(date -d 'last monday -7 days' +%s)))] | sort_by(.started) | .[] | {issueId, comment, started, timeSpent}]" | \
                sed -e's/\(\\r\?\\n\)\+/. /g' -e's/\*//g')
 
 function parseDuration {
@@ -24,8 +24,15 @@ function parseDuration {
 }
 export -f parseDuration
 
+function parseIssueId {
+	xargs -i'%' jira list -q'issuekey = %' | cut -d':' -f1
+}
+export -f parseIssueId
+
 for I in $(seq 0 $(($(echo $DATA | jq 'length')-1))); do
     echo -n $(echo $DATA | jq -r ".[$I]| \"REM \(.started | strptime(\"%Y-%m-%dT%H:%M:%S.000%z\")| strftime(\"%d %b AT %H:%M\")) \""); echo -n " "
     echo -n $(echo $DATA | jq -r ".[$I]| .timeSpent" | parseDuration); echo -n " "
-    echo    $(echo $DATA | jq -r ".[$I]| \"SPECIAL COLOR 128 128 255 \(.comment)\"")
+	echo -n "SPECIAL COLOR 128 128 255 {"
+    echo -n $(echo $DATA | jq -r ".[$I]| .issueId" | parseIssueId); echo -n "} "
+	echo    $(echo $DATA | jq -r ".[$I]| .comment")
 done
