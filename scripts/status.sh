@@ -12,12 +12,12 @@ while getopts 'bgmr' opt; do
             fi ;;
         g)
             if [ -f /tmp/gpg_needs_key ]; then
-                echo -n " G"
+                echo -n " 🔑 " 
             fi ;;
         m) 
             FILECOUNT=$(ls -l ~/.local/share/mail/work/INBOX/new/ | wc -l)
             if [ "$FILECOUNT" -gt 1 ]; then
-                echo -n " M" 
+                echo -n " 📧 " 
             fi ;;
         r)
             < /tmp/remind head -1 ;;
