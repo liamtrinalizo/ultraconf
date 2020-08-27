@@ -22,11 +22,16 @@ custom-commands:
                sed -e "s/status1/$(printf "\033[31mTo Do\033[0m")/" \
                    -e "s/status2/$(printf "\033[36mIn Progress\033[0m")/" \
                    -e "s/status3/$(printf "\033[32mIn Review\033[0m")/" \
-                   -e "s/Bug/$(printf "\033[31m✗\033[0m")/" \
-                   -e "s/Improvement/$(printf "\033[32m▲\033[0m")/" \
-                   -e "s/Sub-task/$(printf "\033[36m◘\033[0m")/" \
-                   -e "s/Task/$(printf "\033[36m◙\033[0m")/" \
-                   -e "s/Stoesser.Achim#1/SA037/g" | \
+                   -e "s/Bug/🐞/" \
+                   -e "s/Improvement/🧪/" \
+                   -e "s/Sub-task/▫️ /" \
+                   -e "s/Task/◽/" \
+                   -e "s/Highest/🔥🔥🔥/" \
+                   -e "s/High/🔥/" \
+                   -e "s/Medium/➖/" \
+                   -e "s/Low/💤/" \
+                   -e "s/Lowest/💤💤💤/" \
+                   -e "s/Stoesser.Achim#1/SA037/" | \
                column -t -s '|'
 
   - name: in-review
