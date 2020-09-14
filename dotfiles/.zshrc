@@ -46,22 +46,23 @@ bindkey '^[OA'  up-line-or-beginning-search
 bindkey '^[[B'  down-line-or-beginning-search  # Arrow down
 bindkey '^[OB'  down-line-or-beginning-search
 
+#alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias al="alsamixer"
 alias cal="cal -m"
+alias curl="curl --silent"
+alias gdb="gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init"
 alias grep="grep --color"
 alias l="ls -1Na --group-directories-first --color=auto"
 alias li="xbacklight -set"
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias ls="ls -hF --color=tty"
-alias xclip2="xclip -selection clipboard"
+alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
+alias mbsync='mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
 alias rem1="rem -m -b1 -q -g"
 alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | less"
-alias mbsync='mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
 alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
-#alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
-alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
-alias gdb="gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init"
+alias xclip2="xclip -selection clipboard"
 
 
 color() { convert -size 100x100 canvas:#$1 png:- | display }

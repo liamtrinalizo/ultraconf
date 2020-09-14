@@ -28,7 +28,7 @@ default_url		            1
 dictcommand		            file:///$LIB/w3mdict.cgi
 dirlist_cmd		            file:///$LIB/dirlist.cgi
 disable_secret_security_check	0
-display_borders		        1
+display_borders		        0
 display_charset		        UTF-8
 display_image		        1
 display_ins_del		        1
@@ -43,7 +43,7 @@ editor		                /usr/bin/vi
 emacs_like_lineedit	        0
 ext_dirlist		            1
 ext_halfdump		        0
-ext_image_viewer	        display
+ext_image_viewer	        sxiv
 extbrowser		            sh -c 'printf %s "$0" | xclip -selection primary'
 extbrowser2		            surf
 extbrowser3		            display
