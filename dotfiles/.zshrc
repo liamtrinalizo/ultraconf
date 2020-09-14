@@ -16,7 +16,7 @@ parse_git_branch() {
 }
 
 setopt PROMPT_SUBST
-PROMPT='%m:%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
+PROMPT='%n@%m:%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
 
 export GPG_TTY=$(tty)
 export PATH=$PATH:/home/jean/.local/bin
