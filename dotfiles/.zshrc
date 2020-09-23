@@ -57,12 +57,11 @@ alias li="xbacklight -set"
 alias ll="ls -Nlhav --group-directories-first --color=auto"
 alias ls="ls -hF --color=tty"
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
-alias mbsync='mbsync -c "$XDG_CONFIG_HOME"/isync/mbsyncrc'
+alias mutt="neomutt"
 alias rem1="rem -m -b1 -q -g"
 alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | less"
 alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias xclip2="xclip -selection clipboard"
-
 
 color() { convert -size 100x100 canvas:#$1 png:- | display }
