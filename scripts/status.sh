@@ -17,7 +17,7 @@ while getopts 'bgmr' opt; do
         m) 
             FILECOUNT=$(ls -l ~/.local/share/mail/work/INBOX/new/ | wc -l)
             if [ "$FILECOUNT" -gt 1 ]; then
-                echo -n " 📧 " 
+                echo -n " 📬 " 
             fi ;;
         r)
             < /tmp/remind head -1 ;;

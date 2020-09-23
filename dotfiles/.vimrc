@@ -33,6 +33,7 @@ let g:OmniCpp_NamespaceSearch = 1
 
 map g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 map g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
+map gZ :write<CR>
 
 hi DiffAdd    ctermfg=0     ctermbg=DarkGreen
 hi DiffChange ctermfg=white ctermbg=DarkBlue
