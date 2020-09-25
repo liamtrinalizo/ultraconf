@@ -1,7 +1,5 @@
 #!/bin/sh
 
-REQUEST="$(< /dev/stdin)"
-
 sed \
 	-e 's/^METHOD:REQUEST/METHOD:REPLY/' \
 	-e '/^ORGANIZER;.*/ d' \
@@ -11,7 +9,7 @@ sed \
 	-e 's/^X-MICROSOFT-CDO-BUSYSTATUS:TENTATIVE/X-MICROSOFT-CDO-BUSYSTATUS:BUSY/' \
 	-e 's/^DTSTAMP:\d\+Z/DTSTAMP:$(date +%s)Z/' \
 	-e '/^BEGIN:VALARM/,/^END:VALARM/ d' \
-	$1 > /tmp/vcalReply
+	> /tmp/vcalReply
 
 DTSTART=$(sed -nr '/BEGIN:VEVENT/,/END:VEVENT/ {/DTSTART/ { s/^.*:(.*)T(..)(..)(..)/\1 \2:\3:\4/ p}}' /tmp/vcalReply | xargs -i date -d '{}' +%s)
 DTEND=$(  sed -nr '/BEGIN:VEVENT/,/END:VEVENT/ {/DTEND/   { s/^.*:(.*)T(..)(..)(..)/\1 \2:\3:\4/ p}}' /tmp/vcalReply | xargs -i date -d '{}' +%s)
