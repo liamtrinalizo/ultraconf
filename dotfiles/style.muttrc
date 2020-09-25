@@ -62,7 +62,7 @@ bind editor <Tab> complete-query
 macro index c "<change-folder>\Cw\Cw\Cw"
 
 bind pager O noop
-macro index,pager O "<shell-escape>mbsync -c ~/.config/isync/mbsyncrc -a && rm -rf /tmp/gpg_needs_key<enter><enter>"
+macro index,pager O "<shell-escape>(mbsync -c ~/.config/isync/mbsyncrc -a > /dev/null 2>&1 && rm -rf /tmp/gpg_needs_key)&<enter><enter>"
 
 macro index,pager a "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
