@@ -14,7 +14,7 @@ completeUserIssues() {
 completeProjects() {
 	PROJECTS=()
 	# Direct query on jira API since there is no list projects cmd on go-jira
-	for LINE in $(curl -s -X GET -u MJ093:$(pass addi/domain) -H 'Content-Type: application/json' jira/rest/api/2/project | jq -r '.[] | .key' | tr 'A-Z' 'a-z'); do 
+	for LINE in $(curl -s -X GET -u MJ093:$(pass addi/domain) -H 'Content-Type: application/json' jira/rest/api/2/project | jq -r '.[] | .key'); do 
 		PROJECTS+=($LINE)
 	done 
 	_describe -t PROJECTS 'project' PROJECTS && ret=0
