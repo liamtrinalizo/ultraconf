@@ -3,7 +3,7 @@ syntax on
 runtime ftplugin/man.vim
 set keywordprg=:Man
 
-set autowrite autoread
+set autowriteall autoread
 set background=dark
 set cino+=(0g0
 set completeopt-=preview
@@ -34,7 +34,7 @@ let g:OmniCpp_NamespaceSearch = 1
 
 map g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 map g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
-map gZ :write<CR>
+map gz :wall<CR>
 
 hi DiffAdd    ctermfg=0     ctermbg=DarkGreen
 hi DiffChange ctermfg=white ctermbg=DarkBlue
@@ -49,7 +49,7 @@ if filereadable(expand("$XDG_DATA_HOME/vim/addi.vim"))
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
 
-autocmd BufNewFile,BufRead jira,neomutt-*,COMMIT_EDITMSG,*.yml setlocal spell
+autocmd BufNewFile,BufRead *.jira,neomutt-*,COMMIT_EDITMSG,*.yml setlocal spell
 autocmd BufNewFile,BufRead,BufEnter *.h,*.hpp,*.c,*.cc,*.cpp set omnifunc=omni#cpp#complete#Main
 autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
 if filereadable("./cscope.out")
