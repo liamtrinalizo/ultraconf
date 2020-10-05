@@ -25,6 +25,7 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/notmuchrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
+export PASSWORD_STORE_X_SELECTION="xclip -selection primary"
 export PYTHONPATH="$XDG_CONFIG_HOME/python"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export XAPPLRESDIR="$XDG_CONFIG_HOME/gnuplot/config"
