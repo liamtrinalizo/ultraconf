@@ -12,7 +12,7 @@ _comp_option+=(globdots)
 
 
 parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }
 
 setopt PROMPT_SUBST
@@ -24,6 +24,8 @@ export PYTHONPATH=$PYTHONPATH:/usr/lib64/python3.7/site-packages:~/.local/lib/py
 
 bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
+bindkey '^[[Z' reverse-menu-complete
+bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
@@ -50,7 +52,7 @@ bindkey '^[OB'  down-line-or-beginning-search
 alias al="alsamixer"
 alias cal="cal -m"
 alias curl="curl --silent"
-alias gdb="gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init"
+alias gdb="gdb -nh -x $XDG_CONFIG_HOME/gdb/init"
 alias grep="grep --color"
 alias l="ls -1Na --group-directories-first --color=auto"
 alias li="xbacklight -set"
@@ -63,5 +65,7 @@ alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | le
 alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias xclip2="xclip -selection clipboard"
+
+
 
 color() { convert -size 100x100 canvas:#$1 png:- | display }
