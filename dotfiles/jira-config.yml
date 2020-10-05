@@ -63,10 +63,13 @@ custom-commands:
       - name: DURATION
         help: jira notation of duration with {d,h,m}
         required: true
+      - name: LOG
+        help: Content of the worklog
+        required: true
       - name: ISSUE
         required: true
     script: |-
-      {{jira}} worklog add -S $(date -d "-{{args.DATE}} day" +%Y-%m-%dT{{args.TIME}}:00:00.000+0100) -T {{args.DURATION}} -m "$(< jira)" --noedit {{args.ISSUE}}
+      {{jira}} worklog add -S $(date -d "-{{args.DATE}} day" +%Y-%m-%dT{{args.TIME}}:00:00.000+0100) -T {{args.DURATION}} -m "$(< {{args.LOG}})" --noedit {{args.ISSUE}}
 
   - name: activ
     help: Print gitlab activity linked to account at relativ day $1
@@ -84,3 +87,11 @@ custom-commands:
         required: true
     script: |-
       {{jira}} view {{args.ISSUE}}
+
+  - name: search
+    help: Search for issues containing word in summary or description
+    args:
+      - name: WORD
+        required: true
+    script: |-
+      {{jira}} list -q 'summary~{{args.WORD}} or description~{{args.WORD}}' | column -ts ':'
