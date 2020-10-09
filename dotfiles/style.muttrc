@@ -25,6 +25,7 @@ set history = 1000
 set history_file = ~/.config/mutt/history
 set history_remove_dups = yes
 set change_folder_next = no
+set help = no
 auto_view text/html
 auto_view application/pgp-encrypted
 alternative_order text/plain text/enriched text/html
@@ -70,7 +71,7 @@ macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Ente
 macro index A "<limit>all\n" "show all messages (undo limit)"
 
 # Sidebar mappings
-set sidebar_visible = yes
+set sidebar_visible = no
 set sidebar_width = 20
 set sidebar_short_path = yes
 set sidebar_next_new_wrap = yes
