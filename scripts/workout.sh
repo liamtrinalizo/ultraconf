@@ -14,7 +14,7 @@ print_usage()
 
 beep()
 {
-	$(speaker-test -t sine -f 1000)& PID=$! ; sleep 0.2s ; kill -9 $PID
+	mpv ~/medias/do-it.webm &> /dev/null
 }
 
 [ $# -lt 2 ] && print_usage
@@ -29,12 +29,17 @@ done
 
 for I in $(seq $SETS); do
 	echo 
-	echo -e "Workout \e[32m$TYPE\e[m set \e[31m$I\e[m"
-	echo Write the number of reps done and press ENTER
+	echo -e "Workout \e[32m$TYPE\e[m set \e[31m$I/$SETS\e[m"
+	echo -n "Write the number of reps done and press ENTER: "
 	read SET_REPS
 	REPS+=" $SET_REPS"
+
+	# do no pause if last set
+	[ $I -eq $SETS ] && break
+
+	# pause count print
 	for J in $(seq $REST -1 0); do
-		echo -n "$J "
+		echo -ne "Rest time $J\r"
 		#[ $J -lt 3 ] && beep 
 		sleep 1
 	done
