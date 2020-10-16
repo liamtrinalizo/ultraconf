@@ -20,7 +20,7 @@ KEYWORDS="-* ~amd64 ~x86"
 IUSE="debug"
 
 RDEPEND="media-libs/glew:0
-	media-libs/libsdl[joystick,video]
+	media-libs/libsdl[joystick,video,X,opengl]
 	media-libs/sdl-image[png]
 	media-libs/sdl-ttf
 	sys-libs/zlib
