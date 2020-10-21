@@ -53,23 +53,28 @@ custom-commands:
 
   - name: addwork
     help: add worklog at date $1 time $2 with issue $3 with current dir jira log
-    args:
-      - name: DATE
+    options:
+      - name: relativdate
+        short: r
+        default: 0
         help: relative number of days
-        required: true
-      - name: TIME
+      - name: time
+        short: t
+        default: 8
         help: hour time of the begining in 24h format
-        required: true
-      - name: DURATION
+      - name: duration
+        short: d
+        default: 8h
         help: jira notation of duration with {d,h,m}
-        required: true
-      - name: LOG
+      - name: log
+        short: l
+        default: jira
         help: Content of the worklog
-        required: true
+    args:
       - name: ISSUE
         required: true
     script: |-
-      {{jira}} worklog add -S $(date -d "-{{args.DATE}} day" +%Y-%m-%dT{{args.TIME}}:00:00.000+0100) -T {{args.DURATION}} -m "$(< {{args.LOG}})" --noedit {{args.ISSUE}}
+      {{jira}} worklog add -S $(date -d "-{{options.relativdate}} day" +%Y-%m-%dT{{options.time}}:00:00.000+0100) -T {{options.duration}} -m "$(< {{options.log}})" --noedit {{args.ISSUE}}
 
   - name: activ
     help: Print gitlab activity linked to account at relativ day $1
@@ -94,4 +99,13 @@ custom-commands:
       - name: WORD
         required: true
     script: |-
-      {{jira}} list -q 'summary~{{args.WORD}} or description~{{args.WORD}}' | column -ts ':'
+      {{jira}} list -q "summary~\\\"{{args.WORD}}\\\" or description~\\\"{{args.WORD}}\\\"" | column -ts ':'
+
+  - name: newwork
+    help: Create new worklog file 
+    args:
+      - name: ISSUE
+        required: false
+    script: |-
+      JIRA_WORKLOG=~/.local/share/jira/$(date +%Y-%m-%dT%H:%M:00.000%z)_{{args.ISSUE}}.jira
+      touch $JIRA_WORKLOG; vim $JIRA_WORKLOG
