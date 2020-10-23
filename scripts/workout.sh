@@ -47,3 +47,4 @@ for I in $(seq $SETS); do
 done
 
 echo $REPS >> $FOLDER/$TYPE
+drive push -no-prompt $FOLDER
