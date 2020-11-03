@@ -44,18 +44,17 @@ hi Special    ctermfg=DarkRed cterm=Bold
 hi PmenuSel   ctermfg=black ctermbg=white
 hi QuickFixLine ctermbg=DarkRed
 
-if filereadable(expand("$XDG_DATA_HOME/vim/addi.vim")) 
-    source $XDG_DATA_HOME/vim/addi.vim 
+if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim")) 
+    source $XDG_CONFIG_HOME/vim/addi.vim 
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
 
-autocmd BufNewFile,BufRead *.jira,neomutt-*,COMMIT_EDITMSG,*.yml setlocal spell
+autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.yml setlocal spell
+autocmd BufNewFile,BufRead *.jira set syntax=jira
 autocmd BufNewFile,BufRead,BufEnter *.h,*.hpp,*.c,*.cc,*.cpp set omnifunc=omni#cpp#complete#Main
-autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
 if filereadable("./cscope.out")
     cscope add cscope.out
 endif
-
 
 command! Browse vnew +setl\ buftype=nofile | 0put =v:oldfiles | %s/ /\\ /g | noh
 command! Make wa | silent make | redraw! | cw
