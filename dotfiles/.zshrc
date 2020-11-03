@@ -20,7 +20,7 @@ PROMPT='%n@%m:%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
 
 export GPG_TTY=$(tty)
 export PATH=$PATH:/home/jean/.local/bin
-export PYTHONPATH=$PYTHONPATH:/usr/lib64/python3.7/site-packages:~/.local/lib/python3.7/site-packages
+export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.7/site-packages:~/.local/lib/python3.7/site-packages
 
 bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
