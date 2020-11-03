@@ -11,7 +11,7 @@ set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
 set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
-set history=1000 viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo
+set history=1000 viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo undofile
 set hlsearch incsearch showmatch
 set keywordprg=:Man
 set list
@@ -45,12 +45,13 @@ hi Special    ctermfg=DarkRed cterm=Bold
 hi PmenuSel   ctermfg=black ctermbg=white
 hi QuickFixLine ctermbg=DarkRed
 
-if filereadable(expand("$XDG_DATA_HOME/vim/addi.vim"))
-    source $XDG_DATA_HOME/vim/addi.vim
+if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim")) 
+    source $XDG_CONFIG_HOME/vim/addi.vim
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
 
-autocmd BufNewFile,BufRead *.jira,neomutt-*,COMMIT_EDITMSG,*.yml setlocal spell spelllang=en,fr
+autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.yml setlocal spell spelllang=en,fr
+autocmd BufNewFile,BufRead *.jira set syntax=jira
 autocmd BufNewFile,BufRead,BufEnter *.h,*.hpp,*.c,*.cc,*.cpp set omnifunc=omni#cpp#complete#Main
 autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
 autocmd BufNewFile,BufRead *.txt,*.vhdl set nolist

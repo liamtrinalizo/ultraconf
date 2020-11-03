@@ -3,10 +3,14 @@ function Jdate()
     norm kJ
 endfunction
 
-function Header()
+function HeaderC()
     norm ggO
-    0r ~/.vim/snippets/header_addi
-    call append(1, " *  @file " . expand("%:t"))
+    0r $XDG_CONFIG_HOME/vim/snippets/headerC
+    call append(1,  " *  @file " . expand("%:t"))
+    call append(2,  " *  @date " . strftime("%d.%m.%y"))
+    call append(15, " *  @brief Contains the " . expand("%:t:r") . " class")
+	"Capitalize the class first lettre in case
+    15 norm 7wgUl 
 endfunction
 
 function Jid()
