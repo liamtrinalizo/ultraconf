@@ -19,6 +19,7 @@ exec "set listchars=tab:\uAC\uAC,nbsp:~,trail:\uB7"
 set mouse=
 set nocompatible nomodeline nowrap
 set number relativenumber
+set spelllang=en,fr
 set path+=**
 set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 set t_Co=256
@@ -50,7 +51,7 @@ if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
 
-autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.yml setlocal spell spelllang=en,fr
+autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.yml setlocal spell
 autocmd BufNewFile,BufRead *.jira set syntax=jira
 autocmd BufNewFile,BufRead,BufEnter *.h,*.hpp,*.c,*.cc,*.cpp set omnifunc=omni#cpp#complete#Main
 autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
