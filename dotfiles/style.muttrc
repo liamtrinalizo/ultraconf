@@ -1,5 +1,5 @@
 set date_format="%Y/%m/%d %H:%M"
-set index_format="%3C %zs %D %-15.15F %s (%-4.4c)"
+set index_format="%3C %?X?%X& ? %zs %D %-15.15F %s (%-4.4c)"
 set sort = 'reverse-date'
 set smtp_authenticators = 'gssapi:login'
 set query_command = "abook --mutt-query '%s'"
