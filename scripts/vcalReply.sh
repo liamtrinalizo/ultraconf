@@ -14,5 +14,5 @@ sed \
 DTSTART=$(sed -nr '/BEGIN:VEVENT/,/END:VEVENT/ {/DTSTART/ { s/^.*:(.*)T(..)(..)(..)/\1 \2:\3:\4/ p}}' /tmp/vcalReply | xargs -i date -d '{}' +%s)
 DTEND=$(  sed -nr '/BEGIN:VEVENT/,/END:VEVENT/ {/DTEND/   { s/^.*:(.*)T(..)(..)(..)/\1 \2:\3:\4/ p}}' /tmp/vcalReply | xargs -i date -d '{}' +%s)
 SUMMARY=$(sed -nr '/BEGIN:VEVENT/,/END:VEVENT/ {/SUMMARY/ { s/^.*:// p}}'                             /tmp/vcalReply)
-echo REM $(date -d @$DTSTART +'%_d %b %Y AT %_H:%M') DURATION $(date -d @$(($DTEND - $DTSTART)) +%_H:%M) MSG "$SUMMARY" >> $XDG_DATA_HOME/remind/addi.rem
+echo REM $(date -d @$DTSTART +'%_d %b %Y AT %_H:%M') DURATION $(date -d @$(($DTEND - $DTSTART)) +%_H:%M) MSG "$SUMMARY" >> $XDG_DATA_HOME/remind/reminders
 
