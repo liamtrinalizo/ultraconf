@@ -17,6 +17,7 @@ set keywordprg=:Man
 set list
 exec "set listchars=tab:\uAC\uAC,nbsp:~,trail:\uB7"
 set mouse=
+set spelllang=en,fr
 set nocompatible nomodeline nowrap
 set number relativenumber
 set path+=**
@@ -50,11 +51,11 @@ if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
 
-autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.yml setlocal spell spelllang=en,fr
-autocmd BufNewFile,BufRead *.jira set syntax=jira
+autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG setlocal spell
+autocmd BufNewFile,BufRead *.jira set syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead,BufEnter *.h,*.hpp,*.c,*.cc,*.cpp set omnifunc=omni#cpp#complete#Main
 autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
-autocmd BufNewFile,BufRead *.txt,*.vhdl set nolist
+autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
 if filereadable("./cscope.out")
     cscope add cscope.out
 endif
