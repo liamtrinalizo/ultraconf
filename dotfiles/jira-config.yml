@@ -49,32 +49,38 @@ custom-commands:
         required: false
     script: |-
       USER={{if args.USER}}{{args.USER}}{{else}}MJ093{{end}}
-      ~/scripts/jiraWorklogs.sh $USER | cut -c 1-300 | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 3)) - $(date -d 'last week' +'%d %b %Y')  | cut -d '|' -f 1-6 | cut -d '+' -f 1-6 | sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
+      ~/scripts/jiraWorklogs.sh $USER | cut -c 1-300 | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 3)) - $(date -d 'last week' +'%d %b %Y')  | \
+        cut -d '|' -f 1-6 | cut -d '+' -f 1-6 | \
+        sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
 
-  - name: addwork
+  - name: closework
     help: add worklog at date $1 time $2 with issue $3 with current dir jira log
     options:
       - name: relativdate
         short: r
-        default: 0
         help: relative number of days
       - name: time
         short: t
-        default: 8
         help: hour time of the begining in 24h format
       - name: duration
         short: d
-        default: 8h
         help: jira notation of duration with {d,h,m}
       - name: log
         short: l
-        default: jira
         help: Content of the worklog
     args:
       - name: ISSUE
-        required: true
+        required: false
     script: |-
-      {{jira}} worklog add -S $(date -d "-{{options.relativdate}} day" +%Y-%m-%dT{{options.time}}:00:00.000+0100) -T {{options.duration}} -m "$(< {{options.log}})" --noedit {{args.ISSUE}}
+      LOG={{if options.log}}{{options.log}}{{else}}$(ls $XDG_DATA_HOME/jira/* | fzy){{end}}
+      [ ! -f $LOG ] && echo "Log not found" && exit;
+      ISSUE={{if args.ISSUE}}{{args.ISSUE}}{{else}}$(basename -s .jira $LOG | cut -d_ -f2){{end}}
+      DATE={{if options.relativdate}}$(date -d "-{{options.relativdate}} day" +%Y-%m-%d){{else}}$(basename -s .jira $LOG | cut -dT -f1){{end}}
+      TIME={{if options.time}}{{options.time}}:00.000$(date +%z){{else}}$(basename -s .jira $LOG | cut -dT -f2 | cut -d_ -f1):00.000$(date +%z){{end}}
+      DURATION={{if options.duration}}{{options.duration}}{{end}}
+
+      {{jira}} worklog add -S "$DATE"T"$TIME" -T $DURATION  -m "$(< $LOG)" --noedit $ISSUE
+      rm $LOG
 
   - name: activ
     help: Print gitlab activity linked to account at relativ day $1
@@ -83,7 +89,11 @@ custom-commands:
         help: relative number of days
         required: true
     script: |-
-      curl -sH "Private-Token: $(pass addi/gitlab-token)" -X GET gitlab-srv01/api/v4/users/3/events\?action\=pushed\&after\=$(date -d "-$(({{args.DATE}} + 1)) day"  +%Y-%m-%d)\&before\=$(date -d "-$(({{args.DATE}} - 1)) day" +%Y-%m-%d) | jq -r '.[].push_data.commit_title'
+      curl -sH "Private-Token: $(pass addi/gitlab-token)" -X GET \
+          gitlab-srv01/api/v4/users/3/events\?action\=pushed\&\
+          after\=$(date -d "-$(({{args.DATE}} + 2)) day" +%Y-%m-%d)\&\
+          before\=$(date -d "-$(({{args.DATE}} - 1)) day" +%Y-%m-%d) | \
+        jq -r '.[].push_data.commit_title'
 
   - name: show
     help: Print issue details like "view"
@@ -101,11 +111,15 @@ custom-commands:
     script: |-
       {{jira}} list -q "summary~\\\"{{args.WORD}}\\\" or description~\\\"{{args.WORD}}\\\"" | column -ts ':'
 
-  - name: newwork
+  - name: openwork
     help: Create new worklog file 
+    options:
+      - name: relativdate
+        short: r
+        default: 0
     args:
       - name: ISSUE
-        required: false
+        required: true
     script: |-
-      JIRA_WORKLOG=~/.local/share/jira/$(date +%Y-%m-%dT%H:%M:00.000%z)_{{args.ISSUE}}.jira
+      JIRA_WORKLOG=~/.local/share/jira/$(date -d "-{{options.relativdate}} day" +%Y-%m-%dT%H:%M)_{{args.ISSUE}}.jira
       touch $JIRA_WORKLOG; vim $JIRA_WORKLOG
