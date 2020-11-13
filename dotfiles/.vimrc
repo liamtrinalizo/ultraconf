@@ -20,6 +20,7 @@ set mouse=
 set spelllang=en,fr
 set nocompatible nomodeline nowrap
 set number relativenumber
+set spelllang=en,fr
 set path+=**
 set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME,$XDG_CONFIG_HOME/vim/after
 set t_Co=256

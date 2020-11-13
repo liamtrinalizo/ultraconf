@@ -11,6 +11,11 @@ gitUpdate()
 
 #################################
 
+#TODO check for manual package update e.g. Brave, and generate ebuild
+echo -e "\e[36m--Check for brave-broser update--\e[m"
+LATEST=$(curl https://github.com/brave/brave-browser/releases/latest | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+')
+
+
 echo -e "\e[36m--Syncing portage--\e[m"
 eix-sync -qa $1
 echo -e "\e[36m--Emerging world--\e[m"
@@ -21,6 +26,6 @@ echo -e "\e[36m--Cleaning obsolete distfiles--\e[m"
 eclean-dist
 
 #echo -e "\e[32mUpdating Git repos\e[m"
-#gitUpdate /home/gok/pkg/suckless/dwm/      
-#gitUpdate /home/gok/pkg/suckless/st/       
-#gitUpdate /home/gok/pkg/suckless/surf/     
+#gitUpdate /home/gok/pkg/suckless/dwm/
+#gitUpdate /home/gok/pkg/suckless/st/
+#gitUpdate /home/gok/pkg/suckless/surf/
