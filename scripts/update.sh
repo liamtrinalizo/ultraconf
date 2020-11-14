@@ -17,8 +17,8 @@ REMOTE=$(curl -s https://github.com/brave/brave-browser/releases/latest | grep -
 LOCAL=$(INSTFORMAT='<version>' eix --pure-packages --format '<installedversions:INSTFORMAT>()\n' brave)
 [ -n $(curl -Ls https://github.com/brave/brave-browser/releases/latest | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+' | grep nightly) ] && NIGHTLY=-nightly
 
-[ "$REMOTE" = "$LOCAL" ] || cp $PERSO_REPO/www-client/brave-bin/brave-bin-{$LOCAL,$REMOTE}.ebuild && \
-                            sed -i "s@/brave-browser-@/brave-browser$NIGHTLY-@" $PERSO_REPO/www-client/brave-bin/brave-bin-$REMOTE.ebuild && \
+[ "$REMOTE" != "$LOCAL" ] && echo "$LOCAL -> $REMOTE" && cp $PERSO_REPO/www-client/brave-bin/brave-bin-{$LOCAL,$REMOTE}.ebuild && \
+                            sed -i "s@/brave-browser-\$@/brave-browser$NIGHTLY-\$@" $PERSO_REPO/www-client/brave-bin/brave-bin-$REMOTE.ebuild && \
                             ebuild $PERSO_REPO/www-client/brave-bin/brave-bin-$REMOTE.ebuild digest
 
 echo -e "\e[36m--Syncing portage--\e[m"
@@ -29,6 +29,3 @@ echo -e "\e[36m--Cleaning useless dependencies--\e[m"
 emerge --depclean --quiet
 echo -e "\e[36m--Cleaning obsolete distfiles--\e[m"
 eclean-dist
-
-#gitUpdate /home/gok/pkg/suckless/st/
-#gitUpdate /home/gok/pkg/suckless/surf/
