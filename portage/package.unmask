@@ -1,0 +1,7 @@
+=games-action/minecraft-launcher-2.1.14947
+# required by pmbootstrap (argument)
+# /etc/portage/package.mask:
+=dev-util/pmbootstrap-1.19.0
+# required by brave-bin (argument)
+# /etc/portage/package.mask:
+=www-client/brave-bin-1.10.97
