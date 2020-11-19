@@ -26,3 +26,5 @@ installFile w3m             config
 installFile w3m             keymap
 installFile x11             xinitrc
 installFile x11             xresources
+
+ln -sf $ULTRACONF_DOTFILES/../scripts ~/local/bin/
