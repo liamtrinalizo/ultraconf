@@ -16,7 +16,8 @@ parse_git_branch() {
 }
 
 setopt PROMPT_SUBST
-PROMPT='%F{yellow}%! %n@%m:%9c%F{green} %$(parse_git_branch)%F{none} $ '
+#PROMPT='%F{yellow}%! %n@%m:%9c%F{green} %$(parse_git_branch)%F{white} $ '
+ PROMPT='%F{yellow}%! %n@%m:%9c%F{green}$(parse_git_branch)%F{none} $ '
 
 export GPG_TTY=$(tty)
 
