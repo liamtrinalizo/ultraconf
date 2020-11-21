@@ -1,4 +1,4 @@
-~/scripts/screen.sh -s $(xrandr | grep -w connected | wc -l)
+~/.local/bin/scripts/screen.sh -s $(xrandr | grep -w connected | wc -l)
 xautolock -time 10 -locker slock &
 xrdb -load $XDG_CONFIG_HOME/x11/xresources
 xmodmap $XDG_CONFIG_HOME/x11/xmodmap

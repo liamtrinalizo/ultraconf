@@ -8,12 +8,15 @@ export FILE="nnn"
 export HISTSIZE=10000
 export HISTFILESIZE=10000
 
+export PATH=$PATH:~/.local/bin/scripts
+
 # ~/ Clean-up:
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 
 export BC_ENV_ARGS="$XDG_CONFIG_HOME/bc/bcrc"
+export DISTCC_DIR="/var/tmp/portage/.distcc/"
 export DOTREMINDERS="$XDG_DATA_HOME/remind/reminders"
 export GNUPGHOME="$XDG_CONFIG_HOME/gnupg"
 export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc-2.0"
@@ -27,9 +30,9 @@ export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
 export PASSWORD_STORE_X_SELECTION="xclip -selection primary"
-export PYTHONPATH="$XDG_CONFIG_HOME/python"
+export PYTHONPATH="PYTHONPATH:$XDG_CONFIG_HOME/python:/usr/lib/python3.7/site-packages:~/.local/lib/python3.7/site-packages"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export XAPPLRESDIR="$XDG_CONFIG_HOME/gnuplot/config"
-#export XAUTHORITY="$XDG_CONFIG_HOME/x11/.Xauthority"
-export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
+#export XAUTHORITY="$XDG_CONFIG_HOME/X11/.Xauthority"
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
