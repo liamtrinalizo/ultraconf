@@ -16,11 +16,9 @@ parse_git_branch() {
 }
 
 setopt PROMPT_SUBST
-PROMPT='%n@%m:%9c%{%F{green}%}$(parse_git_branch)%{%F{none}%} $ '
+PROMPT='%F{yellow}%! %n@%m:%9c%F{green} %$(parse_git_branch)%F{none} $ '
 
 export GPG_TTY=$(tty)
-export PATH=$PATH:~/.local/bin
-export PYTHONPATH=$PYTHONPATH:/usr/lib/python3.7/site-packages:~/.local/lib/python3.7/site-packages
 
 bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
@@ -64,8 +62,8 @@ alias rem1="rem -m -b1 -q -g"
 alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | less"
 alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+alias ffmpeg="ffmpeg -hide_banner"
+alias ffprobe="ffprobe -hide_banner"
 alias xclip2="xclip -selection clipboard"
-
-
 
 color() { convert -size 100x100 canvas:#$1 png:- | display }
