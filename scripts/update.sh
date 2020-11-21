@@ -12,13 +12,13 @@ gitUpdate()
 #################################
 
 PERSO_REPO=/var/db/repos/perso
-echo -e "\e[36m--Check for brave-broser update--\e[m"
+echo -e "\e[36m--Check for brave-browser update--\e[m"
 REMOTE=$(curl -s https://github.com/brave/brave-browser/releases/latest | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+')
 LOCAL=$(INSTFORMAT='<version>' eix --pure-packages --format '<installedversions:INSTFORMAT>()\n' brave)
 [ -n $(curl -Ls https://github.com/brave/brave-browser/releases/latest | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+' | grep nightly) ] && NIGHTLY=-nightly
 
 [ "$REMOTE" != "$LOCAL" ] && echo "$LOCAL -> $REMOTE" && cp $PERSO_REPO/www-client/brave-bin/brave-bin-{$LOCAL,$REMOTE}.ebuild && \
-                            sed -i "s@/brave-browser-\$@/brave-browser$NIGHTLY-\$@" $PERSO_REPO/www-client/brave-bin/brave-bin-$REMOTE.ebuild && \
+                            sed -i "s@/brave-browser-[a-z]-*\$@/brave-browser$NIGHTLY-\$@" $PERSO_REPO/www-client/brave-bin/brave-bin-$REMOTE.ebuild && \
                             ebuild $PERSO_REPO/www-client/brave-bin/brave-bin-$REMOTE.ebuild digest
 
 echo -e "\e[36m--Syncing portage--\e[m"
