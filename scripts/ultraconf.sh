@@ -55,7 +55,8 @@ installFile zsh             .zshrc
 installFile zsh/completion  _jira
 
 # Install users scripts
-ln -sf $ultraconfPath/scripts/*.sh $XDG_DATA_HOME/../bin/
+ln -sf $ultraconfPath/scripts/*.sh $XDG_BIN_HOME
+cp $ultraconfPath/script/emoji_list $XDG_DATA_HOME
 
 # Install Portage conf root files
 ( $superuserMode ) || exit

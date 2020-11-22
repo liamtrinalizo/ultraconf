@@ -13,7 +13,7 @@ while getopts 'hw' OPTION; do
         h)
             $TMUX new-session -s home
             $TMUX rename-window -t '=home:1' portage
-            $TMUX send-keys  -t '=home:portage' 'sudo ~/scripts/update.sh -w'
+            $TMUX send-keys  -t '=home:portage' 'sudo update.sh -w'
             $TMUX new-window -t '=home' -n mutt
             $TMUX send-keys  -t '=home:mutt' 'neomutt' Enter
             $TMUX new-window -t '=home' -n music

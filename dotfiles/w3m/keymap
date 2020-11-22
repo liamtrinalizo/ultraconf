@@ -10,11 +10,11 @@ keymap ge       EDIT
 keymap gE       EDIT_SCREEN
 keymap G        END
 keymap ZZ       EXIT
-keymap Y        EXTERN          ~/scripts/copy_url.sh 
-keymap yy       EXTERN_LINK     ~/scripts/copy_url.sh
+keymap Y        EXTERN          copy_url.sh
+keymap yy       EXTERN_LINK     copy_url.sh
 keymap o        GOTO
 keymap C-j      GOTO_LINK
-keymap p 	    GOTO		    /usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
+keymap p        GOTO            /usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
 keymap ?        HELP
 keymap gh       HISTORY
 keymap i        INFO
@@ -24,7 +24,7 @@ keymap 0        LINE_BEGIN
 keymap $        LINE_END
 keymap C-o      LOAD
 keymap M-c      MENU
-keymap M-m	    MOUSE_TOGGLE
+keymap M-m      MOUSE_TOGGLE
 keymap DOWN     MOVE_DOWN1
 keymap LEFT     MOVE_LEFT1
 keymap C-n      MOVE_LIST_MENU
@@ -55,7 +55,7 @@ keymap n        SEARCH_NEXT
 keymap N        SEARCH_PREV
 keymap gh       SELECT_MENU
 keymap O        TAB_GOTO
-keymap P        TAB_GOTO	    /usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
+keymap P        TAB_GOTO        /usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
 keymap u        TAB_GOTO        /usr/libexec/w3m/cgi-bin/restore_tab.cgi
 keymap gK       TAB_LEFT
 keymap F        TAB_LINK
