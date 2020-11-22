@@ -1,11 +1,29 @@
 #!/bin/sh
 
-ULTRACONF_DOTFILES=$XDG_CONFIG_HOME/ultraconf/dotfiles
+ultraconfPath=$XDG_CONFIG_HOME/ultraconf/
+superuserMode=false
+
+print_usage()
+{
+    echo ultraconf.sh [-p path] [-s] [-h]
+    echo -h print this help
+    echo -p path to the ultraconf directory
+    echo -s superuser mode to install portage/overlay files
+    exit
+}
+
+while getopts 'hp:s' OPT; do
+    case "$OPT" in
+        h) print_usage ;;
+        p) ultraconfPath=$OPTARG ;;
+        s) superuserMode=true ;;
+    esac
+done
 
 installFile() {
     [ ! -d $XDG_CONFIG_HOME/$1 ] && mkdir -p $XDG_CONFIG_HOME/$1
-    [ ! -d $ULTRACONF_DOTFILES/$1 ] && ln -sf $ULTRACONF_DOTFILES/$1    $XDG_CONFIG_HOME/$1/$2 \
-                                    || ln -sf $ULTRACONF_DOTFILES/$1/$2 $XDG_CONFIG_HOME/$1/$2
+    [ ! -d $ultraconfPath/dotfiles/$1 ] && ln -sf $ultraconfPath/dotfiles/$1    $XDG_CONFIG_HOME/$1/$2 \
+                                    || ln -sf $ultraconfPath/dotfiles/$1/$2 $XDG_CONFIG_HOME/$1/$2
 }
 
 [ ! -d $XDG_CONFIG_HOME ]      && mkdir $XDG_CONFIG_HOME
@@ -13,7 +31,7 @@ installFile() {
 [ ! -d $XDG_DATA_HOME/../bin ] && mkdir -p $XDG_DATA_HOME/../bin
 
 # Install users dotfiles
-cp $ULTRACONF_DOTFILES/zprofile ~
+cp $ultraconfPath/dotfiles/zprofile ~
 installFile bc              bcrc
 installFile bspwm           bspwmrc
 installFile gdb             init
@@ -37,12 +55,13 @@ installFile zsh             .zshrc
 installFile zsh/completion  _jira
 
 # Install users scripts
-ln -sf $ULTRACONF_DOTFILES/../scripts $XDG_DATA_HOME/../bin/
+ln -sf $ultraconfPath/scripts/*.sh $XDG_DATA_HOME/../bin/
 
 # Install Portage conf root files
+( $superuserMode ) || exit
 sudo rmdir /etc/portage/package.* 2> /dev/null
-sudo cp $ULTRACONF_DOTFILES/../portage/{make.conf,package.*} /etc/portage/
-sudo cp $ULTRACONF_DOTFILES/../portage/world /var/lib/portage/
+sudo cp $ultraconfPath//portage/{make.conf,package.*} /etc/portage/
+sudo cp $ultraconfPath/portage/world /var/lib/portage/
 
 # Install overlay
-sudo cp -r $ULTRACONF_DOTFILES/../overlay /var/db/repos/perso
+sudo cp -r $ultraconfPath/overlay /var/db/repos/perso
