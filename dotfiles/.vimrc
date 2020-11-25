@@ -36,12 +36,12 @@ map g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 map g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
 map gz :wall<CR>
 
-hi DiffAdd    ctermfg=0     ctermbg=DarkGreen
-hi DiffChange ctermfg=white ctermbg=DarkBlue
-hi DiffDelete ctermfg=0     ctermbg=DarkRed
-hi DiffText   ctermfg=white ctermbg=DarkBlue
-hi Special    ctermfg=DarkRed cterm=Bold
-hi PmenuSel   ctermfg=black ctermbg=white
+hi DiffAdd    cterm=NONE ctermfg=0     	ctermbg=DarkGreen
+hi DiffDelete cterm=NONE ctermfg=0     	ctermbg=DarkRed
+hi DiffChange cterm=NONE ctermfg=white 	ctermbg=DarkBlue
+hi DiffText   cterm=NONE ctermfg=DarkBlue 	ctermbg=White
+hi Special    ctermfg=DarkRed 	ctermbg=White
+hi PmenuSel   ctermfg=black 	ctermbg=white
 hi QuickFixLine ctermbg=DarkRed
 
 if filereadable(expand("$XDG_DATA_HOME/vim/addi.vim")) 
