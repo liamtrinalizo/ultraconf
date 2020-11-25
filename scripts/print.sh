@@ -9,8 +9,11 @@ lpinfo -v
 # List status of created printers
 lpstat -a
 
+# Create network printer
+lpadmin -p printer-name -E -v socket://ip-address-of-network-printer -m printer-make-and-model
+
 # Set USB printer as default
-lpadmin -d Canon_MX490_series
+lpadmin -d printer-name
 
 # Print file on default printer
 lp <file>

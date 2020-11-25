@@ -11,13 +11,21 @@ gitUpdate()
 
 #################################
 
-echo -e "\e[32mUpdating portage\e[m"
-eix-sync -q $1
-emerge -aqvuDN --keep-going=y --with-bdeps=y @world || exit 1
-emerge --depclean
-eclean-dist
+PERSO_REPO=/var/db/repos/perso
+echo -e "\e[36m--Check for brave-browser update--\e[m"
+REMOTE=$(curl -s https://github.com/brave/brave-browser/releases/latest | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+')
+LOCAL=$(INSTFORMAT='<version>' eix --pure-packages --format '<installedversions:INSTFORMAT>()\n' brave)
+[ -n $(curl -Ls https://github.com/brave/brave-browser/releases/latest | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+' | grep nightly) ] && NIGHTLY=-nightly
 
-#echo -e "\e[32mUpdating Git repos\e[m"
-#gitUpdate /home/gok/pkg/suckless/dwm/      
-#gitUpdate /home/gok/pkg/suckless/st/       
-#gitUpdate /home/gok/pkg/suckless/surf/     
+[ "$REMOTE" != "$LOCAL" ] && echo "$LOCAL -> $REMOTE" && cp $PERSO_REPO/www-client/brave-bin/brave-bin-{$LOCAL,$REMOTE}.ebuild && \
+                            sed -i "s@/brave-browser-[a-z]-*\$@/brave-browser$NIGHTLY-\$@" $PERSO_REPO/www-client/brave-bin/brave-bin-$REMOTE.ebuild && \
+                            ebuild $PERSO_REPO/www-client/brave-bin/brave-bin-$REMOTE.ebuild digest
+
+echo -e "\e[36m--Syncing portage--\e[m"
+eix-sync -qa $1
+echo -e "\e[36m--Emerging world--\e[m"
+emerge -aqvuDN --keep-going=y --with-bdeps=y @world || exit 1
+echo -e "\e[36m--Cleaning useless dependencies--\e[m"
+emerge --depclean --quiet
+echo -e "\e[36m--Cleaning obsolete distfiles--\e[m"
+eclean-dist

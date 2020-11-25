@@ -1,0 +1,84 @@
+app-crypt/gnupg tools
+app-crypt/gpgme static-libs
+app-crypt/libb2 static-libs
+app-editors/vim X cscope terminal vim-pager
+app-office/abiword latex
+app-portage/portage-utils static
+app-text/ghostscript-gpl cups
+app-text/poppler cairo nss
+app-text/tessdata_fast L10N: en fr de
+app-text/tesseract jpeg png tiff
+app-text/texlive L10N fr de truetype science games
+app-text/texlive L10N: en fr de
+app-text/xmlto text
+app-text/zathura doc
+dev-libs/boost nls
+dev-libs/boost context python
+dev-libs/libpcre2 pcre16
+dev-libs/libxml2 python
+dev-libs/openssl static-libs
+dev-ruby/bundler ruby_targets_ruby27
+dev-ruby/did_you_mean ruby_targets_ruby27
+dev-ruby/json ruby_targets_ruby27
+dev-ruby/kpeg ruby_targets_ruby27
+dev-ruby/minitest ruby_targets_ruby27
+dev-ruby/net-telnet ruby_targets_ruby27
+dev-ruby/power_assert ruby_targets_ruby27
+dev-ruby/racc ruby_targets_ruby27
+dev-ruby/rake ruby_targets_ruby27
+dev-ruby/rdoc ruby_targets_ruby27
+dev-ruby/rubygems ruby_targets_ruby27
+dev-ruby/test-unit ruby_targets_ruby27
+dev-ruby/xmlrpc ruby_targets_ruby27
+media-fonts/inconsolata X
+media-fonts/noto-emoji X
+#media-gfx/imagemagick X png jpeg truetype corefonts fontconfig
+media-gfx/imagemagick X bzip2 corefonts cxx fontconfig jpeg openmp png truetype zlib djvu fftw fpx graphviz hdri heif jbig jpeg2k lcms lqr lzma opencl openexr pango perl postscript q32 q8 raw staticlibs svg test tiff webp wmf xml
+media-gfx/sane-backends -* usb SANE_BACKENDS: canon pixma
+media-libs/freetype png X
+media-libs/gd png truetype fontconfig jpeg
+media-libs/gegl cairo
+media-libs/gst-plugins-bad X
+media-libs/gst-plugins-base ogg
+media-libs/harfbuzz icu
+media-libs/leptonica png jpeg
+media-libs/libcaca imlib
+media-libs/libglvnd X
+media-libs/libsdl opengl
+media-libs/libsdl opengl
+media-video/ffmpeg openssl doc vdpau vaapi encode mp3
+media-video/mplayer dvd X dvb v4l
+media-video/mpv doc dvb libcaca dvd
+net-mail/notmuch mutt
+net-misc/aria2 bittorrent
+net-misc/curl http2
+net-misc/freerdp X
+net-print/gutenprint cups
+net-wireless/bluez debug extra-tools
+sci-visualization/gnuplot libcaca X
+sys-auth/elogind pam
+sys-auth/pambase elogind
+sys-devel/bc libedit
+sys-devel/gcc fortran
+sys-libs/ncurses gpm
+virtual/ruby-ssl ruby_targets_ruby27
+virtual/rubygems ruby_targets_ruby27
+x11-libs/cairo png
+x11-libs/cairo X
+x11-libs/gtk+ xinerama
+x11-libs/libxkbcommon X
+x11-libs/pango X
+x11-libs/wxGTK sdl webkit libnotify gstreamer tiff opengl
+x11-misc/dmenu xinerama
+x11-wm/dwm savedconfig xinerama
+>=media-libs/leptonica-1.80.0 tiff
+media-fonts/noto cjk
+dev-vcs/git perl
+net-libs/webkit-gtk gnome-keyring
+>=app-crypt/gcr-3.36.0 gtk
+>=app-crypt/pinentry-1.1.0-r3 gnome-keyring
+>=media-libs/sdl-image-1.2.12-r2 png
+media-gfx/fontforge X gtk png
+>=media-libs/libsdl-1.2.15-r9 X
+>=sys-libs/zlib-1.2.11-r3 static-libs minizip
+app-admin/pass dmenu

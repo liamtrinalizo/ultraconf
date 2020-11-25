@@ -1,0 +1,7 @@
+application/pdf;  zathura %s &;
+image/*;          sxiv %s &;
+text/calendar;    ~/scripts/addi/vcal -all -; copiousoutput;
+text/*;           $PAGER %s ;
+text/html;        surf %s
+text/html;        w3m -I %{charset} -T text/html; copiousoutput;
+video/*;          mpv %s &;

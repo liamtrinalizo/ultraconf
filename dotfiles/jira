@@ -1,0 +1,125 @@
+endpoint: http://jira
+user: MJ093
+editor: vi
+browser: brave-browser
+
+password-source: pass
+password-name: addi/domain
+
+custom-commands:
+  - name: mine
+    help: display issues assigned to me
+    args:
+      - name: PROJECT
+        required: false
+    script: |-
+      QUERYPROJECT="{{if args.PROJECT}}and project = {{args.PROJECT}}{{end}}"
+      {{jira}} list --template mine --query "resolution = unresolved and assignee=currentuser() $QUERYPROJECT ORDER BY status asc, created" | \
+               sed -e 's/To Do/status1/'\
+                   -e 's/In Progress/status2/'\
+                   -e 's/In Review/status3/' | \
+                   sort -b -t'|' -k5 -k1 | \
+               sed -e "s/status1/$(printf "\033[31mTo Do\033[0m")/" \
+                   -e "s/status2/$(printf "\033[36mIn Progress\033[0m")/" \
+                   -e "s/status3/$(printf "\033[32mIn Review\033[0m")/" \
+                   -e "s/Bug/🐞/" \
+                   -e "s/Improvement/🧪/" \
+                   -e "s/Sub-task/▫️ /" \
+                   -e "s/Task/◽/" \
+                   -e "s/Highest/🔥🔥🔥/" \
+                   -e "s/High/🔥/" \
+                   -e "s/Medium/➖/" \
+                   -e "s/Low/💤/" \
+                   -e "s/Lowest/💤💤💤/" \
+                   -e "s/Stoesser.Achim#1/SA037/" | \
+               column -t -s '|'
+
+  - name: in-review
+    help: transition issue to In Review
+    args:
+      - name: ISSUE
+        required: true
+    script: |-
+      {{jira}} transition --noedit 'In Review' {{args.ISSUE}}
+
+  - name: cal
+    help: display this week calendar of worklogs
+    args:
+      - name: USER
+        required: false
+    script: |-
+      USER={{if args.USER}}{{args.USER}}{{else}}MJ093{{end}}
+      ~/scripts/jiraWorklogs.sh $USER | cut -c 1-300 | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 3)) - $(date -d 'last week' +'%d %b %Y')  | \
+        cut -d '|' -f 1-6 | cut -d '+' -f 1-6 | \
+        sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
+
+  - name: closework
+    help: add worklog at date $1 time $2 with issue $3 with current dir jira log
+    options:
+      - name: relativdate
+        short: r
+        help: relative number of days
+      - name: time
+        short: t
+        help: hour time of the begining in 24h format
+      - name: duration
+        short: d
+        help: jira notation of duration with {d,h,m}
+      - name: log
+        short: l
+        help: Content of the worklog
+    args:
+      - name: ISSUE
+        required: false
+    script: |-
+      LOG={{if options.log}}{{options.log}}{{else}}$(ls $XDG_DATA_HOME/jira/* | fzy){{end}}
+      [ ! -f $LOG ] && echo "Log not found" && exit;
+      ISSUE={{if args.ISSUE}}{{args.ISSUE}}{{else}}$(basename -s .jira $LOG | cut -d_ -f2){{end}}
+      DATE={{if options.relativdate}}$(date -d "-{{options.relativdate}} day" +%Y-%m-%d){{else}}$(basename -s .jira $LOG | cut -dT -f1){{end}}
+      TIME={{if options.time}}{{options.time}}:00.000$(date +%z){{else}}$(basename -s .jira $LOG | cut -dT -f2 | cut -d_ -f1):00.000$(date +%z){{end}}
+      DURATION={{if options.duration}}{{options.duration}}{{end}}
+
+      {{jira}} worklog add -S "$DATE"T"$TIME" -T $DURATION  -m "$(< $LOG)" --noedit $ISSUE
+      rm $LOG
+
+  - name: activ
+    help: Print gitlab activity linked to account at relativ day $1
+    args:
+      - name: DATE
+        help: relative number of days
+        required: true
+    script: |-
+      curl -sH "Private-Token: $(pass addi/gitlab-token)" -X GET \
+          gitlab-srv01/api/v4/users/3/events\?action\=pushed\&\
+          after\=$(date -d "-$(({{args.DATE}} + 2)) day" +%Y-%m-%d)\&\
+          before\=$(date -d "-$(({{args.DATE}} - 1)) day" +%Y-%m-%d) | \
+        jq -r '.[].push_data.commit_title'
+
+  - name: show
+    help: Print issue details like "view"
+    args:
+      - name: ISSUE
+        required: true
+    script: |-
+      {{jira}} view {{args.ISSUE}}
+
+  - name: search
+    help: Search for issues containing word in summary or description
+    args:
+      - name: WORD
+        required: true
+    script: |-
+      {{jira}} list -q "summary~\\\"{{args.WORD}}\\\" or description~\\\"{{args.WORD}}\\\"" | column -ts ':'
+
+  - name: openwork
+    help: Create new worklog file 
+    options:
+      - name: relativdate
+        short: r
+        default: 0
+    args:
+      - name: ISSUE
+        required: true
+    script: |-
+      JIRA_WORKLOG=~/.local/share/jira/$(date -d "-{{options.relativdate}} day" +%Y-%m-%dT%H:%M)_{{args.ISSUE}}.jira
+      touch $JIRA_WORKLOG; vim $JIRA_WORKLOG
