@@ -32,6 +32,7 @@ installFile() {
 
 # Install users dotfiles
 cp $ultraconfPath/dotfiles/zprofile ~
+mkdir $XDG_CONFIG_HOME/gnupg
 installFile bc              bcrc
 installFile bspwm           bspwmrc
 installFile gdb             init
@@ -41,7 +42,7 @@ installFile sxhkd           sxhkdrc
 installFile tmux            tmux.conf
 installFile translate-shell init.trans
 installFile zprofile        .zprofile
-mkdir $XDG_CONFIG_HOME/vim/{spell,syntax} $XDG_DATA_HOME/{vim,vim/undo,vim/swap,vim/backup,vim/view} 2> /dev/null
+mkdir -p $XDG_CONFIG_HOME/vim/{spell,syntax} $XDG_DATA_HOME/{vim/undo,vim/swap,vim/backup,vim/view}
 installFile vim             vimrc
 installFile zathura         zathurarc
 installFile mutt            style.muttrc
@@ -56,7 +57,7 @@ installFile zsh/completion  _jira
 
 # Install users scripts
 ln -sf $ultraconfPath/scripts/*.sh $XDG_BIN_HOME
-cp $ultraconfPath/script/emoji_list $XDG_DATA_HOME
+cp $ultraconfPath/scripts/emoji_list $XDG_DATA_HOME
 
 # Install Portage conf root files
 ( $superuserMode ) || exit
