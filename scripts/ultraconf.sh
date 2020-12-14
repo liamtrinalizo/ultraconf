@@ -31,13 +31,16 @@ installFile() {
 [ ! -d $XDG_DATA_HOME/../bin ] && mkdir -p $XDG_DATA_HOME/../bin
 
 # Install users dotfiles
+source $ultraconfPath/dotfiles/zprofile
 cp $ultraconfPath/dotfiles/zprofile ~
-mkdir $XDG_CONFIG_HOME/gnupg
+mkdir $XDG_CONFIG_HOME/gnupg 2> /dev/null
+mkdir -p $XDG_DATA_HOME/mail/work 2> /dev/null
 installFile bc              bcrc
 installFile bspwm           bspwmrc
 installFile gdb             init
 installFile git             config
 installFile gnuplot         config
+#installFile jira            .jira.d/config.yml
 installFile sxhkd           sxhkdrc
 installFile tmux            tmux.conf
 installFile translate-shell init.trans

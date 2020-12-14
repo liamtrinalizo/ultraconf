@@ -2,7 +2,7 @@ set realname = ""
 set from = ""
 set sendmail = ""
 alias me realname <address>
-set folder = "~/.local/share/mail/gmail"
+set folder = "$XDG_DATA_HOME/mail/gmail"
 set message_cachedir = ~/.cache/mutt-wizard/gmail/bodies
 set mbox_type = Maildir
 
