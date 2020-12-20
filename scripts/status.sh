@@ -3,22 +3,18 @@
 while getopts 'bgmr' opt; do
     case "$opt" in
         b)
-            BAT=$(acpitool | head -1 | cut -d ',' -f 2 | sed -z 's/\(\n\|\...\|%\)//g')
-            echo "$BAT"
-            if [ $BAT -lt 30 ]; then
-                tmux set-environment bat_low 1
-            else
-                tmux set-environment bat_low 0
-            fi ;;
+            acpitool | grep Full        > /dev/null && echo -n " ▌"
+            acpitool | grep Charging    > /dev/null && echo -n " ↑"
+            acpitool | grep Discharging > /dev/null && echo -n " ↓"
+
+            charge=$(acpitool | awk -F'[ \.]' '/Battery/ {print $11}')
+            echo -n "$charge"
+            [ $charge -lt 30 ] && tmux set-environment bat_low 1 || tmux set-environment bat_low 0
+            ;;
         g)
-            if [ -f /tmp/gpg_needs_key ]; then
-                echo -n " 🔑 " 
-            fi ;;
-        m) 
-            FILECOUNT=$(ls -l ~/.local/share/mail/work/INBOX/new/ | wc -l)
-            if [ "$FILECOUNT" -gt 1 ]; then
-                echo -n " 📬 " 
-            fi ;;
+            [ -f /tmp/gpg_needs_key ] && echo -n " K" ;;
+        m)
+            [ "$(ls -l ~/.local/share/mail/work/INBOX/new/ | wc -l)" -gt 1 ] && echo -n " M" ;;
         r)
             < /tmp/remind head -1 ;;
     esac
