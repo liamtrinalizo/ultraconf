@@ -43,7 +43,7 @@ hi DiffAdd    cterm=NONE ctermfg=0     	ctermbg=DarkGreen
 hi DiffDelete cterm=NONE ctermfg=0     	ctermbg=DarkRed
 hi DiffChange cterm=NONE ctermfg=white 	ctermbg=DarkBlue
 hi DiffText   cterm=NONE ctermfg=DarkBlue 	ctermbg=White
-hi Special    ctermfg=DarkRed 	ctermbg=White
+hi Special    ctermfg=DarkRed 	ctermbg=Black
 hi PmenuSel   ctermfg=black 	ctermbg=white
 hi QuickFixLine ctermbg=DarkRed
 
@@ -53,7 +53,7 @@ if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
 endif
 
 autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG setlocal spell
-autocmd BufNewFile,BufRead *.jira set syntax=jira spell laststatus=2
+autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead,BufEnter *.h,*.hpp,*.c,*.cc,*.cpp set omnifunc=omni#cpp#complete#Main
 autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
