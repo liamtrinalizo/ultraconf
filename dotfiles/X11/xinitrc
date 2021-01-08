@@ -1,9 +1,9 @@
-screen.sh -s $(xrandr | grep -w connected | wc -l)
+$XDG_BIN_HOME/screen.sh -s $(xrandr | grep -w connected | wc -l)
 xrdb -load $XDG_CONFIG_HOME/X11/xresources
 xmodmap $XDG_CONFIG_HOME/X11/xmodmap
 redshift &
 numlockx
 xset r rate 280 40
-st -e sh -c '[ -z $TMUX ] && tmux new-session -s home' &
+st -e sh -c '[ -z $TMUX ] && tmux new-session -s home || tmux attach' &
 sxhkd &
 exec bspwm
