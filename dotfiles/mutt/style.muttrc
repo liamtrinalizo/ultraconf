@@ -1,7 +1,6 @@
 set date_format="%Y/%m/%d %H:%M"
-set index_format="%3C %?X?%X& ? %zs %D %-15.15F %s (%-4.4c)"
+set index_format="%3C %?X?cal&   ? %zs %D %-15.15F %s (%-4.4c)"
 set sort = 'reverse-date'
-set smtp_authenticators = 'gssapi:login'
 set query_command = "abook --mutt-query '%s'"
 set rfc2047_parameters = yes
 set sleep_time = 0      # Pause 0 seconds for informational messages
@@ -26,6 +25,9 @@ set history_file = ~/.config/mutt/history
 set history_remove_dups = yes
 set change_folder_next = no
 set help = no
+set count_alternatives = yes
+attachments -A "*/.*"
+attachments +I "text/calendar"
 auto_view text/html
 auto_view application/pgp-encrypted
 alternative_order text/plain text/enriched text/html
@@ -63,7 +65,7 @@ bind editor <Tab> complete-query
 macro index c "<change-folder>\Cw\Cw\Cw"
 
 bind pager O noop
-macro index,pager O "<shell-escape>mailsync.sh<enter><enter>"
+macro index,pager O "<shell-escape>~/.local/bin/mailsync.sh<enter><enter>"
 
 macro index,pager a "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
