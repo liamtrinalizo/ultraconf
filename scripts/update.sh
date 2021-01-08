@@ -29,3 +29,5 @@ echo -e "\e[36m--Cleaning useless dependencies--\e[m"
 emerge --depclean --quiet
 echo -e "\e[36m--Cleaning obsolete distfiles--\e[m"
 eclean-dist
+echo -e "\e[36m--Testing for obsolete pkg--\e[m"
+eix-test-obsolete
