@@ -7,7 +7,8 @@ This repo helps me keep track of all my dotfiles, scripts, system wide configs.
 
 ### Distribution
 
-The **dotfiles**,**kernel** and **scripts** folders are distribution-independent however the **portage** and **overlay** directories are for Gentoo-based system.
+The **dotfiles**,**kernel** and **scripts** folders are distribution-independent however the **portage** and **overlay** 
+directories are for Gentoo-based system.
 
 ### Shell
 
@@ -29,8 +30,8 @@ The **dotfiles**,**kernel** and **scripts** folders are distribution-independent
 
 ### Misc
 
-diff-so-fancy for git https://github.com/so-fancy/diff-so-fancy
-fzy the c version of fzf for some scripts https://github.com/jhawthorn/fzy
+- diff-so-fancy for git https://github.com/so-fancy/diff-so-fancy
+- fzy the c version of fzf for some scripts https://github.com/jhawthorn/fzy
 
 ## Installation
 
@@ -38,9 +39,5 @@ It is preferred to place the ultraconf folder to $XDG_CONFIG_HOME then the scrip
 
 ## Inspirations & acknowledgements
 
-Luke Smith's voidrice/mutt-wizard https://github.com/LukeSmithxyz/
-Suckless projects https://suckless.org
-
-## TO-DO
-
-
+- Luke Smith's voidrice/mutt-wizard https://github.com/LukeSmithxyz/
+- Suckless projects https://suckless.org
