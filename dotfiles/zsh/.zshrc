@@ -1,4 +1,4 @@
-fpath=($fpath $XDG_CONFIG_HOME/zsh)
+fpath=($fpath $XDG_CONFIG_HOME/zsh/completion)
 HISTFILE=~/.cache/zsh/histfile
 HISTSIZE=10000
 SAVEHIST=10000
@@ -10,14 +10,12 @@ zmodload zsh/complist
 compinit
 _comp_option+=(globdots)
 
-
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }
 
 setopt PROMPT_SUBST
-#PROMPT='%F{yellow}%! %n@%m:%9c%F{green} %$(parse_git_branch)%F{white} $ '
- PROMPT='%F{yellow}%! %n@%m:%9c%F{green}$(parse_git_branch)%F{none} $ '
+PROMPT='%F{yellow}%! %n@%m:%9c%F{green}$(parse_git_branch)%F{none} $ '
 
 export GPG_TTY=$(tty)
 
