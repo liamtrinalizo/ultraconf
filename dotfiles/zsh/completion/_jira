@@ -3,6 +3,14 @@ autoload -U compinit && compinit
 
 typeset -A opt_args
 
+completeAllIssues() {
+    MYISSUES=()
+    while read -r LINE; do
+        MYISSUES+=($LINE)
+    done < <(jira list | tr 'A-Z' 'a-z')
+    _describe -t MYISSUES 'issue' MYISSUES && ret=0
+}
+
 completeUserIssues() {
     MYISSUES=()
     while read -r LINE; do
@@ -20,7 +28,7 @@ completeProjects() {
     _describe -t PROJECTS 'project' PROJECTS && ret=0
 }
 
-# TODO finished issues completion for reopen
+# TODO finished-issues completion for reopen
 # TODO script for watch list
 
 _arguments -C \
@@ -84,9 +92,7 @@ case "$state" in
         'in-review:transition issue to In Review'
         'cal:display this week calendar of worklogs'
         'activ:Print gitlab activity linked to account at relativ day $1'
-        'closework:add worklog at date $1 time $2 with issue $3 with current dir jira log'
         'search:Search for issues containing word in summary or description'
-        'openwork:Create new worklog file'
         'show:Print issue details like "view"')
 
         _describe -t commands 'command' commands && ret=0 ;;
@@ -118,10 +124,13 @@ case "$state" in
             (worklog)
                 local subcmds; subcmds=(
                 'add:Add a worklog to an issue'
-                'list:Prints the worklog data for given issue')
+                'list:Prints the worklog data for given issue'
+                'open:Create new local worklog file'
+                'edit:Edit a local worklog'
+                'close:Push worklog to server')
                 _describe -t subcmds 'subcmd' subcmds && ret=0 ;;
             (*)
-                completeUserIssues ;;
+                completeAllIssues ;;
         esac ;;
 
     (params)
@@ -131,11 +140,11 @@ case "$state" in
             (components | create | createmeta | issuetypes | list | subtask)
                 [ $line[2] = "-p" ] && completeProjects ;;
             (component)
-                { [ $line[2] = "add" -a $line[3] = "-p" ] && completeProjects } || completeUserIssues ;;
+                { [ $line[2] = "add" -a $line[3] = "-p" ] && completeProjects } || completeAllIssues ;;
             (epic)
-                { [ $line[2] = "list" -o $line[2] = "create" -a  $line[3] = "-p" ] && completeProjects } || completeUserIssues ;;
+                { [ $line[2] = "list" -o $line[2] = "create" -a  $line[3] = "-p" ] && completeProjects } || completeAllIssues ;;
             (*)
-                completeUserIssues ;;
+                completeAllIssues ;;
         esac ;;
 
     esac

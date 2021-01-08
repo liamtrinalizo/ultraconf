@@ -18,10 +18,10 @@ custom-commands:
                sed -e 's/To Do/status1/'\
                    -e 's/In Progress/status2/'\
                    -e 's/In Review/status3/' | \
-                   sort -b -t'|' -k5 -k1 | \
-               sed -e "s/status1/$(printf "\033[31mTo Do\033[0m")/" \
-                   -e "s/status2/$(printf "\033[36mIn Progress\033[0m")/" \
-                   -e "s/status3/$(printf "\033[32mIn Review\033[0m")/" \
+                   sort -b -t'|' -k2 -k1 | \
+               sed -e "s/status1/$(printf "\033[31mtodo\033[0m")/" \
+                   -e "s/status2/$(printf "\033[36mdoing\033[0m")/" \
+                   -e "s/status3/$(printf "\033[32mreview\033[0m")/" \
                    -e "s/Bug/🐞/" \
                    -e "s/Improvement/🧪/" \
                    -e "s/Sub-task/▫️ /" \
@@ -49,11 +49,11 @@ custom-commands:
         required: false
     script: |-
       USER={{if args.USER}}{{args.USER}}{{else}}MJ093{{end}}
-      ~/scripts/jiraWorklogs.sh $USER | cut -c 1-300 | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 3)) - $(date -d 'last week' +'%d %b %Y')  | \
+      ~/.local/bin/jiraWorklogs.sh $USER | cut -c 1-300 | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 3)) - $(date -d 'last week' +'%d %b %Y')  | \
         cut -d '|' -f 1-6 | cut -d '+' -f 1-6 | \
         sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
 
-  - name: closework
+  - name: worklog close
     help: add worklog at date $1 time $2 with issue $3 with current dir jira log
     options:
       - name: relativdate
@@ -64,6 +64,7 @@ custom-commands:
         help: hour time of the begining in 24h format
       - name: duration
         short: d
+        default: 8h
         help: jira notation of duration with {d,h,m}
       - name: log
         short: l
@@ -79,8 +80,30 @@ custom-commands:
       TIME={{if options.time}}{{options.time}}:00.000$(date +%z){{else}}$(basename -s .jira $LOG | cut -dT -f2 | cut -d_ -f1):00.000$(date +%z){{end}}
       DURATION={{if options.duration}}{{options.duration}}{{end}}
 
-      {{jira}} worklog add -S "$DATE"T"$TIME" -T $DURATION  -m "$(< $LOG)" --noedit $ISSUE
-      rm $LOG
+      echo {{jira}} worklog add -S "$DATE"T"$TIME" -T "$DURATION"  -m "$LOG" --noedit "$ISSUE"
+      {{jira}} worklog add -S "$DATE"T"$TIME" -T "$DURATION"  -m "$(< $LOG)" --noedit "$ISSUE" && rm $LOG
+
+  - name: worklog open
+    help: Create new worklog file
+    options:
+      - name: owrelativdate
+        short: r
+        default: 0
+      - name: owtime
+        short: t
+        default: "%H:%M"
+        help: hour time of the begining in 24h format
+    args:
+      - name: ISSUE
+        required: true
+    script: |-
+      JIRA_WORKLOG=~/.local/share/jira/$(date -d "-{{options.owrelativdate}} day" +%Y-%m-%dT{{options.owtime}})_{{args.ISSUE}}.jira
+      touch $JIRA_WORKLOG; vim $JIRA_WORKLOG
+
+  - name: worklog edit
+    help: Edit existing work file
+    script:
+      vim $(ls $XDG_DATA_HOME/jira/* | fzy)
 
   - name: activ
     help: Print gitlab activity linked to account at relativ day $1
@@ -111,15 +134,4 @@ custom-commands:
     script: |-
       {{jira}} list -q "summary~\\\"{{args.WORD}}\\\" or description~\\\"{{args.WORD}}\\\"" | column -ts ':'
 
-  - name: openwork
-    help: Create new worklog file 
-    options:
-      - name: relativdate
-        short: r
-        default: 0
-    args:
-      - name: ISSUE
-        required: true
-    script: |-
-      JIRA_WORKLOG=~/.local/share/jira/$(date -d "-{{options.relativdate}} day" +%Y-%m-%dT%H:%M)_{{args.ISSUE}}.jira
-      touch $JIRA_WORKLOG; vim $JIRA_WORKLOG
+  #TODO cmd to list issue attachments in fzy, on select download and open with mime type program
