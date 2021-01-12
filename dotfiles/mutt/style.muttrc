@@ -26,6 +26,7 @@ set history_remove_dups = yes
 set change_folder_next = no
 set help = no
 set count_alternatives = yes
+set abort_key = <ESC>
 attachments -A "*/.*"
 attachments +I "text/calendar"
 auto_view text/html
@@ -44,6 +45,8 @@ bind editor <space> noop
 bind index G last-entry
 bind index gg first-entry
 macro pager,attach h "<exit><sync-mailbox>"
+bind index h noop
+bind index H display-toggle-weed
 bind pager j next-line
 bind pager k previous-line
 bind pager l view-attachments
@@ -54,7 +57,6 @@ bind index l display-message
 bind index V toggle-new
 bind index,pager N search-opposite 
 macro browser h '<change-dir><kill-line>..<enter>'
-bind index,pager H view-raw-message
 bind browser l select-entry
 bind pager,browser gg top-page
 bind pager,browser G bottom-page
