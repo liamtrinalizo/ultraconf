@@ -27,6 +27,7 @@ set change_folder_next = no
 set help = no
 set count_alternatives = yes
 set abort_key = <ESC>
+set confirmappend = no
 attachments -A "*/.*"
 attachments +I "text/calendar"
 auto_view text/html
