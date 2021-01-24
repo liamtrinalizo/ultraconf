@@ -8,7 +8,7 @@ while getopts 'l:s:' OPTION; do
                 xrandr --output LVDS1 --auto --rotate normal --pos 0x0  \
                        --output DP1   --off
 
-                bspc monitor DP1   -d 1 2 3 4 5 6 7 8 9
+                bspc monitor LVDS1   -d 1 2 3 4 5 6 7 8 9
                 bspc rule -a Brave-browser desktop='^2'
             elif [ $OPTARG == "2" ]; then
                 echo "Double screen mode"
