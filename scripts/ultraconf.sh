@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-ultraconfPath=$XDG_CONFIG_HOME/ultraconf/
+ultraconfPath=~/.config/ultraconf
 superuserMode=false
 
 print_usage()
@@ -26,13 +26,13 @@ installFile() {
                                     || ln -sf $ultraconfPath/dotfiles/$1/$2 $XDG_CONFIG_HOME/$1/$2
 }
 
-[ ! -d $XDG_CONFIG_HOME ]      && mkdir $XDG_CONFIG_HOME
-[ ! -d $XDG_DATA_HOME ]        && mkdir -p $XDG_DATA_HOME
-[ ! -d $XDG_DATA_HOME/../bin ] && mkdir -p $XDG_DATA_HOME/../bin
+ln -sf $ultraconfPath/dotfiles/zprofile ~/.zprofile && . ~/.zprofile
+
+[ ! -d $XDG_CONFIG_HOME ] && mkdir $XDG_CONFIG_HOME
+[ ! -d $XDG_DATA_HOME ]   && mkdir -p $XDG_DATA_HOME
+[ ! -d $XDG_BIN_HOME ]    && mkdir -p $XDG_BIN_HOME
 
 # Install users dotfiles
-ln -sf $ultraconfPath/dotfiles/zprofile ~/.zprofile
-source ~/.zprofile
 mkdir $XDG_CONFIG_HOME/gnupg 2> /dev/null
 mkdir -p $XDG_DATA_HOME/mail/work 2> /dev/null
 installFile bc              bcrc
@@ -50,12 +50,14 @@ installFile vim             vimrc
 installFile zathura         zathurarc
 installFile mutt            style.muttrc
 installFile mutt            mailcap
-installFile w3m             config
-installFile w3m             keymap
+mkdir ~/.w3m
+ln -sf $ultraconfPath/dotfiles/w3m/config ~/.w3m/
+ln -sf $ultraconfPath/dotfiles/w3m/keymap ~/.w3m/
 installFile X11             xinitrc
 installFile X11             xresources
 mkdir $XDG_CONFIG_HOME/zsh/completion 2> /dev/null
 installFile zsh             .zshrc
+mkdir -p ~/.cache/zsh/
 installFile zsh/completion  _jira
 
 # Install users scripts
