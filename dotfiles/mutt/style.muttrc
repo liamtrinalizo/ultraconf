@@ -28,6 +28,7 @@ set help = no
 set count_alternatives = yes
 set abort_key = <ESC>
 set confirmappend = no
+set editor = "vim -c 'set textwidth=0'"
 attachments -A "*/.*"
 attachments +I "text/calendar"
 auto_view text/html
