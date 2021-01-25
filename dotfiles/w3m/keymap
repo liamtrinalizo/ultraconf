@@ -9,9 +9,8 @@ keymap C-y      DOWNLOAD_LIST
 keymap ge       EDIT
 keymap gE       EDIT_SCREEN
 keymap G        END
-keymap ZZ       EXIT
-keymap Y        EXTERN          copy_url.sh
-keymap yy       EXTERN_LINK     copy_url.sh
+keymap Y        EXTERN          ~/scripts/copy_url.sh
+keymap yy       EXTERN_LINK     ~/scripts/copy_url.sh
 keymap o        GOTO
 keymap C-j      GOTO_LINK
 keymap p        GOTO            /usr/libexec/w3m/cgi-bin/goto_clipboard.cgi
