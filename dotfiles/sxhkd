@@ -29,7 +29,7 @@ super + ctrl + {m,x,y,z}
     bspc node --flag {marked,locked,sticky,private}
 
 super + {_,shift + }{h,j,k,l}
-    bspc node --{focus,swap} {west,south,north,east}
+    bspc node --{focus,swap} {west,south,north,east} --follow
 
 super + {p,b,comma,period}
     bspc node --focus @{parent,brother,first,second}
