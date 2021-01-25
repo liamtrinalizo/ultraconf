@@ -14,7 +14,8 @@ while getopts 'bgmr' opt; do
         g)
             [ -f /tmp/gpg_needs_key ] && echo -n " K" ;;
         m)
-            [ "$(ls -l ~/.local/share/mail/work/INBOX/new/ | wc -l)" -gt 1 ] && echo -n " M" ;;
+            new=$(($(ls -l ~/.local/share/mail/work/INBOX/new/ | wc -l) - 1))
+            [ "$new" -gt 0 ] && echo -n " ${new}M" ;;
         r)
             < /tmp/remind head -1 ;;
     esac
