@@ -55,7 +55,7 @@ bind pager l view-attachments
 bind index D delete-message
 bind index U undelete-message
 bind index L limit
-bind index l display-message
+macro index l "<display-message><sync-mailbox>"
 bind index V toggle-new
 bind index,pager N search-opposite 
 macro browser h '<change-dir><kill-line>..<enter>'
