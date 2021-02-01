@@ -49,10 +49,10 @@ super + {o,i}
     bspc wm --record-history on
 
 super + {1-9,0}
-    bspc desktop --focus '^{1-9,10}'
+    bspc desktop --focus '{1-9,10}'
 
 super + shift + {1-9,0}
-    bspc node --to-desktop '^{1-9,10}' --follow
+    bspc node --to-desktop '{1-9,10}' --follow
 
 super + ctrl + {h,j,k,l}
     bspc node --presel-dir {west,south,north,east}
