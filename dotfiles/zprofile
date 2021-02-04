@@ -4,7 +4,7 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_BIN_HOME="$HOME/.local/bin"
 
 # Default programs:
-export EDITOR="vim"
+export EDITOR="vi"
 export TERMINAL="st"
 export READER="zathura"
 export FILE="nnn"

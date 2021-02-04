@@ -1,28 +1,29 @@
-#/bin/sh
+#!/usr/bin/env bash
+#
+# Update Gentoo official and self generated (brave-bin) pkg, then clean up dependencies, distfiles, show obsolete pkg
 
+#set -Eeuo pipefail
 
-gitUpdate()
+updateBrave()
 {
-   pkg=$(echo $1 | cut -d / -f 5-6)
-   echo -e "\e[32mUpdating $pkg \e[m"
-   cd $1 
-   git pull
+    persoRepo=/var/db/repos/perso/www-client/brave-bin
+    braveRepo=https://github.com/brave/brave-browser/releases/latest
+    remoteVer=$(curl -s $braveRepo | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+')
+    localVer=$(INSTFORMAT='<version>' eix --pure-packages --format '<installedversions:INSTFORMAT>()\n' brave)
+    archivName=$(curl -sL $braveRepo | grep 'href' | grep -oP "brave-browser-[a-z-]*(?=$remoteVer-linux-amd64.zip)")
+    [ "$remoteVer" != "$localVer" ] && [ "$(printf '%s\n%s' "$remoteVer" "$localVer" | sort -V | head -n1)" = "$localVer" ] && echo "$localVer -> $remoteVer" && \
+                                cp -f $persoRepo/brave-bin-{"$localVer","$remoteVer"}.ebuild && \
+                                sed -i "s/brave-browser-[a-z-]*/$archivName/" $persoRepo/brave-bin-"$remoteVer".ebuild && \
+                                ebuild $persoRepo/brave-bin-"$remoteVer".ebuild digest
 }
 
 #################################
 
-PERSO_REPO=/var/db/repos/perso
+
 echo -e "\e[36m--Check for brave-browser update--\e[m"
-REMOTE=$(curl -s https://github.com/brave/brave-browser/releases/latest | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+')
-LOCAL=$(INSTFORMAT='<version>' eix --pure-packages --format '<installedversions:INSTFORMAT>()\n' brave)
-[ -n $(curl -Ls https://github.com/brave/brave-browser/releases/latest | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+' | grep nightly) ] && NIGHTLY=-nightly
-
-[ \($REMOTE != $LOCAL\) -a \($(printf "$REMOTE\n$LOCAL"\) | sort -V | head -n1) = $LOCAL ] && echo "$LOCAL -> $REMOTE" && cp $PERSO_REPO/www-client/brave-bin/brave-bin-{$LOCAL,$REMOTE}.ebuild && \
-                            sed -i "s@/brave-browser-[a-z]-*\$@/brave-browser$NIGHTLY-\$@" $PERSO_REPO/www-client/brave-bin/brave-bin-$REMOTE.ebuild && \
-                            ebuild $PERSO_REPO/www-client/brave-bin/brave-bin-$REMOTE.ebuild digest
-
+updateBrave
 echo -e "\e[36m--Syncing portage--\e[m"
-eix-sync -qa $1
+eix-sync -qa "$1"
 echo -e "\e[36m--Emerging world--\e[m"
 emerge -aqvuDN --keep-going=y --with-bdeps=y @world || exit 1
 echo -e "\e[36m--Cleaning useless dependencies--\e[m"
