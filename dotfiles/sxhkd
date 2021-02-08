@@ -4,6 +4,9 @@ super + Return
 super + @space
     dmenu_run
 
+super + d
+    $XDG_BIN_HOME/digraph.sh
+
 super + shift + s
     slock
 
