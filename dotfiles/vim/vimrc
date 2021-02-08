@@ -11,7 +11,7 @@ set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
 set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
-set history=1000 viminfo+='1000,n$XDG_DATA_HOME/vim/viminfo undofile
+set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
 set hlsearch incsearch showmatch
 set keywordprg=:Man
 set list
@@ -38,15 +38,15 @@ map g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 map g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
 map gz :wall<CR>
 
-hi DiffAdd    cterm=NONE ctermfg=0     	ctermbg=DarkGreen
-hi DiffDelete cterm=NONE ctermfg=0     	ctermbg=DarkRed
-hi DiffChange cterm=NONE ctermfg=white 	ctermbg=DarkBlue
-hi DiffText   cterm=NONE ctermfg=DarkBlue 	ctermbg=White
-hi Special    ctermfg=DarkRed 	ctermbg=Black
-hi PmenuSel   ctermfg=black 	ctermbg=white
+hi DiffAdd    cterm=NONE ctermfg=0      ctermbg=DarkGreen
+hi DiffDelete cterm=NONE ctermfg=0      ctermbg=DarkRed
+hi DiffChange cterm=NONE ctermfg=white  ctermbg=DarkBlue
+hi DiffText   cterm=NONE ctermfg=DarkBlue   ctermbg=White
+hi Special    ctermfg=DarkRed   ctermbg=Black
+hi PmenuSel   ctermfg=black     ctermbg=white
 hi QuickFixLine ctermbg=DarkRed
 
-if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim")) 
+if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
     source $XDG_CONFIG_HOME/vim/addi.vim
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
@@ -54,13 +54,13 @@ endif
 autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG setlocal spell
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead,BufEnter *.h,*.hpp,*.c,*.cc,*.cpp set omnifunc=omni#cpp#complete#Main
-autocmd BufWritePost *.h,*.hpp,*.c,*.cc,*.cpp silent !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
 if filereadable("./cscope.out")
     cscope add cscope.out
 endif
 
-command! Bro  enew! | setl  buftype=nofile | 0put =v:oldfiles | exe "silent % !fzy" | norm gf
-command! Vbro vnew   +setl\ buftype=nofile | 0put =v:oldfiles | exe "silent % !fzy" | norm gf
-command! Sbro new    +setl\ buftype=nofile | 0put =v:oldfiles | exe "silent % !fzy" | norm gf
-command! Make wa | silent make | redraw! | cw
+command! Bro   enew! | setl  buftype=nofile | 0put =v:oldfiles | exe "silent % !fzy" | norm gf
+command! Vbro  vnew   +setl\ buftype=nofile | 0put =v:oldfiles | exe "silent % !fzy" | norm gf
+command! Sbro  new    +setl\ buftype=nofile | 0put =v:oldfiles | exe "silent % !fzy" | norm gf
+command! Make  wa | silent make | redraw! | cw
+command! Ctags !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
