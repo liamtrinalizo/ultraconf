@@ -13,7 +13,6 @@ _comp_option+=(globdots)
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }
-
 setopt PROMPT_SUBST
 PROMPT='%F{yellow}%! %n@%m:%9c%F{green}$(parse_git_branch)%F{none} $ '
 
@@ -28,12 +27,9 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 zle -N edit-command-line
-bindkey '^xe' edit-command-line
 bindkey '^x^e' edit-command-line
 
 export KEYTIMEOUT=1
-export EDITOR=vim
-export LANG=en_US.UTF-8
 
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 
@@ -46,6 +42,7 @@ bindkey '^[[B'  down-line-or-beginning-search  # Arrow down
 bindkey '^[OB'  down-line-or-beginning-search
 
 #alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
+alias abook="abook --config $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook"
 alias al="alsamixer"
 alias cal="cal -m"
 alias curl="curl --silent"
@@ -58,13 +55,15 @@ alias ip="ip --color"
 alias l="ls -1Na --group-directories-first --color=auto"
 alias li="xbacklight -set"
 alias ll="ls -Nlhav --group-directories-first --color=auto"
+alias lo="loffice --norestore"
 alias ls="ls -hF --color=tty"
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
 alias mutt="neomutt"
-alias rdp="xfreerdp /log-level:ERROR /compression-level:2 /f /dynamic-resolution -wallpaper +clipboard"
+alias rdp="xfreerdp /log-level:ERROR /compression-level:2 /f /dynamic-resolution /cert:ignore -wallpaper +clipboard"
 alias rem1="rem -m -b1 -q -g"
 alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | less"
 alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
+alias wdump="w3m -dump -T text/html"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias xclip2="xclip -selection clipboard"
 
