@@ -1,7 +1,8 @@
-set date_format="%Y/%m/%d %H:%M"
-set index_format="%3C %?X?cal&   ? %zs %D %-15.15F %s (%-4.4c)"
+set date_format = "%Y/%m/%d %H:%M"
+set index_format = "%3C %?X?cal&   ? %zs %D %-15.15F %s (%-4.4c)"
+set attach_format = "%u%D%I %t%4n %T%.80d%> [%.7m/%.10M, %.6e%?C?, %C?, %s] "
 set sort = 'reverse-date'
-set query_command = "abook --mutt-query '%s'"
+set query_command = "abook --config $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook --mutt-query '%s'"
 set rfc2047_parameters = yes
 set sleep_time = 0      # Pause 0 seconds for informational messages
 set markers = no        # Disables the `+` displayed at line wraps
@@ -28,7 +29,8 @@ set help = no
 set count_alternatives = yes
 set abort_key = <ESC>
 set confirmappend = no
-set editor = "vim -c 'set textwidth=0'"
+set editor = "vim -c 'set textwidth=0' -c 'norm Go</pre>' -c 'norm ggI<pre>'"
+set content_type = "text/html"
 attachments -A "*/.*"
 attachments +I "text/calendar"
 auto_view text/html
@@ -71,7 +73,7 @@ macro index c "<change-folder>\Cw\Cw\Cw"
 bind pager O noop
 macro index,pager O "<shell-escape>~/.local/bin/mailsync.sh<enter><enter>"
 
-macro index,pager a "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
+macro index,pager a "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --config $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Enter a search term to find with notmuch: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;s/\^id:// for@a;$,=\"|\";print@a' | perl -le '@a=<>; chomp@a; s/\\+/\\\\+/ for@a;print@a' \`\"<enter>" "show only messages matching a notmuch pattern"
 macro index A "<limit>all\n" "show all messages (undo limit)"
@@ -82,6 +84,7 @@ set sidebar_width = 20
 set sidebar_short_path = yes
 set sidebar_next_new_wrap = yes
 set sidebar_format = '%D%?F? [%F]?%* %?N?%N/? %?S?%S?'
+
 bind index,pager \Ck sidebar-prev
 bind index,pager \Cj sidebar-next
 macro index,pager \e\Ck '<sidebar-prev><sidebar-prev><sidebar-prev><sidebar-prev><sidebar-prev>'
