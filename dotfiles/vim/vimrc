@@ -26,6 +26,7 @@ set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME
 set t_Co=256
 set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
 set wildmenu showcmd
+set grepprg=grep\ -n\ --exclude\ tags
 
 let g:netrw_banner = 0
 let g:netrw_sort_sequence = '[\/]$'
