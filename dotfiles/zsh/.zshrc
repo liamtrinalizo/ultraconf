@@ -1,7 +1,7 @@
 fpath=($fpath $XDG_CONFIG_HOME/zsh/completion)
 HISTFILE=~/.cache/zsh/histfile
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 setopt appendhistory sharehistory incappendhistory HIST_SAVE_NO_DUPS
 
 autoload -U compinit promptinit edit-command-line
@@ -50,7 +50,7 @@ alias ffmpeg="ffmpeg -y  -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
 alias gdb="gdb -nh -x $XDG_CONFIG_HOME/gdb/init"
 alias gnuplot="HOME=$XDG_CONFIG_HOME/gnuplot/ gnuplot"
-alias grep="grep --color"
+alias grep="grep --color --exclude tags --exclude-dir .svn"
 alias ip="ip --color"
 alias l="ls -1Na --group-directories-first --color=auto"
 alias li="xbacklight -set"
@@ -59,7 +59,7 @@ alias lo="loffice --norestore"
 alias ls="ls -hF --color=tty"
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
 alias mutt="neomutt"
-alias rdp="xfreerdp /log-level:ERROR /compression-level:2 /f /dynamic-resolution /cert:ignore -wallpaper +clipboard"
+alias rdp="xfreerdp /log-level:ERROR /compression-level:2 /f /dynamic-resolution /cert:ignore -wallpaper +clipboard -grab-keyboard"
 alias rem1="rem -m -b1 -q -g"
 alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | less"
 alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
@@ -68,3 +68,6 @@ alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias xclip2="xclip -selection clipboard"
 
 color() { convert -size 100x100 canvas:#$1 png:- | display }
+greptar() { tar ft $2 | awk '/.*[^/]$/' | while read -r file; do if tar xf $2 $file -O | grep -w $1 && echo -e "\e[36m$file\e[m"; done }
+
+[ -e /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
