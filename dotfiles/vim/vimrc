@@ -14,8 +14,7 @@ set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
 set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
 set hlsearch incsearch showmatch
 set keywordprg=:Man
-set list
-exec "set listchars=tab:\uAC\uAC,nbsp:~,trail:\uB7"
+set list listchars=tab:\|\ ,trail:.
 set mouse=
 set spelllang=en,fr
 set nocompatible nomodeline nowrap
