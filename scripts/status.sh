@@ -3,6 +3,7 @@
 while getopts 'bgmr' opt; do
     case "$opt" in
         b)
+            which acpitool &> /dev/null || break
             acpitool | grep Full        > /dev/null && echo -n " ▌"
             acpitool | grep Charging    > /dev/null && echo -n " ↑"
             acpitool | grep Discharging > /dev/null && echo -n " ↓"
