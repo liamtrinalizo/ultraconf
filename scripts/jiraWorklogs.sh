@@ -34,5 +34,5 @@ for I in $(seq 0 $(($(echo $DATA | jq 'length')-1))); do
     echo -n $(echo $DATA | jq -r ".[$I]| .timeSpent" | parseDuration); echo -n " "
     echo -n "SPECIAL COLOR 128 128 255 {"
     echo -n $(echo $DATA | jq -r ".[$I]| .issueId" | parseIssueId); echo -n "} "
-    echo    $(echo $DATA | jq -r ".[$I]| .comment")
+    echo $(echo $DATA | jq -r ".[$I]| \"\(.comment) \"" | tr [] ' ')
 done

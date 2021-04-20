@@ -24,6 +24,8 @@ shift
 while getopts 'f' opt; do
     case "$opt" in
         f) female=1 ;;
+        h) print_usage ;;
+        ?) print_usage ;;
     esac
 done
 
