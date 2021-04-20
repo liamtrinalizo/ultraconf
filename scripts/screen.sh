@@ -9,7 +9,6 @@ while getopts 'l:s:' OPTION; do
                        --output DP1   --off
 
                 bspc monitor DP1   -d 1 2 3 4 5 6 7 8 9 10
-                bspc rule -a Brave-browser desktop='^2'
             elif [ $OPTARG == "2" ]; then
                 echo "Double screen mode"
                 xrandr --output DP1 --right-of LVDS1
@@ -20,21 +19,19 @@ $(xrandr | awk '/\<connected/ {match($0, "x[0-9]+", arr); num = substr(arr[0],2)
                 bspc monitor DP1   -d 1 2 3 4 5
                 bspc monitor LVDS1 -d 6 7 8 9
                 bspc monitor ALL   -d 10
-                bspc rule -a Brave-browser desktop='6'
             elif [ $OPTARG == "3" ]; then
                 echo "Triple screen mode"
-                xrandr --output DP1    --left-of HDMI1 \
-                       --output HDMI1  --left-of HDMI2 \
+                xrandr --output HDMI1 --left-of DP1 \
+                       --output DP1   --left-of HDMI2 \
                        --output HDMI2
 
                 bspc wm -a ALL \
 $(xrandr | awk '/\<connected/ {match($0, "[0-9]+x", arr); x+=arr[0]} END{print x}')x\
 $(xrandr | awk '/\<connected/ {match($0, "x[0-9]+", arr); num = substr(arr[0],2); if(min == 0 || min > num) min = num} END{print min}')+0+0
-                bspc monitor DP1   -d 1 2 3
-                bspc monitor HDMI1 -d 4 5 6
+                bspc monitor HDMI1 -d 1 2 3
+                bspc monitor DP1   -d 4 5 6
                 bspc monitor HDMI2 -d 7 8 9
                 bspc monitor ALL   -d 10
-                bspc rule -a Brave-browser desktop='9'
             fi
 
             for desktop in $(bspc query -D); do bspc desktop $desktop -l tiled; done

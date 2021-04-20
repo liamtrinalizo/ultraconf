@@ -4,6 +4,9 @@ super + Return
 super + @space
     dmenu_run
 
+super + alt + s
+    $XDG_BIN_HOME/clip.sh -s
+
 super + d
     $XDG_BIN_HOME/digraph.sh
 
