@@ -41,7 +41,7 @@ super + {p,b,comma,period}
     bspc node --focus @{parent,brother,first,second}
 
 super + {_,shift + }c
-    bspc node --focus {next,prev}.local
+    bspc node --focus {next,prev}.local.window
 
 super + bracket{left,right}
     bspc desktop --focus {prev,next}.local
