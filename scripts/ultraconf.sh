@@ -39,7 +39,7 @@ installFile bc              bcrc
 installFile bspwm           bspwmrc
 installFile gdb             init
 installFile git             config
-installFile gnuplot         config
+installFile gnuplot         .gnuplot
 #installFile jira            .jira.d/config.yml
 installFile sxhkd           sxhkdrc
 installFile tmux            tmux.conf
