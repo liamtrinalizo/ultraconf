@@ -1,3 +1,4 @@
 set use_colors=true
 set color_header_bg = default
 set color_footer_fg = blue
+set print_command =

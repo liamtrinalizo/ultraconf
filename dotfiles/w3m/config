@@ -17,7 +17,7 @@ dictcommand file:///$LIB/w3mdict.cgi
 multicol 1
 alt_entity 1
 graphic_char 0
-display_borders 1
+display_borders 0
 fold_textarea 0
 display_ins_del 1
 ignore_null_img_alt 1
