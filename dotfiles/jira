@@ -4,7 +4,7 @@ editor: vi
 browser: brave-browser
 
 password-source: pass
-password-name: addi/domain
+password-name: addi/mj093
 
 custom-commands:
   - name: mine
@@ -28,7 +28,7 @@ custom-commands:
                    -e "s/Task/◽/" \
                    -e "s/Highest/🔥🔥🔥/" \
                    -e "s/High/🔥/" \
-                   -e "s/Medium/➖/" \
+                   -e "s/Medium/-/" \
                    -e "s/Low/💤/" \
                    -e "s/Lowest/💤💤💤/" \
                    -e "s/Stoesser.Achim#1/SA037/" | \
@@ -54,7 +54,7 @@ custom-commands:
         sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
 
   - name: worklog close
-    help: add worklog at date $1 time $2 with issue $3 with current dir jira log
+    help: push worklog to jira server
     options:
       - name: relativdate
         short: r
@@ -70,17 +70,16 @@ custom-commands:
         short: l
         help: Content of the worklog
     args:
-      - name: ISSUE
+      - name: WORKLOGFILE
         required: false
     script: |-
-      LOG={{if options.log}}{{options.log}}{{else}}$(ls $XDG_DATA_HOME/jira/* | fzy){{end}}
-      [ ! -f $LOG ] && echo "Log not found" && exit;
+      LOG=$XDG_DATA_HOME/jira/{{args.WORKLOGFILE}}
       ISSUE={{if args.ISSUE}}{{args.ISSUE}}{{else}}$(basename -s .jira $LOG | cut -d_ -f2){{end}}
       DATE={{if options.relativdate}}$(date -d "-{{options.relativdate}} day" +%Y-%m-%d){{else}}$(basename -s .jira $LOG | cut -dT -f1){{end}}
-      TIME={{if options.time}}{{options.time}}:00.000$(date +%z){{else}}$(basename -s .jira $LOG | cut -dT -f2 | cut -d_ -f1):00.000$(date +%z){{end}}
+      TIME={{if options.time}}{{options.time}}:00.000$(date +%z){{else}}$(basename -s .jira $LOG | cut -dT -f2 | cut -d_ -f1| tr '-' ':'):00.000$(date +%z){{end}}
       DURATION={{if options.duration}}{{options.duration}}{{end}}
 
-      echo {{jira}} worklog add -S "$DATE"T"$TIME" -T "$DURATION"  -m "$LOG" --noedit "$ISSUE"
+      echo {{jira}} worklog add -S "$DATE"T"$TIME" -T "$DURATION"  -m "$LOG"
       {{jira}} worklog add -S "$DATE"T"$TIME" -T "$DURATION"  -m "$(< $LOG)" --noedit "$ISSUE" && rm $LOG
 
   - name: worklog open
@@ -91,19 +90,30 @@ custom-commands:
         default: 0
       - name: owtime
         short: t
-        default: "%H:%M"
+        default: "09-00"
         help: hour time of the begining in 24h format
     args:
       - name: ISSUE
         required: true
     script: |-
-      JIRA_WORKLOG=~/.local/share/jira/$(date -d "-{{options.owrelativdate}} day" +%Y-%m-%dT{{options.owtime}})_{{args.ISSUE}}.jira
+      JIRA_WORKLOG=$XDG_DATA_HOME/jira/$(date -d "-{{options.owrelativdate}} day" +%Y-%m-%dT{{options.owtime}})_{{args.ISSUE}}.jira
       touch $JIRA_WORKLOG; vim $JIRA_WORKLOG
 
   - name: worklog edit
-    help: Edit existing work file
-    script:
-      vim $(ls $XDG_DATA_HOME/jira/* | fzy)
+    help: Edit unpushed worklog file
+    args:
+      - name: WORKLOGFILE
+        required: true
+    script: |-
+      vim $XDG_DATA_HOME/jira/{{args.WORKLOGFILE}}
+
+  - name: worklog del
+    help: Delete unpushed worklog file
+    args:
+      - name: WORKLOGFILE
+        required: true
+    script: |-
+      rm $XDG_DATA_HOME/jira/{{args.WORKLOGFILE}}
 
   - name: activ
     help: Print gitlab activity linked to account at relativ day $1
@@ -132,6 +142,14 @@ custom-commands:
       - name: WORD
         required: true
     script: |-
-      {{jira}} list -q "summary~\\\"{{args.WORD}}\\\" or description~\\\"{{args.WORD}}\\\"" | column -ts ':'
+      #echo  "summary~\"{{args.WORD}}\" or description~\"{{args.WORD}}\""
+      {{jira}} list -q "summary~\"{{args.WORD}}\" or description~\"{{args.WORD}}\"" | column -ts ':'
 
-  #TODO cmd to list issue attachments in fzy, on select download and open with mime type program
+  - name: attach tget
+    help: Prompt to fetch attachment in issue
+    args:
+      - name: ISSUE
+        required: true
+    script: |-
+      ID=$(jira attach list --template debug {{args.ISSUE}} | jq -rc '.[] | {id,filename}' | fzy | jq '.id')
+      jira attach get "$ID"
