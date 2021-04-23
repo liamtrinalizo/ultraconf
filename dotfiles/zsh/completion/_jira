@@ -111,9 +111,10 @@ case "$state" in
                 local subcmds; subcmds=(
                 'create:Attach file to issue'
                 'get:Fetch attachment'
-                'tget:Prompt to fetch attachment'
+                'getall:Get all attachment')
                 'list:Prints attachment details for issue'
                 'remove:Delete attachment')
+                'sel:Prompt to fetch attachment'
                 _describe -t subcmds 'subcmd' subcmds && ret=0 ;;
             (epic)
                 local subcmds; subcmds=(

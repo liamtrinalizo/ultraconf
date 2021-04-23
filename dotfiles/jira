@@ -145,7 +145,7 @@ custom-commands:
       #echo  "summary~\"{{args.WORD}}\" or description~\"{{args.WORD}}\""
       {{jira}} list -q "summary~\"{{args.WORD}}\" or description~\"{{args.WORD}}\"" | column -ts ':'
 
-  - name: attach tget
+  - name: attach sel
     help: Prompt to fetch attachment in issue
     args:
       - name: ISSUE
@@ -153,3 +153,14 @@ custom-commands:
     script: |-
       ID=$(jira attach list --template debug {{args.ISSUE}} | jq -rc '.[] | {id,filename}' | fzy | jq '.id')
       jira attach get "$ID"
+
+  - name: attach getall
+    help: Get all attachment in issue
+    args:
+      - name: ISSUE
+        required: true
+    script: |-
+      ID=$(jira attach list --template debug {{args.ISSUE}} | jq -rc '.[].id')
+      for i in $ID; do
+        jira attach get "$i"
+      done
