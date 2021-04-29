@@ -29,8 +29,7 @@ set help = no
 set count_alternatives = yes
 set abort_key = <ESC>
 set confirmappend = no
-set editor = "vim -c 'set textwidth=0 nolist' -c 'norm Go</pre>' -c 'norm ggI<pre>'"
-set content_type = "text/html"
+set editor = "vim -c 'set textwidth=0 nolist'
 attachments -A "*/.*"
 attachments +I "text/calendar"
 auto_view text/html
