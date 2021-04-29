@@ -41,7 +41,6 @@ bindkey '^[OA'  up-line-or-beginning-search
 bindkey '^[[B'  down-line-or-beginning-search  # Arrow down
 bindkey '^[OB'  down-line-or-beginning-search
 
-#alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias abook="abook --config $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook"
 alias al="alsamixer"
 alias cal="cal -m"
@@ -63,6 +62,7 @@ alias rdp="xfreerdp /log-level:ERROR /compression-level:2 /f /dynamic-resolution
 alias rem1="rem -m -b1 -q -g"
 alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | less"
 alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
+alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias wdump="w3m -dump -T text/html"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias xclip2="xclip -selection clipboard"
