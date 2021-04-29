@@ -10,7 +10,6 @@ bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
 set -s escape-time 0
 set -g display-time 0
 set -g display-panes-time 2000
-
 set -g base-index 1
 set -g visual-activity both
 set -g visual-silence both
@@ -23,7 +22,8 @@ setw -g mode-keys vi
 setw -g monitor-activity off
 set -g status-interval 1
 set -g status-left-length 40
-set -g status-left '#[fg=green]#S#{?bat_low,#[fg=red bold],}#(status.sh -b)#[fg=red bold]#(status.sh -gmr) '
+set -g status-left  "#[fg=green]#S#{?bat_low,#[fg=red bold],}#(status.sh -b)#[fg=red bold]#(status.sh -gmr) "
+set -g status-right-length 250
+set -g status-right "#[fg=red bold]#(tail -1 /tmp/tmux-status | cut -c1-200) #[fg=green none]#{?window_bigger,[#{window_offset_x}#,#{window_offset_y}] ,} %H:%M %d.%m.%y"
 set -g status-bg black
 set -g status-fg green
-set -g window-status-current-style 'fg=green bold'
