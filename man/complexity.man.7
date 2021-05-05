@@ -1,0 +1,237 @@
+.TH COMPLEXITY "7" "May 2021" "Ultraconf" "Linux Programmer's Manual"
+.SH NAME
+complexity \- Common Big O
+.SH DESCRIPTION
+Common complexities in order of preference
+.TS
+l	l.
+O(1)	constant
+O(log n)	logarithmic
+O(n)	linear
+0(n log n)	quasi-linear
+0(n^2)	quadratic
+O(2^n)	exponential
+O(n!)	factorial
+.TE
+
+.SH SORTING
+Classic sorting algorithms
+.TS
+l	s
+l	l.
+Bubble sort
+_
+Time	O(n^2)
+Space	O(1)
+.TE
+.PP
+.TS
+l	s	s
+l	l	l.
+Quick sort
+_
+Time	avg	O(n log n)
+	worst	O(n^2)
+Space	avg	O(log n)
+	worst	O(n)
+.TE
+.pp
+.TS
+l	s
+l	l.
+Merge sort
+_
+Time	O(n log n)
+Space	O(n) (worst)
+.TE
+.PP
+.TS
+l	s
+l	l.
+Heap sort
+_
+Time	O(n log n)
+Space	O(1)
+.TE
+.PP
+.TS
+l	s
+l	l.
+Insertion sort
+_
+Time	O(n^2)
+Space	O(1)
+.TE
+.PP
+.TS
+l	s
+l	l.
+Selection sort
+_
+Time	O(n^2)
+Space	O(1)
+.TE
+.SH SEARCH
+Classic search algorithms
+.TS
+l	s
+l	l.
+Linear search
+_
+Time	O(n)
+Space	O(1)
+.TE
+.PP
+.TS
+l	s
+l	l.
+Binary search (in sorted array or search tree)
+_
+Time	O(log2 n)
+Space	O(1)
+.TE
+.PP
+.TS
+l	s
+l	l.
+Depth first search in graph G=(V,E) (worst)
+_
+Time	O(|V| + |E|)
+Space	O(|V|)
+.TE
+.PP
+.TS
+l	s
+l	l.
+Breadth first search (worst)
+_
+Time	O(|V| + |E|)
+Space	O(|V|)
+.TE
+.SH DATA STRUCTURES
+.TS
+l	s
+l	l.
+Array
+_
+Access	O(1)
+Search	O(n)
+Insertion	O(n)
+Deletion	O(n)
+Space complexity	O(n)
+.TE
+.PP
+.TS
+l	s
+l	l.
+Stack
+_
+Access	O(n)
+Search	O(n)
+Insertion (push)	O(1)
+Deletion (pop)	O(1)
+Space complexity	O(n)
+.TE
+.PP
+.TS
+l	s
+l	l.
+Queue
+_
+Access	O(n)
+Search	O(n)
+Insertion	O(1)
+Deletion	O(1)
+Space complexity	O(n)
+.TE
+.PP
+.TS
+l	s
+l	l.
+List
+_
+Access	O(n)
+Search	O(n)
+Insertion	O(1)
+Deletion	O(1)
+Space complexity	O(n)
+.TE
+
+.PP
+.TS
+l	s
+l	l	l.
+Hash table
+_
+search (lookup)	avg	O(1)
+	worst	O(n)
+Insertion	avg	O(1)
+	worst	O(n)
+Deletion	avg	O(1)
+	worst	O(n)
+Space complexity		O(n)
+.TE
+.PP
+.TS
+l	s
+l	l	l.
+Binary search tree
+_
+search	avg	O(log2 n)
+	worst	O(n)
+Insertion	avg	O(log2 n)
+	worst	O(n)
+Deletion	avg	O(log2 n)
+	worst	O(n)
+Space complexity		O(n)
+.TE
+.PP
+.TS
+l	s
+l	l	l.
+B-tree
+_
+search	avg	O(log n)
+	worst	O(n)
+Insertion	avg	O(log n)
+	worst	O(n)
+Deletion	avg	O(log n)
+	worst	O(n)
+Space complexity		O(n)
+.TE
+.PP
+.TS
+l	s
+l	l.
+Red-black tree
+_
+Search	O(log2 n)
+Insertion	O(log2 n)
+Deletion	O(log2 n)
+Space complexity	O(n)
+.TE
+.PP
+.TS
+l	s
+l	l	l.
+k-d tree
+_
+search	avg	O(log n)
+	worst	O(n)
+Insertion	avg	O(log n)
+	worst	O(n)
+Deletion	avg	O(log n)
+	worst	O(n)
+Space complexity		O(n)
+.TE
+.PP
+.TS
+l	s
+l	l.
+AVL tree
+_
+Search	O(log n)
+Insertion	O(log n)
+Deletion	O(log n)
+Space complexity	O(n)
+.TE
