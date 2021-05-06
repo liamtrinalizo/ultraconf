@@ -1,0 +1,115 @@
+.TH HTTP "7" "May 2021" "Ultraconf" "Linux Programmer's Manual"
+.SH NAME
+http \- HTTP status code
+.SH DESCRIPTION
+HTTP response status code can be summed up as follows
+.TS
+l	l.
+1**	Hold on
+2**	Here you go
+3**	Go away
+4**	You fucked up
+5**	I fucked up
+.TE
+
+.LP
+The full status code list is described bellow:
+
+.TS
+l	s
+l	l.
+1xx \- Informational
+_
+100	Continue
+101	Switching protocols
+102	Processing
+.TE
+
+.TS
+l	s
+l	l.
+2xx \- Success
+_
+200	OK
+201	Created
+202	Accepted
+203	Non-Authoritative Information
+204	No content
+205	Reset Content
+206	Partial Content
+207	Multi-Stateus (WebDAV)
+208	Already Reported (WebDAV)
+226	IM Used (HTTP Delta Encoding)
+.TE
+
+.TS
+l	s
+l	l.
+3xx \- Redirection
+_
+300	Multiple Choice
+301	Moved Permanently
+302	Found
+303	See Other
+304	Not Modified
+305	Use Proxy (deprecated!)
+307	Temporary Redirect
+308	Permanent Redirect
+.TE
+
+.TS
+l	s
+l	l.
+4xx \- Client-side error conditions
+_
+400	Bad Request
+401	Unauthorised
+402	Payment Required (reserved)
+403	Forbidden
+404	Not Found
+405	Method Not Allowed
+406	Not Acceptable
+407	Proxy Authentication Required
+408	Request Timeout
+409	Conflict
+410	Gone
+411	Length Required
+412	Precondition Failed
+413	Payload Too Large
+414	URI Too Long
+415	Unsupported Media Type
+416	Reqyested Range Not Sarisfiable
+417	Expectation Failed
+418	I'm a teapot
+421	Misdirected Request
+422	Unprocessable Entity (WebDAV)
+423	Locked (WebDAV)
+424	Failed Dependency (WebDAV)
+425	Too Early
+426	Update Required
+428	Precondition Required
+429	Too Many Requests
+431	Request Header Fields Too Large
+.TE
+
+.TS
+l	s
+l	l.
+5xx \- Server-side error conditions
+_
+500	Internal Server Error
+501	Not Implemented
+502	Bad Gateway
+503	Service Unavailable
+504	Gateway Timeout
+505	HTTP Version Not Supported
+506	Variant Alsa Negotiates
+507	Insufficient Storage
+508	Loop Detected (WebDAV)
+510	Not Extended
+511	Network Authentication Required
+599	Network Connection Timeout Error (unofficial, used by proxy servers)
+.TE
+
+.SH AUTHORS
+https://www.reddit.com/r/ProgrammerHumor/comments/67w7ht/best_way_to_describe_http_response_codes/
