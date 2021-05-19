@@ -135,7 +135,7 @@ case "$state" in
                 local subcmds; subcmds=(
                 'add:Add a worklog to an issue'
                 'close:Push worklog to server'
-                'del:Push worklog to server'
+                'del:Remove local worklog file'
                 'edit:Edit a local worklog'
                 'list:Prints the worklog data for given issue'
                 'open:Create new local worklog file')
@@ -155,7 +155,7 @@ case "$state" in
             (epic)
                 { [ $line[2] = "list" -o $line[2] = "create" -a  $line[3] = "-p" ] && completeProjects } || completeAllIssues ;;
             (worklog)
-                { [ $line[2] = "edit" ] || [ $line[2] = "close" ] || [ $line[3] = "del" ] && completeWorklogs } || completeAllIssues ;;
+                { [ $line[2] = "edit" ] || [ $line[2] = "close" ] || [ $line[2] = "del" ] && completeWorklogs } || completeAllIssues ;;
             (*)
                 completeAllIssues ;;
         esac ;;
