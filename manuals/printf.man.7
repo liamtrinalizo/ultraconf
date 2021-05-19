@@ -1,0 +1,39 @@
+.TH PRINTF "7" "May 2021" "Ultraconf" "Linux Programmer's Manual"
+.SH NAME
+printf \- cheat sheet
+.SH DESCRIPTION
+
+
+%[flag(s)][min field width][precision][length modifier]conversion specifier
+ |        |                |          |                                   |
+ |        |                |          |                                   |
+ |        |                |          |                                   |
+ |        |                |          V                                   V
+ |        |                |          +-------------------------+  +-----------------------------------------+
+ |        |                |          | hh (unsigned) char      |  | d,i signed int -> "[-]dddd"       (dec) |
+ |        |                |          | h  (unsigned) short     |  | o   unsigned   -> "dddd"          (oct) |
+ |        |                |          | l  (unsigned) long      |  | u   unsigned   -> "dddd"          (dec) |
+ |        |                |          | ll (unsigned) long long |  | x   unsigned   -> "dddd"          (hex) |
+ |        |                |          | j  intmax_t, uintmax_t  |  | X   unsigned   -> "DDDD"          (hex) |
+ |        |                |          | z  size_t               |  | f   double     -> [-]ddd.ddd"     (dec) |
+ |        |                |          | t  ptrdiff_t            |  | e   double     -> [d]d.ddde±dd"   (dec) |
+ |        |                |          | L  long double          |  | g,G double     -> decimal, auto   (f/e) |
+ |        |                V          +-------------------------+  | a,A double     -> "[-]0xh.hhh..." (hex) |
+ |        |                +-------------------------------+       | c   int        -> unsigned char         |
+ |        |                | .* Supply precessoin via arg  |       | s   char *, char[]                      |
+ |        |                | .N (decimal int) N characters |       | p   void * (impl. specific string rpz)  |
+ |        V                +-------------------------------+       | %   '%' char                            |
+ |        +------------------------------+                         +-----------------------------------------+
+ |        | * Supply width via arg       |            +------------------------------------------------------+
+ |        | N (decimal int) N characters |            | printf("%4x", 0x12ab);                "12ab"         |
+ V        +------------------------------+            | printf("%08X", 0x12ab);               "000012AB"     |
+ +----------------------------------------+           | printf("%lu", (unsigned long)100000); "100000"       |
+ | - Left-justify                         |           | printf("%4s", ab);                    "  ab"         |
+ | + Always print sign for signed numbers |           | printf("%*s", 4, ab);                 "  ab"         |
+ | # Alternative form                     |           | printf("%1.3f", 1.0/3.0);             "0.333"        |
+ | 0 Prepend leading zeron to numbers     |           | printf("10%% complete");              "10% complete" |
+ | (space) prepend blank before           |           | printf("% d", (signed)3);             " 3"           |
+ +----------------------------------------+           +------------------------------------------------------+
+
+.SH AUTHORS
+Inspired from https://remembertheapi.com/
