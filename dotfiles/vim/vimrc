@@ -34,9 +34,10 @@ let g:OmniCpp_DisplayMode = 1
 let g:OmniCpp_ShowPrototypeInAbbr = 1
 let g:OmniCpp_NamespaceSearch = 1
 
-map g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
-map g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
-map gz :wall<CR>
+nmap g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
+nmap g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
+nmap gz :wall<CR>
+nmap gH :noh<CR>
 
 hi DiffAdd    cterm=NONE ctermfg=0      ctermbg=DarkGreen
 hi DiffDelete cterm=NONE ctermfg=0      ctermbg=DarkRed
