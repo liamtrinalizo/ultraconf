@@ -35,11 +35,11 @@ button3=viewActionBottom
 showOnStartup=false
 
 [view]
-hide3DViewToolbar=false
+hide3DViewToolbar=true
 hideConsole=true
 hideCustomizer=true
 hideEditor=true
-hideEditorToolbar=false
+hideEditorToolbar=true
 hideErrorLog=true
 hideToolbar=true
 orthogonalProjection=true
