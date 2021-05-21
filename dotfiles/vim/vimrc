@@ -15,17 +15,16 @@ set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<
 set hlsearch incsearch showmatch
 set keywordprg=:Man
 exec "set list listchars=tab:\u258F\\\u20,trail:\u2508"
+set grepprg=grep\ -n\ --exclude\ tags
 set mouse=
-set spelllang=en,fr
 set nocompatible nomodeline nowrap
 set number relativenumber
-set spelllang=en,fr
 set path+=**
 set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME
 set t_Co=256
 set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
+set virtualedit=block
 set wildmenu showcmd
-set grepprg=grep\ -n\ --exclude\ tags
 
 let g:netrw_banner = 0
 let g:netrw_sort_sequence = '[\/]$'
