@@ -77,10 +77,9 @@ custom-commands:
       ISSUE={{if args.ISSUE}}{{args.ISSUE}}{{else}}$(basename -s .jira $LOG | cut -d_ -f2){{end}}
       DATE={{if options.relativdate}}$(date -d "-{{options.relativdate}} day" +%Y-%m-%d){{else}}$(basename -s .jira $LOG | cut -dT -f1){{end}}
       TIME={{if options.time}}{{options.time}}:00.000$(date +%z){{else}}$(basename -s .jira $LOG | cut -dT -f2 | cut -d_ -f1| tr '-' ':'):00.000$(date +%z){{end}}
-      DURATION={{if options.duration}}{{options.duration}}{{end}}
 
-      echo {{jira}} worklog add -S "$DATE"T"$TIME" -T "$DURATION"  -m "$LOG"
-      {{jira}} worklog add -S "$DATE"T"$TIME" -T "$DURATION"  -m "$(< $LOG)" --noedit "$ISSUE" && rm $LOG
+      echo {{jira}} worklog add -S "$DATE"T"$TIME" -T {{options.duration}}  -m "$LOG"
+      {{jira}} worklog add -S "$DATE"T"$TIME" -T "{{options.duration}}"  -m "$(< $LOG)" --noedit "$ISSUE" && rm $LOG
 
   - name: worklog open
     help: Create new worklog file
