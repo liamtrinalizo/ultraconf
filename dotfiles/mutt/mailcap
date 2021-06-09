@@ -3,7 +3,7 @@ application/vnd.openxmlformats-officedocument.wordprocessingml.document; loffice
 image/gif;        mpv --loop %s &;
 image/*;          sxiv %s &;
 text/calendar;    .local/bin/vcal -all -; copiousoutput;
-#text/html;        brave-bin %s;
+text/html;        mv %s /tmp/mail.html && $BROWSER /tmp/mail.html;
 text/html;        elinks -dump; copiousoutput;
 text/*;           $PAGER %s ;
 video/*;          mpv %s &;

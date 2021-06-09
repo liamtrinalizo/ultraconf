@@ -8,6 +8,7 @@ export SHELL="zsh"
 export EDITOR="vi"
 export TERMINAL="st"
 export READER="zathura"
+export BROWSER="brave-bin"
 
 # Misc
 export HISTFILESIZE=10000
