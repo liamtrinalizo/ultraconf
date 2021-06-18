@@ -15,7 +15,7 @@ set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<
 set hlsearch incsearch showmatch
 set keywordprg=:Man
 exec "set list listchars=tab:\u258F\\\u20,trail:\u2508"
-set grepprg=grep\ -n\ --exclude\ tags
+set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn
 set mouse=
 set nocompatible nomodeline nowrap
 set number relativenumber
