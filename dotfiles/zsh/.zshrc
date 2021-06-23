@@ -9,6 +9,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit
 _comp_option+=(globdots)
+compdef -d svn
 
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
