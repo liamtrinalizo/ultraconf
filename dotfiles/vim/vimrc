@@ -37,6 +37,7 @@ nnoremap g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 nnoremap g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
 nnoremap gz :wall<CR>
 nnoremap gH :noh<CR>
+inoremap jk <esc>
 
 hi DiffAdd    cterm=NONE ctermfg=0      ctermbg=DarkGreen
 hi DiffDelete cterm=NONE ctermfg=0      ctermbg=DarkRed
