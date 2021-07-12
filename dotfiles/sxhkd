@@ -25,9 +25,6 @@ super + m
 super + y
     bspc node newest.marked.local --to-node newest.!automatic.local
 
-super + g
-    bspc node --swap biggest
-
 super + {t,shift + t,s,f}
     bspc node --state {tiled,pseudo_tiled,floating,fullscreen}
 
