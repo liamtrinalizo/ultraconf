@@ -3,6 +3,7 @@ syntax on
 runtime ftplugin/man.vim
 set keywordprg=:Man
 
+exec "set list listchars=tab:\u258F\\\u20,trail:\u2508"
 set autowriteall autoread
 set background=dark
 set cino+=(0g0
@@ -11,16 +12,16 @@ set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
 set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
+set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn
 set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
 set hlsearch incsearch showmatch
 set keywordprg=:Man
-exec "set list listchars=tab:\u258F\\\u20,trail:\u2508"
-set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn
 set mouse=
 set nocompatible nomodeline nowrap
 set number relativenumber
 set path+=**
 set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME
+set scrolloff=10
 set t_Co=256
 set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
 set virtualedit=block
