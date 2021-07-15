@@ -63,6 +63,9 @@ super + ctrl + {h,j,k,l}
 super + ctrl + {1-9}
     bspc node --presel-ratio 0.{1-9}
 
+super + {v, shift + v}
+    bspc node focused#@parent --flip {horizontal, vertical}
+
 super + ctrl + space
     bspc node --presel-dir cancel
 
