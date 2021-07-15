@@ -40,13 +40,14 @@ nnoremap gz :wall<CR>
 nnoremap gH :noh<CR>
 inoremap jk <esc>
 
-hi DiffAdd    cterm=NONE ctermfg=0      ctermbg=DarkGreen
-hi DiffDelete cterm=NONE ctermfg=0      ctermbg=DarkRed
-hi DiffChange cterm=NONE ctermfg=white  ctermbg=DarkBlue
-hi DiffText   cterm=NONE ctermfg=DarkBlue   ctermbg=White
-hi Special    ctermfg=DarkRed   ctermbg=Black
-hi PmenuSel   ctermfg=black     ctermbg=white
-hi QuickFixLine ctermbg=DarkRed
+hi DiffAdd      cterm=none      ctermfg=0        ctermbg=darkgreen
+hi DiffChange   cterm=none      ctermfg=white    ctermbg=darkblue
+hi DiffDelete   cterm=none      ctermfg=0        ctermbg=darkred
+hi DiffText     cterm=none      ctermfg=darkblue ctermbg=white
+hi MatchParen   cterm=none      ctermbg=darkgrey ctermfg=black
+hi PmenuSel     ctermfg=black   ctermbg=white
+hi QuickFixLine ctermbg=darkred
+hi Special      ctermfg=darkred ctermbg=black
 
 if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
     source $XDG_CONFIG_HOME/vim/addi.vim
