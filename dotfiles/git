@@ -1,6 +1,5 @@
 [core]
     editor = vim
-
     # requires https://github.com/so-fancy/diff-so-fancy
     pager = "diff-so-fancy | less --tabs=4 -RFX" 
 [user]
@@ -32,4 +31,6 @@
 [pull]
     rebase = false
 [advice]
-    implicitIdentity = 
+    implicitIdentity =
+[pager]
+    blame =cat > /tmp/gitblame && cut -d\")\" -f1 /tmp/gitblame > /tmp/gitblame1 && cut -d\")\" -f2 /tmp/gitblame | cut -c2- > /tmp/gitblame2 && vim -O --cmd \"set scrollbind cursorbind cursorline nolist\" /tmp/gitblame1 /tmp/gitblame2 && reset
