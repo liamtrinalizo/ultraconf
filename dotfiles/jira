@@ -76,7 +76,7 @@ custom-commands:
       LOG=$XDG_DATA_HOME/jira/{{args.WORKLOGFILE}}
       ISSUE={{if args.ISSUE}}{{args.ISSUE}}{{else}}$(basename -s .jira $LOG | cut -d_ -f2){{end}}
       DATE={{if options.relativdate}}$(date -d "-{{options.relativdate}} day" +%Y-%m-%d){{else}}$(basename -s .jira $LOG | cut -dT -f1){{end}}
-      TIME={{if options.time}}{{options.time}}:00.000$(date +%z){{else}}$(basename -s .jira $LOG | cut -dT -f2 | cut -d_ -f1| tr '-' ':'):00.000$(date +%z){{end}}
+      TIME={{if options.time}}{{options.time}}:00.000$(date +%z){{else}}$(basename -s .jira $LOG | cut -dT -f2 | cut -d_ -f1| tr 'h' ':'):00.000$(date +%z){{end}}
 
       echo {{jira}} worklog add -S "$DATE"T"$TIME" -T {{options.duration}}  -m "$LOG"
       {{jira}} worklog add -S "$DATE"T"$TIME" -T "{{options.duration}}"  -m "$(< $LOG)" --noedit "$ISSUE" && rm $LOG
@@ -89,7 +89,7 @@ custom-commands:
         default: 0
       - name: owtime
         short: t
-        default: "09-00"
+        default: "09h00"
         help: hour time of the begining in 24h format
     args:
       - name: ISSUE
