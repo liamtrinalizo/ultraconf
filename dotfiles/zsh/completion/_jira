@@ -3,28 +3,19 @@ autoload -U compinit && compinit
 
 typeset -A opt_args
 
-completeAllIssues() {
+completeTasks() {
     MYISSUES=()
     while read -r LINE; do
         MYISSUES+=($LINE)
-    done < <(jira list | tr 'A-Z' 'a-z')
-    _describe -t MYISSUES 'issue' MYISSUES && ret=0
-}
-
-completeUserIssues() {
-    MYISSUES=()
-    while read -r LINE; do
-        MYISSUES+=($LINE)
-    done < <(jira list -q 'assignee = currentUser() AND resolution = Unresolved' | tr 'A-Z' 'a-z')
+    done < /tmp/jiraTasks
     _describe -t MYISSUES 'issue' MYISSUES && ret=0
 }
 
 completeProjects() {
     PROJECTS=()
-    # Direct query on jira API since there is no list projects cmd on go-jira
-    for LINE in $(curl -s -X GET -u MJ093:$(pass addi/mj093) -H 'Content-Type: application/json' jira/rest/api/2/project | jq -r '.[] | .key'); do 
+    while read -r LINE; do
         PROJECTS+=($LINE)
-    done
+    done < /tmp/jiraProjects
     _describe -t PROJECTS 'project' PROJECTS && ret=0
 }
 
@@ -141,7 +132,7 @@ case "$state" in
                 'open:Create new local worklog file')
                 _describe -t subcmds 'subcmd' subcmds && ret=0 ;;
             (*)
-                completeAllIssues ;;
+                completeTasks ;;
         esac ;;
 
     (params)
@@ -151,13 +142,13 @@ case "$state" in
             (components | create | createmeta | issuetypes | list | subtask)
                 [ $line[2] = "-p" ] && completeProjects ;;
             (component)
-                { [ $line[2] = "add" -a $line[3] = "-p" ] && completeProjects } || completeAllIssues ;;
+                { [ $line[2] = "add" -a $line[3] = "-p" ] && completeProjects } || completeTasks ;;
             (epic)
-                { [ $line[2] = "list" -o $line[2] = "create" -a  $line[3] = "-p" ] && completeProjects } || completeAllIssues ;;
+                { [ $line[2] = "list" -o $line[2] = "create" -a  $line[3] = "-p" ] && completeProjects } || completeTasks ;;
             (worklog)
-                { [ $line[2] = "edit" ] || [ $line[2] = "close" ] || [ $line[2] = "del" ] && completeWorklogs } || completeAllIssues ;;
+                { [ $line[2] = "edit" ] || [ $line[2] = "close" ] || [ $line[2] = "del" ] && completeWorklogs } || completeTasks ;;
             (*)
-                completeAllIssues ;;
+                completeTasks ;;
         esac ;;
 
     esac
