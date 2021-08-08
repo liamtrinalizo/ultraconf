@@ -1,9 +1,8 @@
 xrdb -load $XDG_CONFIG_HOME/X11/xresources
 [ -f $XDG_CONFIG_HOME/X11/xmodmap ] && xmodmap $XDG_CONFIG_HOME/X11/xmodmap
-redshift &
-numlockx
-xset r rate 280 40
+which redshift &> /dev/null && redshift &
+which numlockx &> /dev/null && numlockx
+which xset     &> /dev/null && xset r rate 280 40
 st -e sh -c '[ -z $TMUX ] && tmux new-session -s home || tmux attach' &
-brave-bin &
 sxhkd &
 exec bspwm
