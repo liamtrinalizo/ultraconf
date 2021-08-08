@@ -32,3 +32,5 @@ echo -e "\e[36m--Cleaning obsolete distfiles--\e[m"
 eclean-dist
 echo -e "\e[36m--Testing for obsolete pkg--\e[m"
 eix-test-obsolete
+
+[ -f /tmp/halt_after_update ] && halt
