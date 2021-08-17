@@ -3,7 +3,7 @@ syntax on
 runtime ftplugin/man.vim
 set keywordprg=:Man
 
-exec "set list listchars=tab:\u258F\\\u20,trail:\u2508"
+exec "set list listchars=tab:\u258F\\\u20,trail:\u2508,nbsp:\uA4"
 set autowriteall autoread
 set background=dark
 set cino+=(0g0
