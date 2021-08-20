@@ -12,6 +12,7 @@ set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
 set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
+set formatoptions-=o
 set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn
 set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
 set hlsearch incsearch showmatch
