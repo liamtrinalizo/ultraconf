@@ -1,5 +1,7 @@
 LN = ln -sfv
 
+#TODO patches dir and world file
+
 all:
 ifeq ($(shell id -u), 0)
 	@echo -e "\e[36mInstalling Postage conf\e[m"
