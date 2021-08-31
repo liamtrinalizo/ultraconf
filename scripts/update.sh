@@ -13,6 +13,7 @@ updateBrave()
     archivName=$(curl -sL $braveRepo | grep 'href' | grep -oP "brave-browser-[a-z-]*(?=$remoteVer-linux-amd64.zip)")
     [ "$remoteVer" != "$localVer" ] && [ "$(printf '%s\n%s' "$remoteVer" "$localVer" | sort -V | head -n1)" = "$localVer" ] && echo "$localVer -> $remoteVer" && \
                                 cp -f $persoRepo/brave-bin-{"$localVer","$remoteVer"}.ebuild && \
+                                rm $persoRepo/brave-bin-$localVer && \
                                 sed -i "s/brave-browser-[a-z-]*/$archivName/" $persoRepo/brave-bin-"$remoteVer".ebuild && \
                                 ebuild $persoRepo/brave-bin-"$remoteVer".ebuild digest
 }
