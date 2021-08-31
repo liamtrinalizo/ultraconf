@@ -50,9 +50,6 @@ installFile vim             vimrc
 installFile zathura         zathurarc
 installFile mutt            style.muttrc
 installFile mutt            mailcap
-mkdir ~/.w3m
-ln -sf $ultraconfPath/dotfiles/w3m/config ~/.w3m/
-ln -sf $ultraconfPath/dotfiles/w3m/keymap ~/.w3m/
 installFile X11             xinitrc
 installFile X11             xresources
 mkdir $XDG_CONFIG_HOME/zsh/completion 2> /dev/null
