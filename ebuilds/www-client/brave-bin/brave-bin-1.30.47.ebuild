@@ -3,7 +3,7 @@
 
 # Based on www-client/brave-bin-1.16.75 from layman overlay brave-overlay
 
-EAPI=6
+EAPI=7
 
 BRAVE_PN="${PN/-bin/}"
 
@@ -56,7 +56,7 @@ RDEPEND="
 	net-print/cups
 	sys-apps/dbus
 	sys-libs/zlib
-	virtual/libffi
+	dev-libs/libffi
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf
 	x11-libs/gtk+
@@ -110,9 +110,6 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	elog "If upgrading from an 0.25.x release or earlier, note that Brave has changed configuration folders."
-	elog "you will have to import your browser data from Settings -> People -> Import Bookmarks and Settings"
-	elog "then choose \"Brave (old)\". All your settings, bookmarks, and passwords should return."
 }
 
 pkg_postrm() {
