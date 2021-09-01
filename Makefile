@@ -24,4 +24,4 @@ portage:
 	@echo -e "\e[36mInstalling Postage conf\e[m"
 	$(MAKE) -C portage
 
-.PHONY: all scripts manuals ebuilds ebuilds_get portage
+.PHONY: all dotfiles scripts manuals ebuilds ebuilds_get portage

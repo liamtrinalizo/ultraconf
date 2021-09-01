@@ -2,9 +2,12 @@ LN = ln -svf
 MKDIR = mkdir -p
 
 all: zsh vim
-	@find . -type f -not -name .zprofile -not -name Makefile -exec zsh -c'\
-		$(MKDIR) $(XDG_CONFIG_HOME)/$(dirname {}); \
-	    $(LN) $(CURDIR)/{} ${XDG_CONFIG_HOME}/{}'  \;
+	@echo -e "\e[36mLink dotfiles\e[m"
+	@find . -type f -not -name .zprofile -not -name Makefile -exec zsh -c '\
+	    $(MKDIR) $(XDG_CONFIG_HOME)/$$(dirname {}); \
+	    rm $(XDG_CONFIG_HOME)/{}; \
+	    $(LN) $(CURDIR)/{} ${XDG_CONFIG_HOME}/{}  \
+	' \;
 
 zsh:
 	@echo -e "\e[36mLink and source profile variables\e[m"
