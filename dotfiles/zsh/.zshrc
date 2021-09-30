@@ -68,7 +68,8 @@ alias wdump="w3m -dump -T text/html"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias xclip2="xclip -selection clipboard"
 
-color() { convert -size 100x100 canvas:#$1 png:- | display }
+tex2pdf() { pdflatex -halt-on-error -output-directory /tmp $1 && mv /tmp/$(basename $1 .tex).pdf . }
+color()   { convert -size 100x100 canvas:#$1 png:- | display }
 greptar() { tar ft $2 | awk '/.*[^/]$/' | while read -r file; do if tar xf $2 $file -O | grep -w $1 && echo -e "\e[36m$file\e[m"; done }
 
 [ -e /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
