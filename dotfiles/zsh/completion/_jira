@@ -8,7 +8,7 @@ completeTasks() {
     while read -r LINE; do
         MYISSUES+=($LINE)
     done < /tmp/jiraTasks
-    _describe -t MYISSUES 'issue' MYISSUES && ret=0
+    _describe -V -t MYISSUES 'issue' MYISSUES && ret=0
 }
 
 completeProjects() {
@@ -16,7 +16,7 @@ completeProjects() {
     while read -r LINE; do
         PROJECTS+=($LINE)
     done < /tmp/jiraProjects
-    _describe -t PROJECTS 'project' PROJECTS && ret=0
+    _describe -V -t PROJECTS 'project' PROJECTS && ret=0
 }
 
 completeWorklogs() {
