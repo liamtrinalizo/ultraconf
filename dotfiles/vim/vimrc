@@ -55,7 +55,7 @@ if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
 
-autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG setlocal spell
+autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex setlocal spell
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead,BufEnter *.h,*.hpp,*.c,*.cc,*.cpp set omnifunc=omni#cpp#complete#Main
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
