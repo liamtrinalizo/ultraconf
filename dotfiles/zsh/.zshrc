@@ -71,5 +71,6 @@ alias xclip2="xclip -selection clipboard"
 tex2pdf() { pdflatex -halt-on-error -output-directory /tmp $1 && mv /tmp/$(basename $1 .tex).pdf . }
 color()   { convert -size 100x100 canvas:#$1 png:- | display }
 greptar() { tar ft $2 | awk '/.*[^/]$/' | while read -r file; do if tar xf $2 $file -O | grep -w $1 && echo -e "\e[36m$file\e[m"; done }
+dic()     { elinks "$1.wiktionary.org/wiki/$2" }
 
 [ -e /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh

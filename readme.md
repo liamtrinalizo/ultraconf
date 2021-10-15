@@ -14,6 +14,7 @@ directories are for Gentoo-based system.
 
 - zsh
 - tmux
+- elinks
 - GNU coreutils
 
 ### Editor
