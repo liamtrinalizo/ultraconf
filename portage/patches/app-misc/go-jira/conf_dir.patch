@@ -1,0 +1,37 @@
+diff --git a/cmd/jira/main.go b/cmd/jira/main.go
+index d05258f..3424f63 100644
+--- a/cmd/jira/main.go
++++ b/cmd/jira/main.go
+@@ -29,7 +29,7 @@ func main() {
+ 
+ 	jiracli.InitLogging()
+ 
+-	configDir := ".jira.d"
++	configDir := ".config/jira"
+ 
+ 	yaml.UseMapType(reflect.TypeOf(map[string]interface{}{}))
+ 	defer yaml.RestoreMapType()
+diff --git a/jiracli/templates.go b/jiracli/templates.go
+index 2d0ae17..b7fa0ff 100644
+--- a/jiracli/templates.go
++++ b/jiracli/templates.go
+@@ -26,7 +26,7 @@ import (
+ )
+ 
+ func findTemplate(name string) ([]byte, error) {
+-	if file, err := findClosestParentPath(filepath.Join(".jira.d", "templates", name)); err == nil {
++	if file, err := findClosestParentPath(filepath.Join(".config/jira", "templates", name)); err == nil {
+ 		b, err := ioutil.ReadFile(file)
+ 		if err != nil {
+ 			return nil, err
+@@ -37,8 +37,8 @@ func findTemplate(name string) ([]byte, error) {
+ }
+ 
+ func getTemplate(name string) (string, error) {
+-	if _, err := os.Stat(".jira.d/" + name); err == nil {
+-		b, err := ioutil.ReadFile(".jira.d/" + name)
++	if _, err := os.Stat(".config/jira" + name); err == nil {
++		b, err := ioutil.ReadFile(".config/jira" + name)
+ 		if err != nil {
+ 			return "", err
+ 		}

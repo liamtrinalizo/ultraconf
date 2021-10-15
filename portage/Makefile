@@ -1,14 +1,17 @@
 LN = ln -sfv
 
-#TODO patches dir and world file
+#TODO world file
 
 all:
 ifeq ($(shell id -u), 0)
-	@echo -e "\e[36mInstalling Postage conf\e[m"
-	@for file in $(shell ls); do \
+	@echo -e "\e[36mInstalling Postage config\e[m"
+	@for file in $(shell find . -maxdepth 1 -type f); do \
 		[ "$$(stat -c '%u %g %a' $$file)" = "0 0 644" ] && echo -e "\e[31mWrong file permission\e[m" && break; \
-		echo  $(CURDIR)/$$file /etc/portage/$$file; \
+		cp $(CURDIR)/$$file /etc/portage/$$file; \
 	done
+
+	@echo -e "\e[36mInstalling Postage patches\e[m"
+	cp -r $(CURDIR)/patches /etc/portage/patches
 else
 	@echo -e "\e[31mShould be run as root\e[m"
 endif
