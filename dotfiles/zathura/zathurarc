@@ -2,7 +2,10 @@ set statusbar-h-padding 0
 set statusbar-v-padding 0
 set page-padding 1
 
+set recolor
 set recolor-keephue true
+set default-bg \#222222
+
 set selection-clipboard clipboard
 
 map u scroll half-up
