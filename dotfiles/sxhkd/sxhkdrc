@@ -25,8 +25,8 @@ super + m
 super + y
     bspc node newest.marked.local --to-node newest.!automatic.local
 
-super + {t,shift + t,s,f}
-    bspc node --state {tiled,pseudo_tiled,floating,fullscreen}
+super + {t,s,f}
+    bspc node --state {tiled,floating,fullscreen}
 
 super + ctrl + {m,x,y,z}
     bspc node --flag {marked,locked,sticky,private}
@@ -81,3 +81,6 @@ super + alt + shift + {h,j,k,l}
 
 super + shift + {h,j,k,l}
     bspc node --move {-50 0,0 50,0 -50,50 0}
+
+super + shift + t
+    dunstify trans "$(import png:- | tesseract - - 2> /dev/null | tr '\n' ' ' | trans)"
