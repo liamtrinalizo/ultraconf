@@ -3,6 +3,7 @@ xrdb -load $XDG_CONFIG_HOME/X11/xresources
 which redshift &> /dev/null && redshift &
 which numlockx &> /dev/null && numlockx
 which xset     &> /dev/null && xset r rate 280 40
+which dunst    &> /dev/null && dunst &
 st -e sh -c '[ -z $TMUX ] && tmux new-session -s home || tmux attach' &
 sxhkd &
 exec bspwm
