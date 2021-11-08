@@ -21,16 +21,16 @@ $(xrandr | awk '/\<connected/ {match($0, "x[0-9]+", arr); num = substr(arr[0],2)
                 bspc monitor ALL   -d 10
             elif [ $OPTARG == "3" ]; then
                 echo "Triple screen mode"
-                xrandr --output HDMI1 --left-of DP1 \
-                       --output DP1   --left-of HDMI2 \
-                       --output HDMI2
+                xrandr --output HDMI1 --left-of HDMI2 \
+                       --output HDMI2   --left-of DP1 \
+                       --output DP1
 
                 bspc wm -a ALL \
 $(xrandr | awk '/\<connected/ {match($0, "[0-9]+x", arr); x+=arr[0]} END{print x}')x\
 $(xrandr | awk '/\<connected/ {match($0, "x[0-9]+", arr); num = substr(arr[0],2); if(min == 0 || min > num) min = num} END{print min}')+0+0
                 bspc monitor HDMI1 -d 1 2 3
-                bspc monitor DP1   -d 4 5 6
-                bspc monitor HDMI2 -d 7 8 9
+                bspc monitor HDMI2 -d 4 5 6
+                bspc monitor DP1   -d 7 8 9
                 bspc monitor ALL   -d 10
             fi
 
