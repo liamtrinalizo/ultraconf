@@ -1,0 +1,2 @@
+{{range.issues}}{{.key}}|{{.fields.status.name}}|{{.fields.summary}}|{{.fields.priority.name}}|{{.fields.issuetype.name}}|{{.fields.reporter.name}}
+{{end}}
