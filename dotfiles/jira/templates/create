@@ -1,21 +1,42 @@
+{{/* create template */ -}}
 fields:
-  project:
-    key: {{ or .overrides.project "" }}
-  issuetype:
-    name: {{ or .overrides.issuetype "" }}
   summary: >-
-    {{ or .overrides.summary "" }}{{if .meta.fields.priority.allowedValues}}
-  priority: # Values: {{ range .meta.fields.priority.allowedValues }}{{.name}}, {{end}}
-    name: {{ or .overrides.priority ""}}{{end}}{{if .meta.fields.components.allowedValues}}
-  components: # Values: {{ range .meta.fields.components.allowedValues }}{{.name}}, {{end}}{{ range split "," (or .overrides.components "")}}
-    - name: {{ . }}{{end}}{{end}}
-  description: |~
-    {{ or .overrides.description "" | indent 4 }}{{if .meta.fields.assignee}}
+    {{ or .overrides.summary .fields.summary }}
+{{if .meta.fields.issuetype}}
+  issuetype: # Values: {{ range .meta.fields.issuetype.allowedValues }}{{.name}}, {{end}}
+    name: {{if .overrides.issuetype}}{{.overrides.issuetype}}{{else}}{{if .fields.issuetype}}{{.fields.issuetype.name}}{{end}}{{end}}{{- end -}}
+{{- if and .meta.fields.components .meta.fields.components.allowedValues }}
+  components: # Values: {{ range .meta.fields.components.allowedValues }}{{.name}}, {{end}}{{if .overrides.components }}{{ range (split "," .overrides.components)}}
+    - name: {{.}}{{end}}{{else}}{{ range .fields.components }}
+    - name: {{ .name }}{{end}}{{end}}{{end}}
+{{- if .meta.fields.assignee }}
+  {{- if .overrides.assignee }}
   assignee:
-    name: {{ or .overrides.assignee "mj093" }}{{end}}{{if .meta.fields.reporter}}
+    name: {{ .overrides.assignee }}
+  {{- else if .fields.assignee }}
+  assignee: {{if .fields.assignee.name}}
+    name: {{ or .fields.assignee.name}}
+  {{- else }}
+    emailAddress: {{.fields.assignee.emailAddress}}{{end}}{{end}}{{end}}
+{{- if .meta.fields.reporter}}
   reporter:
-    name: {{ or .overrides.reporter "mb061" }}{{end}}{{if .meta.fields.customfield_10110}}
+    name: {{ if .overrides.reporter }}{{ .overrides.reporter }}{{else if .fields.reporter}}{{ .fields.reporter.name }}{{end}}{{end}}
+{{- if .meta.fields.customfield_10110}}
   # watchers
-  customfield_10110: {{ range split "," (or .overrides.watchers "")}}
-    - name: {{.}}{{end}}
-    - name: {{end}}
+  customfield_10110: {{ range .fields.customfield_10110 }}
+    - name: {{ .name }}{{end}}{{if .overrides.watcher}}
+    - name: {{ .overrides.watcher}}{{end}}{{end}}
+{{- if .meta.fields.priority }}
+  priority: # Values: {{ range .meta.fields.priority.allowedValues }}{{.name}}, {{end}}
+    name: {{ or .overrides.priority .fields.priority.name "" }}{{end}}
+  description: |~
+    {{ or .overrides.description .fields.description "" | indent 4 }}
+{{if .meta.fields.fixVersions -}}
+  {{if .meta.fields.fixVersions.allowedValues}}
+  fixVersions: # Values: {{ range .meta.fields.fixVersions.allowedValues }}{{.name}}, {{end}}
+    - name: {{ .overrides.fixVersions }}
+  {{end}}
+{{end}}
+  timetracking:
+    originalEstimate: {{ or .fields.timetracking.originalEstimate .overrides.timetracking.originalEstimate "" }}
+    remainingEstimate: {{ or .fields.timetracking.remainingEstimate .overrides.timetracking.remainingEstimate "" }}

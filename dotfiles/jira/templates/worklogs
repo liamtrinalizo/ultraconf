@@ -1,7 +1,9 @@
 {{/* worklogs template */ -}}
-{{ range .worklogs }}- # {{ .author.displayName }}, {{.created | age}} ago
-  comment: {{ or .comment "" }}
-  started: {{ .started }}
-  timeSpent: {{ .timeSpent }}
+{{ range .worklogs }}########################################################################################
+author: {{ .author.displayName }}, {{.created | age}} ago
+started: {{ .started }}
+timeSpent: {{ .timeSpent }}
+########################################################################################
+{{ or .comment "" }}
 
 {{end}}

@@ -8,6 +8,9 @@ update:
 fields:
   summary: >-
     {{ or .overrides.summary .fields.summary }}
+{{if .meta.fields.issuetype}}
+  issuetype: # Values: {{ range .meta.fields.issuetype.allowedValues }}{{.name}}, {{end}}
+    name: {{if .overrides.issuetype}}{{.overrides.issuetype}}{{else}}{{if .fields.issuetype}}{{.fields.issuetype.name}}{{end}}{{end}}{{- end -}}
 {{- if and .meta.fields.components .meta.fields.components.allowedValues }}
   components: # Values: {{ range .meta.fields.components.allowedValues }}{{.name}}, {{end}}{{if .overrides.components }}{{ range (split "," .overrides.components)}}
     - name: {{.}}{{end}}{{else}}{{ range .fields.components }}
