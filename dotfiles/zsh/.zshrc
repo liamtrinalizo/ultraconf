@@ -15,7 +15,8 @@ parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
 }
 setopt PROMPT_SUBST
-PROMPT='%F{yellow}%! %n@%m:%9c%F{green}$(parse_git_branch)%F{none} $ '
+[ "$(whoami)" = "root" ] && promptcolor=red || promptcolor=yellow
+PROMPT="%F{$promptcolor}%! %n@%m:%9c%F{green}$(parse_git_branch)%F{none} $ "
 
 export GPG_TTY=$(tty)
 
