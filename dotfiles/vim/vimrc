@@ -57,8 +57,10 @@ endif
 
 autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml setlocal spell
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
-autocmd BufNewFile,BufRead,BufEnter *.h,*.hpp,*.c,*.cc,*.cpp set omnifunc=omni#cpp#complete#Main
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
+autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
+autocmd FileType python se makeprg=python\ % errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+
 if filereadable("./cscope.out")
     cscope add cscope.out
 endif
