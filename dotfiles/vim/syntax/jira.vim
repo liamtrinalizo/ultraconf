@@ -1,7 +1,8 @@
 " Vim syntax file
-" Language:     Jira text formatiing
+" Language:     Jira text formating
+" Acknowledgement: Modified from Tim Pope vim-markdown syntax file
 " Filenames:    *.jira
-" Last Change:  2020 Oct 19
+" Last Change:  2022.01.04
 
 if exists("b:current_syntax")
   finish
@@ -18,14 +19,18 @@ if !exists('g:jira_fenced_languages')
   let g:jira_fenced_languages = []
 endif
 let s:done_include = {}
+let s:langSyntax = { 'c++': 'cpp' }
 for s:type in map(copy(g:jira_fenced_languages),'matchstr(v:val,"[^=]*$")')
   if has_key(s:done_include, matchstr(s:type,'[^.]*'))
     continue
   endif
   if s:type =~ '\.'
     let b:{matchstr(s:type,'[^.]*')}_subtype = matchstr(s:type,'\.\zs.*')
+    exe 'echo  b:{matchstr(s:type,"[^.]*")}_subtype'
   endif
-  exe 'syn include @jiraHighlight'.substitute(s:type,'\.','','g').' syntax/'.matchstr(s:type,'[^.]*').'.vim'
+  if s:type != ""
+      exe 'syn include @jiraHighlight'.substitute(s:type,'+','p','g').' syntax/'.matchstr(s:type,'[^.]*').'.vim'
+  endif
   unlet! b:current_syntax
   let s:done_include[matchstr(s:type,'[^.]*')] = 1
 endfor
@@ -43,7 +48,7 @@ syn match jiraValid '&\%(#\=\w*;\)\@!' transparent contains=NONE
 
 syn match jiraLineStart "^[<@]\@!" nextgroup=@jiraBlock,htmlSpecialChar
 
-syn cluster jiraBlock contains=jiraH1,jiraH2,jiraH3,jiraH4,jiraH5,jiraH6,jiraBlockquote,jiraListMarker,jiraOrderedListMarker,jiraCodeBlock,jiraRule
+syn cluster jiraBlock contains=jiraH1,jiraH2,jiraH3,jiraH4,jiraH5,jiraH6,jiraBlockquote,jiraListMarker,jiraOrderedListMarker,jiraRule
 syn cluster jiraInline contains=jiraLineBreak,jiraLinkText,jiraItalic,jiraBold,jiraCode,jiraEscape,@htmlTop,jiraError,jiraValid
 
 syn match jiraH1 "^.\+\n=\+$" contained contains=@jiraInline,jiraHeadingRule,jiraAutomaticLink
@@ -57,8 +62,6 @@ syn region jiraH5 matchgroup=jiraH5Delimiter start="h5\." end="$" keepend onelin
 syn region jiraH6 matchgroup=jiraH6Delimiter start="h6\." end="$" keepend oneline contains=@jiraInline,jiraAutomaticLink contained
 
 syn match jiraBlockquote ">\%(\s\|$\)" contained nextgroup=@jiraBlock
-
-syn region jiraCodeBlock start="    \|\t" end="$" contained
 
 " TODO: real nesting
 syn match jiraListMarker "\%(\t\| \{0,4\}\)[-*+]\%(\s\+\S\)\@=" contained
@@ -87,7 +90,7 @@ endif
 exe 'syn region jiraItalic matchgroup=jiraItalicDelimiter start="\w\@<!_\S\@=" end="\S\@<=_\w\@!" skip="\\_" contains=jiraLineStart,@Spell' . s:concealends
 exe 'syn region jiraBold   matchgroup=jiraBoldDelimiter start="\S\@<=\*\|\*\S\@=" end="\S\@<=\*\|\*\S\@=" skip="\\\*" contains=jiraLineStart,jiraItalic,@Spell' . s:concealends
 
-syn region jiraCode matchgroup=jiraCodeDelimiter start="^\s*{code}*.*$" end="^\s*{code}*\ze\s*$" keepend
+syn region jiraCode matchgroup=jiraCodeDelimiter start="^{code\S*}$" end="^{code}$" keepend
 
 syn match jiraFootnote "\[^[^\]]\+\]"
 syn match jiraFootnoteDefinition "^\[^[^\]]\+\]:"
@@ -98,7 +101,7 @@ if main_syntax ==# 'jira'
     if has_key(s:done_include, matchstr(s:type,'[^.]*'))
       continue
     endif
-    exe 'syn region jiraHighlight'.substitute(matchstr(s:type,'[^=]*$'),'\..*','','').' matchgroup=jiraCodeDelimiter start="^\s*````*\s*\%({.\{-}\.\)\='.matchstr(s:type,'[^=]*').'}\=\S\@!.*$" end="^\s*````*\ze\s*$" keepend contains=@jiraHighlight'.substitute(matchstr(s:type,'[^=]*$'),'\.','','g') . s:concealends
+    exe 'syn region jiraHighlight'.substitute(matchstr(s:type,'[^=]*$'),'+','p','g').' matchgroup=jiraCodeDelimiter start="{code:\?'.s:type.'}" end="{code}" keepend contains=@jiraHighlight'.substitute(matchstr(s:type,'[^=]*$'),'+','p','g') . s:concealends
     let s:done_include[matchstr(s:type,'[^.]*')] = 1
   endfor
   unlet! s:type
@@ -106,14 +109,15 @@ if main_syntax ==# 'jira'
 endif
 
 syn match jiraEscape "\\[][\\`*_{}()<>#+.!-]"
-syn match jiraError "\w\@<=_\w\@="
+syn match jiraTable "|"
+"syn match jiraError "\w\@<=_\w\@="
 
-hi def link jiraH1                    htmlH1
-hi def link jiraH2                    htmlH2
-hi def link jiraH3                    htmlH3
-hi def link jiraH4                    htmlH4
-hi def link jiraH5                    htmlH5
-hi def link jiraH6                    htmlH6
+hi def link jiraH1                    htmlBoldItalic
+hi def link jiraH2                    htmlBoldItalic
+hi def link jiraH3                    htmlBoldItalic
+hi def link jiraH4                    htmlBoldItalic
+hi def link jiraH5                    htmlBoldItalic
+hi def link jiraH6                    htmlBoldItalic
 hi def link jiraHeadingRule           jiraRule
 hi def link jiraH1Delimiter           jiraHeadingDelimiter
 hi def link jiraH2Delimiter           jiraHeadingDelimiter
@@ -126,6 +130,7 @@ hi def link jiraOrderedListMarker     jiraListMarker
 hi def link jiraListMarker            htmlTagName
 hi def link jiraBlockquote            Comment
 hi def link jiraRule                  PreProc
+hi def link jiraHighlight             Comment
 
 hi def link jiraFootnote              Typedef
 hi def link jiraFootnoteDefinition    Typedef
@@ -146,9 +151,9 @@ hi def link jiraBold                  htmlBold
 hi def link jiraBoldDelimiter         jiraBold
 hi def link jiraBoldItalic            htmlBoldItalic
 hi def link jiraCodeDelimiter         Delimiter
+hi def link jiraTable                 Delimiter
 
 hi def link jiraEscape                Special
-hi def link jiraError                 Error
 
 let b:current_syntax = "jira"
 if main_syntax ==# 'jira'
