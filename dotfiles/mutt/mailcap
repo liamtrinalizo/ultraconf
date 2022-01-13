@@ -1,5 +1,6 @@
 application/pdf;  zathura %s &;
-application/vnd.openxmlformats-officedocument.wordprocessingml.document; loffice &;
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; loffice %s &;
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; loffice %s &;
 image/gif;        mpv --loop %s &;
 image/*;          sxiv %s &;
 text/calendar;    .local/bin/vcal -all -; copiousoutput;

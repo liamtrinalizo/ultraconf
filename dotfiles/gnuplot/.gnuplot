@@ -86,7 +86,6 @@ set linetype 79 lc rgb "antiquewhite"      lw 1
 set linetype 80 lc rgb "chartreuse"        lw 1
 set linetype 81 lc rgb "greenyellow"       lw 1
 
-
 set linetype cycle 8
 
 #set linetype 1  lc rgb "red" pointtype 10
