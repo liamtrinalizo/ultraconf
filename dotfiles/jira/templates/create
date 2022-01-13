@@ -2,6 +2,8 @@
 fields:
   summary: >-
     {{ or .overrides.summary .fields.summary }}
+  project:
+    key: {{ or .overrides.project "" }}
 {{if .meta.fields.issuetype}}
   issuetype: # Values: {{ range .meta.fields.issuetype.allowedValues }}{{.name}}, {{end}}
     name: {{if .overrides.issuetype}}{{.overrides.issuetype}}{{else}}{{if .fields.issuetype}}{{.fields.issuetype.name}}{{end}}{{end}}{{- end -}}
