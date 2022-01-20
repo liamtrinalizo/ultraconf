@@ -64,7 +64,7 @@ autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
 autocmd BufNewFile,BufRead *.gnuplot set ft=gnuplot
 autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
 autocmd FileType python set makeprg=python\ % errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd FileType tex set makeprg=pdflatex\ -halt-on-error\ -output-directory\ /tmp\ %\ &&\ mv\ /tmp/$(basename\ %\ .tex).pdf\ .
+autocmd FileType tex set makeprg=tex2pdf\ %
 if filereadable("./cscope.out")
     cscope add cscope.out
 endif
