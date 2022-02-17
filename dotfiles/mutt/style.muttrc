@@ -29,8 +29,8 @@ set help = no
 set count_alternatives = yes
 set abort_key = <ESC>
 set confirmappend = no
-set editor = "vim -c 'set textwidth=0 nolist'
-attachments -A "*/.*"
+set editor = "vim -c 'set textwidth=0 nolist'"
+unattachments +A "*/.*"
 attachments +I "text/calendar"
 auto_view text/html
 auto_view application/pgp-encrypted
@@ -58,7 +58,7 @@ bind index U undelete-message
 bind index L limit
 macro index l "<display-message><sync-mailbox>"
 bind index V toggle-new
-bind index,pager N search-opposite 
+bind index,pager N search-opposite
 macro browser h '<change-dir><kill-line>..<enter>'
 bind browser l select-entry
 bind pager,browser gg top-page
@@ -72,13 +72,14 @@ macro index c "<change-folder>\Cw\Cw\Cw"
 bind pager O noop
 macro index,pager O "<shell-escape>~/.local/bin/mailsync.sh<enter><enter>"
 
-macro index,pager a "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --config $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
+macro index,pager \Ca "<enter-command>set my_pipe_decode=\$pipe_decode pipe_decode<return><pipe-message>abook --config $XDG_CONFIG_HOME/abook/abookrc --datafile $XDG_DATA_HOME/abook/addressbook --add-email<return><enter-command>set pipe_decode=\$my_pipe_decode; unset my_pipe_decode<return>" "add the sender address to abook"
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 macro index \Cf "<enter-command>unset wait_key<enter><shell-escape>read -p 'Enter a search term to find with notmuch: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | perl -le '@a=<>;s/\^id:// for@a;$,=\"|\";print@a' | perl -le '@a=<>; chomp@a; s/\\+/\\\\+/ for@a;print@a' \`\"<enter>" "show only messages matching a notmuch pattern"
-macro index A "<limit>all\n" "show all messages (undo limit)"
+macro index a "<enter-command>attachments +A \"*/.*\"<enter><enter-command>unattachments +I \"text/calendar\"<enter><enter-command>set index_format = \"%3C %?X?A& ? %zs %D %-15.15F %s (%-4.4c)\"<enter>"
+macro index A "<enter-command>attachments +I \"text/calendar\"<enter><enter-command>unattachments +A \"*/.*\"<enter><enter-command>set index_format = \"%3C %?X?cal&   ? %zs %D %-15.15F %s (%-4.4c)\"<enter>"
 
 # Sidebar mappings
-set sidebar_visible = no
+set sidebar_visible = yes
 set sidebar_width = 20
 set sidebar_short_path = yes
 set sidebar_next_new_wrap = yes
