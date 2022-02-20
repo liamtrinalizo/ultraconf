@@ -1,0 +1,49 @@
+.TH CUPS "7" "February 2022" "Ultraconf" "Linux Programmer's Manual"
+.SH NAME
+Cups printing \- cheat sheet
+.SH Commands
+.PP
+Require root
+.PP
+.Vb 1
+\&  rc-service cupsd start
+.Ve
+.PP
+list available interface
+.PP
+.Vb 1
+\&  lpinfo -v
+.Ve
+.PP
+List status of created printers
+.PP
+.Vb 1
+\&  lpstat -a
+.Ve
+.PP
+Create network printer
+.PP
+.Vb 1
+\&  lpadmin -p printer-name -E -v socket://ip-address-of-network-printer -m printer-make-and-model
+.Ve
+.PP
+# Set USB printer as default
+.PP
+.Vb 1
+\&  lpadmin -d printer-name
+.Ve
+.PP
+# Print file on default printer
+.PP
+.Vb 1
+\&  lp <file>
+.Ve
+.SH Troubleshot
+.PP
+If nothing happens on print
+.PP
+.Vb 1
+\&  lsusb # usb bus num and id
+.PP
+\&  chgroup lp /dev/bus/usb/[num]/id # change group owner to lp
+.Ve
