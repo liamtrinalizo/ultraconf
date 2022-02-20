@@ -1,0 +1,19 @@
+VSPATH := "/cygdrive/c/Program Files (x86)/Microsoft Visual Studio/2019/Community"
+MSBUILD := $(VSPATH)/MSBuild/Current/Bin/amd64/MSBuild.exe
+FLAGS := -p:Platform=x64 -p:Configuration=Release
+
+PROJECT := ".sln"
+
+all:
+	$(MSBUILD) $(FLAGS) $(PROJECT) | sed -e 's@C:@/cygdrive/c@' | tr '\\' /
+
+color:
+	$(MSBUILD) $(FLAGS) $(PROJECT)
+
+debug:
+	$(MSBUILD) -p:Configuration="Debug" $(PROJECT) | sed -e 's@C:@/cygdrive/c@' | tr '\\' /
+
+clean:
+	$(MSBUILD) -t:Clean $(PROJECT)
+
+.PHONY: all color debug clean

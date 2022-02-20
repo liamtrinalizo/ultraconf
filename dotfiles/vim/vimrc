@@ -34,6 +34,9 @@ let g:netrw_preview = 1
 let g:OmniCpp_DisplayMode = 1
 let g:OmniCpp_ShowPrototypeInAbbr = 1
 let g:OmniCpp_NamespaceSearch = 1
+let g:ft_man_folding_enable = 1
+let g:jira_fenced_languages = ['', 'c', 'cpp', 'java']
+let g:markdown_fenced_languages = ['cpp']
 
 nnoremap g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 nnoremap g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
@@ -55,18 +58,17 @@ if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
 
-autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml setlocal spell
+autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml,*.md setlocal spell
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
+autocmd BufNewFile,BufRead *.gnuplot set ft=gnuplot
 autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
-autocmd FileType python se makeprg=python\ % errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-
+autocmd FileType python set makeprg=python\ % errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+autocmd FileType tex set makeprg=tex2pdf\ %
 if filereadable("./cscope.out")
     cscope add cscope.out
 endif
 
 command! Bro   enew! | setl  buftype=nofile | 0put =v:oldfiles | exe "silent % !fzy" | norm gf
-command! Vbro  vnew   +setl\ buftype=nofile | 0put =v:oldfiles | exe "silent % !fzy" | norm gf
-command! Sbro  new    +setl\ buftype=nofile | 0put =v:oldfiles | exe "silent % !fzy" | norm gf
 command! Make  wa | silent make | redraw! | cw
 command! Ctags !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q

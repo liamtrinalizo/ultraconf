@@ -1,0 +1,20 @@
+let $LANG = 'en_US'
+set lines=999 columns=9999
+set guifont=Consolas:h10
+set guioptions=g
+colorscheme industry
+
+set nobackup noswapfile
+set isfname+=32,(,)
+set nu relativenumber
+set nowrap nocompatible
+set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0
+set completeopt-=preview
+set hlsearch incsearch
+set encoding=utf-8
+set wildmenu
+filetype plugin indent on
+set cino+=(0g0
+syntax on
+
+nnoremap gz :wall<CR>

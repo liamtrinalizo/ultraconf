@@ -42,7 +42,9 @@ description: |
   {{ or .fields.description "" | indent 2 }}
 {{if .fields.comment.comments}}
 comments:
-{{ range .fields.comment.comments }}  - | # {{.author.displayName}}, {{.created | age}} ago
-    {{ or .body "" | indent 4}}
+{{ range .fields.comment.comments }}########################################################################################
+author: {{ .author.displayname }}, {{.created | age}} ago
+########################################################################################
+{{ or .body "" }}
 {{end}}
 {{end -}}
