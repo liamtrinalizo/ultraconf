@@ -16,7 +16,7 @@ show_usage() {
 }
 
 show_error() {
-	sed -e "s/\([^0]\) error/\1 $(printf "\033[31mERROR\033[0m")/I" -e "s/\([^0]\) warning/\1 $(printf "\033[33mWARNING\033[0m")/I"
+    sed -e "s/errors\?: 0//"  -e "s/\([^0]\) error/\1 $(printf "\033[31mERROR\033[0m")/I" -e "s/\([^0]\) warning/\1 $(printf "\033[33mWARNING\033[0m")/I"
 }
 
 [ -z "$1" ] && show_usage
@@ -30,7 +30,7 @@ while getopts "bdsiz:" opt; do
             ./CmpDLLSln.bat           |& show_error
             ./CmpPROPDLLSln.bat       |& show_error
             [ -f CmpCompatibleDLLSln.bat ] \
-				&& ./CmpCompatibleDLLSln.bat |& show_error
+                && ./CmpCompatibleDLLSln.bat |& show_error
             ;;
         d)
             echo -e "\033[32mCompiling driver...\033[m"
@@ -39,7 +39,7 @@ while getopts "bdsiz:" opt; do
             ./CmpDLLSln.bat           |& show_error
             ./CmpPROPDLLSln.bat       |& show_error
             [ -f CmpCompatibleDLLSln.bat ] \
-				&& ./CmpCompatibleDLLSln.bat |& show_error
+                && ./CmpCompatibleDLLSln.bat |& show_error
             ;;
         s)
             echo -e "\033[32mCompiling sample...\033[m"
@@ -50,6 +50,8 @@ while getopts "bdsiz:" opt; do
         i)
             echo -e "\033[32mSigning driver...\033[m"
             ./CmpGenerateSignedINF.bat |& show_error
+            echo -e "\033[32mChecking signature...\033[m"
+            powershell Get-AuthenticodeSignature INF_SIGN.cab
             ;;
         z)
             echo -e "\033[32mDirect compile...\033[m"
