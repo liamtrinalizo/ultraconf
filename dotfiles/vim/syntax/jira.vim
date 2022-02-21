@@ -4,6 +4,8 @@
 " Filenames:    *.jira
 " Last Change:  2022.01.04
 
+let g:jira_fenced_languages = ['', 'c', 'cpp', 'java']
+
 if exists("b:current_syntax")
   finish
 endif

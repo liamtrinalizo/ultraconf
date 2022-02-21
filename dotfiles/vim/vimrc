@@ -6,14 +6,14 @@ set keywordprg=:Man
 exec "set list listchars=tab:\u258F\\\u20,trail:\u2508,nbsp:\uA4"
 set autowriteall autoread
 set background=dark
-set cino+=(0g0
-set completeopt-=preview
+set cino+=(0g0=0 
+set completeopt-=preview complete=.,w,b,u,t
 set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
 set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
 set formatoptions-=o
-set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn
+set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn\ --exclude=\\*log
 set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
 set hlsearch incsearch showmatch
 set keywordprg=:Man
@@ -35,14 +35,12 @@ let g:OmniCpp_DisplayMode = 1
 let g:OmniCpp_ShowPrototypeInAbbr = 1
 let g:OmniCpp_NamespaceSearch = 1
 let g:ft_man_folding_enable = 1
-let g:jira_fenced_languages = ['', 'c', 'cpp', 'java']
-let g:markdown_fenced_languages = ['cpp']
+let g:markdown_fenced_languages = ['c', 'cpp']
 
 nnoremap g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 nnoremap g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
 nnoremap gz :wall<CR>
 nnoremap gH :noh<CR>
-inoremap jk <esc>
 
 hi DiffAdd      cterm=none      ctermfg=0        ctermbg=darkgreen
 hi DiffChange   cterm=none      ctermfg=white    ctermbg=darkblue
@@ -50,24 +48,27 @@ hi DiffDelete   cterm=none      ctermfg=0        ctermbg=darkred
 hi DiffText     cterm=none      ctermfg=darkblue ctermbg=white
 hi MatchParen   cterm=none      ctermbg=darkgrey ctermfg=black
 hi PmenuSel     ctermfg=black   ctermbg=white
-hi QuickFixLine ctermbg=darkred
+hi QuickFixLine ctermbg=darkred ctermbg=black
 hi Special      ctermfg=darkred ctermbg=black
 
 if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
     source $XDG_CONFIG_HOME/vim/addi.vim
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
+if split(system("uname"), "-")[0] ==? "CYGWIN_NT"
+    set errorformat=\ %#%f(%l\\\,%c):\ %m
+endif
+if filereadable("./cscope.out")
+    cscope add cscope.out
+endif
 
 autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml,*.md setlocal spell
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
 autocmd BufNewFile,BufRead *.gnuplot set ft=gnuplot
-autocmd FileType cpp set omnifunc=omni#cpp#complete#Main
+autocmd FileType cpp    set omnifunc=omni#cpp#complete#Main comments=s:/*,m:\ ,e-3:*/
 autocmd FileType python set makeprg=python\ % errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd FileType tex set makeprg=tex2pdf\ %
-if filereadable("./cscope.out")
-    cscope add cscope.out
-endif
+autocmd FileType tex    set makeprg=tex2pdf\ %
 
 command! Bro   enew! | setl  buftype=nofile | 0put =v:oldfiles | exe "silent % !fzy" | norm gf
 command! Make  wa | silent make | redraw! | cw
