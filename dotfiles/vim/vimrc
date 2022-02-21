@@ -61,6 +61,9 @@ endif
 if filereadable("./cscope.out")
     cscope add cscope.out
 endif
+if filereadable("./cyg_nmake")
+    set makeprg=./cyg_nmake
+endif
 
 autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml,*.md setlocal spell
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
