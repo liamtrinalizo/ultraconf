@@ -1,6 +1,2 @@
-net-libs/webkit-gtk        -~amd64
-sys-devel/gcc              -~amd64
-app-portage/portage-utils  -~amd64
-sys-kernel/gentoo-sources  -~amd64
-dev-db/mongodb             -~amd64
-media-libs/gexiv2          -~amd64
+sys-libs/glibc  ~amd64
+dev-lang/python ~amd64
