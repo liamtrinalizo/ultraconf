@@ -34,3 +34,5 @@ hiit()       { r=0; while true; do for i in $(seq 1 $1); do clear; convert -size
 prettyname() { for i in $@; do new=${i// /_}; new=${new//\\/}; echo "$i -> ${new:l}";  mv "$i" "${new:l}"; done }
 tex2pdf()    { pdflatex -halt-on-error -output-directory /tmp $1 && mv /tmp/$(basename $1 .tex).pdf . }
 timer()      { sleep $1 && speaker-test > /dev/null 2>&1 & (sleep 1 && killall speaker-test) }
+
+[ -e ~/.config/zsh/zshrc-windows ] && source ~/.config/zsh/zshrc-windows
