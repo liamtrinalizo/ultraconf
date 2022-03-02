@@ -1,2 +1,10 @@
-sys-libs/glibc  ~amd64
+=sys-libs/glibc-2.34-r8 ~amd64
 dev-lang/python ~amd64
+dev-libs/olm ~amd64
+dev-qt/qt-creator ~amd64
+dev-qt/qtquicktimeline ~amd64
+dev-util/poke ~amd64
+dev-util/radare2 ~amd64
+media-libs/leptonica ~amd64
+sci-electronics/ngspice ~amd64
+x11-libs/libfm ~amd64
