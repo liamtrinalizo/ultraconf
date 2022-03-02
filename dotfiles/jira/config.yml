@@ -49,7 +49,7 @@ custom-commands:
         required: false
     script: |-
       USER={{if args.USER}}{{args.USER}}{{else}}MJ093{{end}}
-      ~/.local/bin/jiraWorklogs.sh $USER | cut -c 1-300 | remind -c+2@1mb1 -w$(($(tput cols) * 7 / 5 + 3)) - $(date -d 'last week' +'%d %b %Y')  | \
+      ~/.local/bin/jiraWorklogs.sh $USER | cut -c 1-300 | remind -c+4@1mb1 -w$(($(tput cols) * 7 / 5 + 3)) - $(date -d 'last week - 14 days' +'%d %b %Y')  | \
         cut -d '|' -f 1-6 | cut -d '+' -f 1-6 | \
         sed "s/\(\*\+\)/$(printf "\033[31m\\\1\033[0m")/g"
 

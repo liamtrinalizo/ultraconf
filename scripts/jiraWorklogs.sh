@@ -1,12 +1,12 @@
 #!/bin/sh
 
-DATA=$(jira list -q "worklogAuthor = $1 and worklogDate >= \"$(date -d 'last monday -7 days' +%Y-%m-%d)\"" | \
+DATA=$(jira list -q "worklogAuthor = $1 and worklogDate >= \"$(date -d 'last monday -21 days' +%Y-%m-%d)\"" | \
        cut -d ':' -f1 | \
        xargs -n1 jira worklog list -t debug | \
        #sed -e's/\(\\r\?\\n\)\+/. /g' -e's/\*//g' | \
        jq -M -s "[[.[].worklogs[] | \
                select(.author.name == \"$1\")| \
-               select(.started  | strptime(\"%Y-%m-%dT%H:%M:%S.000%z\") | mktime | select(. > $(date -d 'last monday -7 days' +%s)))] | sort_by(.started) | .[] | {issueId, comment, started, timeSpent}]")
+               select(.started  | strptime(\"%Y-%m-%dT%H:%M:%S.000%z\") | mktime | select(. > $(date -d 'last monday -21 days' +%s)))] | sort_by(.started) | .[] | {issueId, comment, started, timeSpent}]")
 
 function parseDuration {
     awk '{
