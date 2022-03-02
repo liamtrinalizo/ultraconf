@@ -3,7 +3,7 @@ MKDIR = mkdir -p
 
 all: zsh vim
 	@echo -e "\e[36mLink dotfiles\e[m"
-	@find . -type f -not -name .zprofile -not -name Makefile -exec zsh -c '\
+	@find . -type f,l -not -name .zprofile -not -name Makefile -exec zsh -c '\
 	    $(MKDIR) $(XDG_CONFIG_HOME)/$$(dirname {}); \
 	    rm $(XDG_CONFIG_HOME)/{}; \
 	    $(LN) $(CURDIR)/{} ${XDG_CONFIG_HOME}/{}  \
