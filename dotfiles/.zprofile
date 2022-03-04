@@ -9,6 +9,7 @@ export EDITOR="vi"
 export TERMINAL="st"
 export READER="zathura"
 export BROWSER="brave-bin"
+export CLIBROWSER="elinks"
 
 # Misc
 export HISTFILESIZE=10000

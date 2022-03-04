@@ -5,7 +5,7 @@ image/gif;             mpv --loop %s &;
 image/*;               sxiv %s &;
 text/calendar;         .local/bin/vcal -all -; copiousoutput;
 text/html;             cp %s /tmp/mail.html && $BROWSER /tmp/mail.html > /dev/null 2>&1;
-text/html;             elinks -dump-width 279 -dump; copiousoutput;
+text/html;             $CLIBROWSER -dump-width 279 -dump; copiousoutput;
 text/plain;            ;copiousoutput;
 text/*;                $PAGER %s ;
 video/*;               mpv --loop %s &;
