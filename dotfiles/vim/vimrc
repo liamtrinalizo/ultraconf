@@ -50,6 +50,7 @@ hi MatchParen   cterm=none      ctermbg=darkgrey ctermfg=black
 hi PmenuSel     ctermfg=black   ctermbg=white
 hi QuickFixLine ctermbg=darkred ctermbg=black
 hi Special      ctermfg=darkred ctermbg=black
+hi SpellBad     ctermfg=white
 
 if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
     source $XDG_CONFIG_HOME/vim/addi.vim
