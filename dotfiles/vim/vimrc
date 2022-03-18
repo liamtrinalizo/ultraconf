@@ -63,7 +63,7 @@ if filereadable("./cscope.out")
     cscope add cscope.out
 endif
 if filereadable("./cyg_nmake")
-    set makeprg=./cyg_nmake
+    set makeprg=./cyg_nmake errorformat=%f(%l):\ %t%s\ C%n:\ %m
 endif
 
 autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml,*.md setlocal spell
