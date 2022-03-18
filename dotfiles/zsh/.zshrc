@@ -44,3 +44,6 @@ bindkey '^[[B'  down-line-or-beginning-search  # Arrow down
 bindkey '^[OB'  down-line-or-beginning-search
 
 [ -e /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/site-functions/zsh-syntax-highlighting.zsh
+(( ${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[path]=none
+ZSH_HIGHLIGHT_STYLES[path_prefix]=none
