@@ -8,7 +8,6 @@ set autowriteall autoread
 set background=dark
 set cino+=(0g0=0 
 set completeopt-=preview complete=.,w,b,u,t
-set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
 set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
 set encoding=utf8
 set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
@@ -59,6 +58,7 @@ if split(system("uname"), "-")[0] ==? "CYGWIN_NT"
     set errorformat=\ %#%f(%l\\\,%c):\ %m
 endif
 if filereadable("./cscope.out")
+    set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
     cscope add cscope.out
 endif
 if filereadable("./cyg_nmake")
