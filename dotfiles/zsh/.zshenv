@@ -17,6 +17,7 @@ alias magickdoc="$CLIBROWSER 'https://legacy.imagemagick.org/script/command-line
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
 alias mpv="mpv --osd-font-size=40"
 alias mutt="which neomutt >/dev/null && neomutt || mutt"
+alias offlineimap="offlineimap -c $XDG_CONFIG_HOME/offlineimap/config"
 alias rdp="xfreerdp /log-level:ERROR /compression-level:2 /f /dynamic-resolution /cert:ignore -wallpaper +clipboard -grab-keyboard"
 alias rem1="rem -m -b1 -q -g"
 alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | less"
