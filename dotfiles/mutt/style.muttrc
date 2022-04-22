@@ -30,6 +30,8 @@ set count_alternatives = yes
 set abort_key = <ESC>
 set confirmappend = no
 set editor = "vim -c 'set textwidth=0 nolist'"
+set signature = $XDG_CONFIG_HOME/mutt/signature
+set sig_dashes = no
 unattachments +A "*/.*"
 attachments +I "text/calendar"
 auto_view text/html
