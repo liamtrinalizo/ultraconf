@@ -21,6 +21,7 @@ alias offlineimap="offlineimap -c $XDG_CONFIG_HOME/offlineimap/config"
 alias rdp="xfreerdp /log-level:ERROR /compression-level:2 /f /dynamic-resolution /cert:ignore -wallpaper +clipboard -grab-keyboard"
 alias rem1="rem -m -b1 -q -g"
 alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | less"
+alias sqlformat="sqlformat -rs -k upper -i lower"
 alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias wdump="w3m -dump -T text/html"
@@ -36,6 +37,6 @@ hiit()       { r=0; while true; do for i in $(seq 1 $1); do clear; convert -size
 prettyname() { for i in $@; do new=${i// /_}; new=${new//\\/}; echo "$i -> ${new:l}";  mv "$i" "${new:l}"; done }
 tex2pdf()    { pdflatex -halt-on-error -output-directory /tmp $1 && mv /tmp/$(basename $1 .tex).pdf . }
 timer()      { sleep $1 && speaker-test > /dev/null 2>&1 & (sleep 1 && killall speaker-test) }
-youtube()    { mpv "$(fzy < $1 | awk '{print $2}')" --no-video }
+music()      { mpv "$(fzy < $1 | awk '{print $2}')" --no-video }
 
 [ -e ~/.config/zsh/zshrc-windows ] && source ~/.config/zsh/zshrc-windows
