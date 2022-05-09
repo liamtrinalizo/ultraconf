@@ -1,7 +1,9 @@
 [core]
     editor = vim
     # requires https://github.com/so-fancy/diff-so-fancy
-    pager = "diff-so-fancy | less --tabs=4 -RFX" 
+    pager = "$(which diff-so-fancy >/dev/null && echo 'diff-so-fancy | sed s/\\r// | less --tabs=4 -RFX' || echo less)"
+[interactive]
+    diffFilter = "$(which diff-so-fancy >/dev/null && echo 'diff-so-fancy --patch' || echo less)"
 [user]
     name =
     email =
