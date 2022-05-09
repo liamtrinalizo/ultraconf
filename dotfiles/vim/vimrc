@@ -30,6 +30,7 @@ set wildmenu showcmd
 let g:netrw_banner = 0
 let g:netrw_sort_sequence = '[\/]$'
 let g:netrw_preview = 1
+let g:netrw_liststyle = 3
 let g:OmniCpp_DisplayMode = 1
 let g:OmniCpp_ShowPrototypeInAbbr = 1
 let g:OmniCpp_NamespaceSearch = 1
