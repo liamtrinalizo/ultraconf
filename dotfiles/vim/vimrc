@@ -17,7 +17,7 @@ set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<
 set hlsearch incsearch showmatch
 set keywordprg=:Man
 set mouse=
-set nocompatible nomodeline nowrap
+set nocompatible nowrap
 set number relativenumber
 set path+=**
 set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME
