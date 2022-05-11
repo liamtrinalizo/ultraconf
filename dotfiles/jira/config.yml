@@ -1,3 +1,4 @@
+# vi: nospell
 endpoint: http://jira
 user: MJ093
 editor: vi
@@ -150,7 +151,7 @@ custom-commands:
       - name: ISSUE
         required: true
     script: |-
-      ID=$(jira attach list --template debug {{args.ISSUE}} | jq -rc '.[] | {id,filename}' | fzy | jq '.id')
+      ID=$(jira attach list --template debug {{args.ISSUE}} | jq -rc '.[] | {id,filename}' | $FUZZYFIND | jq '.id')
       jira attach get "$ID"
 
   - name: attach getall

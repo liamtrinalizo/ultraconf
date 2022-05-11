@@ -34,9 +34,9 @@ qtdoc()      { $BROWSER "https://doc.qt.io/qt-5/$1.html" }
 greptar()    { tar ft $2 | awk '/.*[^/]$/' | while read -r file; do if tar xf $2 $file -O | grep -w $1 && echo -e "\e[36m$file\e[m"; done }
 hiit()       { r=0; while true; do for i in $(seq 1 $1); do clear; convert -size 175x100 canvas:black -fill white -pointsize 80 -draw "text 0,75 \"$r, $i\"" /tmp/counter.png;
                img2txt -futf8 /tmp/counter.png; sleep 1; done; speaker-test > /dev/null 2>&1 & (sleep 1 && killall speaker-test); r=$(($r + 1)); done }
+music()      { mpv "$($FUZZYFIND < $1 | awk '{print $2}')" --no-video }
 prettyname() { for i in $@; do new=${i// /_}; new=${new//\\/}; echo "$i -> ${new:l}";  mv "$i" "${new:l}"; done }
 tex2pdf()    { pdflatex -halt-on-error -output-directory /tmp $1 && mv /tmp/$(basename $1 .tex).pdf . }
 timer()      { sleep $1 && speaker-test > /dev/null 2>&1 & (sleep 1 && killall speaker-test) }
-music()      { mpv "$(fzy < $1 | awk '{print $2}')" --no-video }
 
 [ -e ~/.config/zsh/zshrc-windows ] && source ~/.config/zsh/zshrc-windows

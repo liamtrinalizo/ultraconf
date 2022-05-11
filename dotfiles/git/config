@@ -20,7 +20,7 @@
     di  = diff --ignore-all-space
     dt  = difftool
     l   = log --graph --all -n 50 --abbrev-commit --no-decorate --format=format:'%C(bold blue)%h%C(reset)%C(dim white) %an%C(reset) %C(bold green)%ar%C(reset) %C(white)%s%C(reset) %C(bold yellow)%D%C(reset)'
-    sh  = !git log --oneline | fzy -l 50 | cut -b 1-7 | xargs git show
+    sh  = !git log --oneline | $FUZZYFIND -l 50 | cut -b 1-7 | xargs git show
     st  = status
 [color]
     ui = true
