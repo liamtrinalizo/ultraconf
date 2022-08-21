@@ -8,9 +8,9 @@ updateBrave()
 {
     persoRepo=/var/db/repos/perso/www-client/brave-bin
     braveRepo=https://github.com/brave/brave-browser/releases/latest
-    remoteVer=$(curl -s $braveRepo | grep -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+')
+    remoteVer=$(curl -sL $braveRepo | grep -m1 -Po '(?<=v)[0-9]+\.[0-9]+\.[0-9]+')
     localVer=$(INSTFORMAT='<version>' eix --pure-packages --format '<installedversions:INSTFORMAT>()\n' brave)
-    archivName=$(curl -sL $braveRepo | grep 'href' | grep -oP "brave-browser-[a-z-]*(?=$remoteVer-linux-amd64.zip)")
+    archivName=$(curl -sL $braveRepo | grep 'href' | grep -m1 -oP "brave-browser-[a-z-]*(?=$remoteVer-linux-amd64.zip)")
     [ "$remoteVer" != "$localVer" ] && [ "$(printf '%s\n%s' "$remoteVer" "$localVer" | sort -V | head -n1)" = "$localVer" ] && echo "$localVer -> $remoteVer" && \
                                 cp -f $persoRepo/brave-bin-{"$localVer","$remoteVer"}.ebuild && \
                                 sed -i "s/brave-browser-[a-z-]*/$archivName/" $persoRepo/brave-bin-"$remoteVer".ebuild && \
