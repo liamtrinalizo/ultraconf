@@ -26,6 +26,7 @@ set t_Co=256
 set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
 set virtualedit=block
 set wildmenu showcmd
+set statusline=%f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %P%)\ %{synIDattr(synID(line(\".\"),col(\".\"),1),\"name\")}
 
 let g:netrw_banner = 0
 let g:netrw_sort_sequence = '[\/]$'
@@ -34,7 +35,7 @@ let g:netrw_liststyle = 3
 let g:OmniCpp_DisplayMode = 1
 let g:OmniCpp_ShowPrototypeInAbbr = 1
 let g:OmniCpp_NamespaceSearch = 1
-let g:markdown_fenced_languages = ['c', 'cpp']
+let g:markdown_fenced_languages = ['c', 'cpp', 'vb', 'dot']
 
 nnoremap g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 nnoremap g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
@@ -70,9 +71,10 @@ autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml,*.md setlocal sp
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
 autocmd BufNewFile,BufRead *.gnuplot set ft=gnuplot
-autocmd FileType cpp    set omnifunc=omni#cpp#complete#Main comments=s:/*,m:\ ,e-3:*/
-autocmd FileType python set makeprg=python\ % errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
-autocmd FileType tex    set makeprg=tex2pdf\ %
+autocmd FileType cpp      set omnifunc=omni#cpp#complete#Main comments=s:/*,m:\ ,e-3:*/
+autocmd FileType python   set makeprg=python\ % errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+autocmd FileType tex      set makeprg=tex2pdf\ %
+autocmd FileType markdown set makeprg=markdown_py\ %\ -f\ %<.html
 
 command! Bro   enew! | setl  buftype=nofile | 0put =v:oldfiles | exe "silent % !$FUZZY" | norm gf
 command! Make  wa | silent make | redraw! | cw
