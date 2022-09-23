@@ -11,6 +11,7 @@ export READER="zathura"
 export BROWSER="brave-bin"
 export CLIBROWSER="elinks"
 export FUZZYFIND="$(which fzy >/dev/null && echo fzy || echo fzf)"
+[ $(uname -o) = Cygwin ] && export DISPLAY=":0"
 
 # Misc
 export HISTFILESIZE=10000
