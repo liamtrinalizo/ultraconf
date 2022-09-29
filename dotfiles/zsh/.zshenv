@@ -27,6 +27,7 @@ alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
 alias wdump="w3m -dump -T text/html"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias xclip2="xclip -selection clipboard"
+alias elinksd="elinks -dump -dump-width $COLUMNS -dump-color-mode 0"
 
 color()      { convert -size 100x100 canvas:#$1 png:- | display }
 dic()        { $CLIBROWSER "$1.wiktionary.org/wiki/$2" }
