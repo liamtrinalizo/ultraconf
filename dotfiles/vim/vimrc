@@ -4,6 +4,7 @@ runtime ftplugin/man.vim
 set keywordprg=:Man
 
 exec "set list listchars=tab:\u258F\\\u20,trail:\u2508,nbsp:\uA4"
+set nocompatible "set first to not overide other settings
 set autowriteall autoread
 set background=dark
 set cino+=(0g0=0 
@@ -16,8 +17,7 @@ set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn\ --exclude=\\*log
 set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
 set hlsearch incsearch showmatch
 set keywordprg=:Man
-set mouse=
-set nocompatible nowrap
+set mouse= nowrap
 set number relativenumber
 set path+=**
 set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME
