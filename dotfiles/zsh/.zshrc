@@ -2,7 +2,7 @@ fpath=($fpath $XDG_CONFIG_HOME/zsh/completion)
 HISTFILE=~/.cache/zsh/histfile
 HISTSIZE=100000
 SAVEHIST=100000
-setopt appendhistory sharehistory incappendhistory HIST_SAVE_NO_DUPS
+setopt appendhistory sharehistory incappendhistory HIST_SAVE_NO_DUPS INTERACTIVE_COMMENTS
 
 autoload -U compinit promptinit edit-command-line
 zstyle ':completion:*' menu select
