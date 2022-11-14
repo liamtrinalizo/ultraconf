@@ -9,10 +9,10 @@ alias uptime='net stats srv | sed -n 4p | cut -d " " -f 3-4'
 foxit()  { /cygdrive/c/Program\ Files\ \(x86\)/Foxit\ Software/Foxit\ Reader/FoxitReader.exe $(cygpath -ad $1) }
 exe()    { explorer $(cygpath -ad $1 ) }
 
-kpush() { cd ~/pkg/keep; fileid=$(grep $1 .cache | cut -d' ' -f1); gdrive download $fileid -- force && chmod -x $1 }
-kpull() { cd ~/pkg/keep; fileid=$(grep $1 .cache | cut -d' ' -f1); gdrive update $fileid $1 }
+kpull() { cd ~/pkg/keep; fileid=$(grep $(basename $1) .cache | cut -d' ' -f1); gdrive download $fileid -- force && chmod -x $1 }
+kpush() { cd ~/pkg/keep; fileid=$(grep $(basename $1) .cache | cut -d' ' -f1); gdrive update $fileid $1 }
 keep() {
-	cd ~/pkg/keep
-	fileid=$(grep $1 .cache | cut -d' ' -f1)
-	gdrive download $fileid --force && chmod -x $1 && vi $1 && gdrive update $fileid $1
+    cd ~/pkg/keep
+    fileid=$(grep $(basename $1) .cache | cut -d' ' -f1)
+    gdrive download --path $(dirname $1) --force $fileid && chmod -x $1 && vi $1 && gdrive update $fileid $1
 }
