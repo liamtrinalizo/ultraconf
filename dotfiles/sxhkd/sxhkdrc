@@ -66,6 +66,7 @@ super + ctrl + {1-9}
 super + v
     bspc node focused#@parent --flip horizontal
     bspc node focused#@parent --flip vertical
+    #bspc node "${t}#@1" --swap "${t}#@2"
 
 super + ctrl + space
     bspc node --presel-dir cancel

@@ -24,20 +24,22 @@ alias remcal="rem -m -b1 -q -cuc12 -w$(($(tput cols)+1)) | sed -e 's/\f//g' | le
 alias sqlformat="sqlformat -rs -k lower -i upper"
 alias startx="exec startx $XDG_CONFIG_HOME/X11/xinitrc"
 alias svn="svn --config-dir $XDG_CONFIG_HOME/subversion"
-alias wdump="w3m -dump -T text/html"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias xclip2="xclip -selection clipboard"
 alias elinksd="elinks -dump -dump-width $COLUMNS -dump-color-mode 0"
+
 
 color()      { convert -size 100x100 canvas:#$1 png:- | display }
 dic()        { $CLIBROWSER "$1.wiktionary.org/wiki/$2" }
 qtdoc()      { $BROWSER "https://doc.qt.io/qt-5/$1.html" }
 greptar()    { tar ft $2 | awk '/.*[^/]$/' | while read -r file; do if tar xf $2 $file -O | grep -w $1 && echo -e "\e[36m$file\e[m"; done }
+keep()       { drive pull -no-prompt -ignore-conflict $1 && vi $1 && drive push -no-prompt -ignore-conflict $1 }
 hiit()       { r=0; while true; do for i in $(seq 1 $1); do clear; convert -size 175x100 canvas:black -fill white -pointsize 80 -draw "text 0,75 \"$r, $i\"" /tmp/counter.png;
                img2txt -futf8 /tmp/counter.png; sleep 1; done; speaker-test > /dev/null 2>&1 & (sleep 1 && killall speaker-test); r=$(($r + 1)); done }
 music()      { mpv "$($FUZZYFIND < $1 | awk '{print $2}')" --no-video }
 prettyname() { for i in $@; do new=${i// /_}; new=${new//\\/}; echo "$i -> ${new:l}";  mv "$i" "${new:l}"; done }
 tex2pdf()    { pdflatex -halt-on-error -output-directory /tmp $1 && mv /tmp/$(basename $1 .tex).pdf . }
-timer()      { sleep $1 && speaker-test > /dev/null 2>&1 & (sleep 1 && killall speaker-test) }
+timer()      { sleep $1 && speaker-test > /dev/null 2>&1 & (sleep 1 && killall speaker-test > /dev/null 2>&1) }
+youtube()    { mpv "$(fzy < $1 | awk '{print $2}')" --no-video }
 
-[ -e ~/.config/zsh/zshrc-windows ] && source ~/.config/zsh/zshrc-windows
+[ -e ~/.config/zsh/zshrc-windows -a $(uname -o) = Cygwin ] && source ~/.config/zsh/zshrc-windows
