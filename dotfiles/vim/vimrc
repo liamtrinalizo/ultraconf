@@ -56,9 +56,9 @@ if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
     source $XDG_CONFIG_HOME/vim/addi.vim
     autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
 endif
-if split(system("uname"), "-")[0] ==? "CYGWIN_NT"
-    set errorformat=\ %#%f(%l\\\,%c):\ %m
-endif
+"if split(system("uname"), "-")[0] ==? "CYGWIN_NT"
+"    set errorformat=\ %#%f(%l\\\,%c):\ %m
+"endif
 if filereadable("./cscope.out")
     set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
     cscope add cscope.out
@@ -66,15 +66,20 @@ endif
 if filereadable("./cyg_nmake")
     set makeprg=./cyg_nmake errorformat=%f(%l):\ %t%s\ C%n:\ %m
 endif
+if ! filereadable("./make")
+    autocmd FileType cpp set makeprg=g++\ %\ -o\ %<\ &&\ ./%<
+endif
 
 autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml,*.md setlocal spell
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
 autocmd BufNewFile,BufRead *.gnuplot set ft=gnuplot
 autocmd FileType cpp      set omnifunc=omni#cpp#complete#Main comments=s:/*,m:\ ,e-3:*/
-autocmd FileType python   set makeprg=python\ % errorformat=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+autocmd FileType python   set makeprg=python\ % errorformat=\%*\\sFile\ \"%f\"\\,\ line\ %l\\,\ %m,\%*\\sFile\ \"%f\"\\,\ line\ %l,
 autocmd FileType tex      set makeprg=tex2pdf\ %
 autocmd FileType markdown set makeprg=markdown_py\ %\ -f\ %<.html
+autocmd FileType gnuplot  set makeprg=gnuplot\ -c\ %\ &&\ sxiv\ %<.png
+autocmd FileType dot      set makeprg=dot\ -Tpng\ %\ \\\|\ display
 
 command! Bro   enew! | setl  buftype=nofile | 0put =v:oldfiles | exe "silent % !$FUZZY" | norm gf
 command! Make  wa | silent make | redraw! | cw
