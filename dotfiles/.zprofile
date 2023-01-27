@@ -16,7 +16,7 @@ export FUZZYFIND="$(which fzy >/dev/null && echo fzy || echo fzf)"
 # Misc
 export HISTFILESIZE=10000
 export HISTSIZE=10000
-export LS_COLORS="or=40;31;01"
+export LS_COLORS="or=40;31;01:ex=00;40"
 export PATH="$PATH:$XDG_BIN_HOME"
 
 # Dotfiles
@@ -34,7 +34,7 @@ export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/notmuchrc"
 export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
 export PARALLEL_HOME="$XDG_CONFIG_HOME/parallel"
 export PASSWORD_STORE_DIR="$HOME/.local/share/password-store"
-export PYTHONPATH="PYTHONPATH:$XDG_CONFIG_HOME/python:/usr/lib/python3.7/site-packages:~/.local/lib/python3.7/site-packages"
+export PYTHONPATH="$PYTHONPATH:$XDG_CONFIG_HOME/python:/usr/lib/python3.7/site-packages:~/.local/lib/python3.7/site-packages"
 export TERM="xterm-256color"
 export VIMINIT='let $MYVIMRC="$XDG_CONFIG_HOME/vim/vimrc" | source $MYVIMRC'
 export XAPPLRESDIR="$HOME/config"
