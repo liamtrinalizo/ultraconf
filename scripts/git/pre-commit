@@ -4,6 +4,6 @@
 exec < /dev/tty
 
 # checks if there is added TODO in staged changes
-(git diff --staged | grep TODO) \
+(git diff --staged | grep '^+.*TODO') \
     && ( read -p  "TODO was found in diff, are you sure you want to commit? (Y/n)" yesno; [ "$yesno" != "y" ] && exit 1; ) \
     || exit 0
