@@ -81,7 +81,7 @@ macro index a "<enter-command>attachments +A \"*/.*\"<enter><enter-command>unatt
 macro index A "<enter-command>attachments +I \"text/calendar\"<enter><enter-command>unattachments +A \"*/.*\"<enter><enter-command>set index_format = \"%3C %?X?cal&   ? %zs %D %-15.15F %s (%-4.4c)\"<enter>"
 
 # Sidebar mappings
-set sidebar_visible = yes
+set sidebar_visible = no
 set sidebar_width = 20
 set sidebar_short_path = yes
 set sidebar_next_new_wrap = yes
