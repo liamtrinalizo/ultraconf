@@ -17,7 +17,7 @@ set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn\ --exclude=\\*log
 set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
 set hlsearch incsearch showmatch
 set keywordprg=:Man
-set mouse= nowrap
+set mouse=
 set number relativenumber
 set path+=**
 set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME
@@ -74,6 +74,7 @@ autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml,*.md setlocal sp
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
 autocmd BufNewFile,BufRead *.gnuplot set ft=gnuplot
+autocmd BufNewFile,BufRead *.ledger set ft=ledger
 autocmd FileType cpp      set omnifunc=omni#cpp#complete#Main comments=s:/*,m:\ ,e-3:*/
 autocmd FileType python   set makeprg=python\ % errorformat=\%*\\sFile\ \"%f\"\\,\ line\ %l\\,\ %m,\%*\\sFile\ \"%f\"\\,\ line\ %l,
 autocmd FileType tex      set makeprg=tex2pdf\ %
@@ -84,3 +85,5 @@ autocmd FileType dot      set makeprg=dot\ -Tpng\ %\ \\\|\ display
 command! Bro   enew! | setl  buftype=nofile | 0put =v:oldfiles | exe "silent % !$FUZZY" | norm gf
 command! Make  wa | silent make | redraw! | cw
 command! Ctags !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
+
+abbr apres après
