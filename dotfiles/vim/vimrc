@@ -3,30 +3,47 @@ syntax on
 runtime ftplugin/man.vim
 set keywordprg=:Man
 
-exec "set list listchars=tab:\u258F\\\u20,trail:\u2508,nbsp:\uA4"
+" general
 set nocompatible "set first to not overide other settings
-set autowriteall autoread
-set background=dark
-set cino+=(0g0=0 
-set completeopt-=preview complete=.,w,b,u,t
-set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
 set encoding=utf8
-set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
-set formatoptions-=o
-set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn\ --exclude=\\*log
-set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
-set hlsearch incsearch showmatch
-set keywordprg=:Man
-set mouse= nowrap
-set number relativenumber
-set path+=**
-set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME
-set scrolloff=10
+set splitbelow splitright
+set mouse=
+
+" display
 set t_Co=256
-set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
+set number relativenumber
+set nowrap
+set showcmd
+set scrolloff=10
+set background=dark
+set laststatus=2 "always show filename
+set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
+exec "set list listchars=tab:\u258F\\\u20,trail:\u2508,nbsp:\uA4" 
+
+" completion
+set isfname-== "do not consider equal sign as part of filename
+set completeopt-=preview complete=.,w,b,u,t
+set wildmenu "completion on command mode
+
+" intentation/tabs
+set cinoptions+=(0g0=0 
+set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
+
+" editing
+set formatoptions-=o "disable auto-comment on newline
+set autoread autowriteall
 set virtualedit=block
-set wildmenu showcmd
-set statusline=%f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %P%)\ %{synIDattr(synID(line(\".\"),col(\".\"),1),\"name\")}
+
+" search
+set path+=**
+set hlsearch incsearch showmatch
+set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn\ --exclude=\\*log
+
+" config/cache files
+set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME
+set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
+set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
+
 
 let g:netrw_banner = 0
 let g:netrw_sort_sequence = '[\/]$'
@@ -37,6 +54,7 @@ let g:OmniCpp_ShowPrototypeInAbbr = 1
 let g:OmniCpp_NamespaceSearch = 1
 let g:markdown_fenced_languages = ['c', 'cpp', 'vb', 'dot']
 
+map Q <Nop>
 nnoremap g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 nnoremap g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
 nnoremap gz :wall<CR>
@@ -71,9 +89,19 @@ if ! filereadable("./make")
 endif
 
 autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml,*.md setlocal spell
+autocmd BufNewFile,BufRead *.md setlocal statusline=%f\ %h%w%m%r\ nextChap:%{NextChap()}%=%(%l,%c%V\ %=\ %P%)\ %{synIDattr(synID(line(\".\"),col(\".\"),1),\"name\")}
+function NextChap()
+    let l = search("^# ", "n") - line(".")
+    if l < 0
+        return line("$") - line(".")
+    else
+        return l
+endfunction
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
 autocmd BufNewFile,BufRead *.gnuplot set ft=gnuplot
+autocmd BufNewFile,BufRead *.ledger set ft=ledger
+autocmd BufNewFile,BufRead *.dokuwiki set ft=dokuwiki
 autocmd FileType cpp      set omnifunc=omni#cpp#complete#Main comments=s:/*,m:\ ,e-3:*/
 autocmd FileType python   set makeprg=python\ % errorformat=\%*\\sFile\ \"%f\"\\,\ line\ %l\\,\ %m,\%*\\sFile\ \"%f\"\\,\ line\ %l,
 autocmd FileType tex      set makeprg=tex2pdf\ %
