@@ -3,30 +3,48 @@ syntax on
 runtime ftplugin/man.vim
 set keywordprg=:Man
 
-exec "set list listchars=tab:\u258F\\\u20,trail:\u2508,nbsp:\uA4"
-set nocompatible "set first to not overide other settings
-set autowriteall autoread
-set background=dark
-set cino+=(0g0=0 
-set completeopt-=preview complete=.,w,b,u,t
-set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
+packadd! matchit
+
+" general
 set encoding=utf8
-set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
-set formatoptions-=o
-set grepprg=grep\ -In\ --exclude=tags\ --exclude-dir=.svn\ --exclude=\\*log
-set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
-set hlsearch incsearch showmatch
-set keywordprg=:Man
+set splitbelow splitright
 set mouse=
-set number relativenumber
-set path+=**
-set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME
-set scrolloff=10
+
+" display
 set t_Co=256
-set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
+set number relativenumber
+set nowrap
+set showcmd
+set scrolloff=10 "smoothscroll
+set background=dark
+set laststatus=2 "always show filename
+set diffopt+=iwhiteall,algorithm:patience,indent-heuristic diffopt-=internal
+exec "set list listchars=tab:\u258F\\\u20,trail:\u2508,nbsp:\uA4"
+
+" completion
+set isfname-== "do not consider equal sign as part of filename
+set completeopt-=preview complete=.,w,b,u,t
+set wildmenu "completion on command mode
+
+" intentation/tabs
+set cinoptions+=(0g0=0 
+set expandtab tabstop=4 shiftwidth=4 smarttab softtabstop=0 autoindent
+
+" editing
+set formatoptions-=o "disable auto-comment on newline
+set autoread autowriteall
 set virtualedit=block
-set wildmenu showcmd
-set statusline=%f\ %h%w%m%r\ %=%(%l,%c%V\ %=\ %P%)\ %{synIDattr(synID(line(\".\"),col(\".\"),1),\"name\")}
+
+" search
+set path+=**
+set hlsearch incsearch showmatch
+let &grepprg='grep -In --exclude=tags --exclude-dir=.svn --exclude=\*.log'
+
+" config/cache files
+set runtimepath=$XDG_CONFIG_HOME/vim,/usr/share/vim/vimfiles,$VIMRUNTIME
+set history=1000 undofile viminfofile=$XDG_DATA_HOME/vim/viminfo viminfo='1000,<50,s10,h
+set undodir=$XDG_DATA_HOME/vim/undo directory=$XDG_DATA_HOME/vim/swap backupdir=$XDG_DATA_HOME/vim/backup viewdir=$XDG_DATA_HOME/vim/view
+
 
 let g:netrw_banner = 0
 let g:netrw_sort_sequence = '[\/]$'
@@ -37,53 +55,65 @@ let g:OmniCpp_ShowPrototypeInAbbr = 1
 let g:OmniCpp_NamespaceSearch = 1
 let g:markdown_fenced_languages = ['c', 'cpp', 'vb', 'dot']
 
+map Q <Nop>
 nnoremap g<C-]> :cs find 0 <C-R>=expand("<cword>")<CR><CR>
 nnoremap g<C-\> :cs find 3 <C-R>=expand("<cword>")<CR><CR>
 nnoremap gz :wall<CR>
 nnoremap gH :noh<CR>
+nnoremap <F1> :ls<Enter>:b
 
-hi DiffAdd      cterm=none      ctermfg=0        ctermbg=darkgreen
-hi DiffChange   cterm=none      ctermfg=white    ctermbg=darkblue
-hi DiffDelete   cterm=none      ctermfg=0        ctermbg=darkred
-hi DiffText     cterm=none      ctermfg=darkblue ctermbg=white
-hi MatchParen   cterm=none      ctermbg=darkgrey ctermfg=black
-hi PmenuSel     ctermfg=black   ctermbg=white
-hi QuickFixLine ctermbg=darkred ctermbg=black
-hi Special      ctermfg=darkred ctermbg=black
-hi SpellBad     ctermfg=white
 
-if filereadable(expand("$XDG_CONFIG_HOME/vim/addi.vim"))
-    source $XDG_CONFIG_HOME/vim/addi.vim
-    autocmd BufNewFile,BufRead COMMIT_EDITMSG inoremap <F2> <C-R>=Jid()<CR>
+hi StatusLine    ctermfg=yellow    ctermbg=239        cterm=bold
+hi StatusLineNC  ctermfg=249       ctermbg=237        cterm=none
+hi VertSplit     ctermfg=249       ctermbg=237        cterm=none
+hi DiffAdd       ctermfg=0         ctermbg=darkgreen  cterm=none
+hi DiffChange    ctermfg=white     ctermbg=darkblue   cterm=none
+hi DiffDelete    ctermfg=0         ctermbg=darkred    cterm=none
+hi DiffText      ctermfg=darkblue  ctermbg=white      cterm=none
+hi MatchParen    ctermfg=black     ctermbg=darkgrey   cterm=none
+hi PmenuSel      ctermfg=black     ctermbg=white
+hi QuickFixLine  ctermfg=darkred   ctermbg=black
+hi Special       ctermfg=darkred   ctermbg=black
+hi SpellBad      ctermfg=white
+
+if filereadable(expand("$XDG_CONFIG_HOME/vim/huber.vim"))
+    source $XDG_CONFIG_HOME/vim/huber.vim
 endif
-"if split(system("uname"), "-")[0] ==? "CYGWIN_NT"
-"    set errorformat=\ %#%f(%l\\\,%c):\ %m
-"endif
 if filereadable("./cscope.out")
     set cscopetag cscoperelative "cscopequickfix=s-,c-,d-,i-,t-,e-,a-
     cscope add cscope.out
 endif
-if filereadable("./cyg_nmake")
-    set makeprg=./cyg_nmake errorformat=%f(%l):\ %t%s\ C%n:\ %m
-endif
 if ! filereadable("./make")
-    autocmd FileType cpp set makeprg=g++\ %\ -o\ %<\ &&\ ./%<
+    autocmd FileType cpp let &l:makeprg='g++ % -o %< && ./%<'
 endif
 
 autocmd BufNewFile,BufRead neomutt-*,COMMIT_EDITMSG,*.tex,*.yml,*.md setlocal spell
+autocmd BufNewFile,BufRead *.md let &l:statusline='%f %h%w%m%r nextChap:%{NextChap()}%=%(%l,%c%V %= %P%) %{synIDattr(synID(line("."),col("."),1),"name")}'
+function NextChap()
+    let l = search("^# ", "n") - line(".")
+    if l < 0
+        return line("$") - line(".")
+    else
+        return l
+endfunction
 autocmd BufNewFile,BufRead *.jira setlocal syntax=jira spell laststatus=2
 autocmd BufNewFile,BufRead *.~,*.txt,*.vhdl set nolist
 autocmd BufNewFile,BufRead *.gnuplot set ft=gnuplot
 autocmd BufNewFile,BufRead *.ledger set ft=ledger
-autocmd FileType cpp      set omnifunc=omni#cpp#complete#Main comments=s:/*,m:\ ,e-3:*/
-autocmd FileType python   set makeprg=python\ % errorformat=\%*\\sFile\ \"%f\"\\,\ line\ %l\\,\ %m,\%*\\sFile\ \"%f\"\\,\ line\ %l,
-autocmd FileType tex      set makeprg=tex2pdf\ %
-autocmd FileType markdown set makeprg=markdown_py\ %\ -f\ %<.html
-autocmd FileType gnuplot  set makeprg=gnuplot\ -c\ %\ &&\ sxiv\ %<.png
-autocmd FileType dot      set makeprg=dot\ -Tpng\ %\ \\\|\ display
+autocmd BufNewFile,BufRead *.dokuwiki set ft=dokuwiki
+autocmd BufNewFile,BufRead *.dss set ft=c
+autocmd FileType cpp      set omnifunc=omni#cpp#complete#Main | let &l:comments='s:/*,m: ,e-3:*/'
+autocmd FileType python   let &l:makeprg='python %' | let &l:errorformat='%*\sFile "%f"\, line %l\, %m,%*\sFile "%f"\, line %l,'
+autocmd FileType tex      let &l:makeprg='tex2pdf %'
+autocmd FileType markdown let &l:makeprg='markdown_py % -f %<.html'
+autocmd FileType gnuplot  let &l:makeprg='gnuplot -c % && sxiv %<.png'
+autocmd FileType dot      let &l:makeprg='dot -Tpng % | display > /dev/null'
+autocmd FileType sql      let &l:equalprg='sqlformat - 2> /dev/null'
 
 command! Bro   enew! | setl  buftype=nofile | 0put =v:oldfiles | exe "silent % !$FUZZY" | norm gf
 command! Make  wa | silent make | redraw! | cw
 command! Ctags !ctags -R --c++-kinds=+pl --fields=+iaS --extras=+q
 
-abbr apres après
+
+
+
